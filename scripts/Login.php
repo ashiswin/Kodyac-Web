@@ -20,7 +20,7 @@
 		}
 		else {
 			$response["success"] = false;
-			$response["message"] = "Invalid username or password";
+			$response["message"] = "Invalid username or password 2 " . $passwordHash . "|" . $result[CompanyConnector::$COLUMN_PASSWORDHASH];
 		}
 	}
 	
