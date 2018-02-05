@@ -187,6 +187,11 @@
 							$("#companyId").val(response.companyId);
 							$("#frmContinue").submit();
 						}
+						else {
+							$("#txtUsername")[0].setCustomValidity(response.message);
+				                	$("#txtUsername")[0].reportValidity();
+							$("#btnRegister").removeClass('disabled').removeAttr('disabled').html("Register");
+						}
 					});
 				}
 			});
