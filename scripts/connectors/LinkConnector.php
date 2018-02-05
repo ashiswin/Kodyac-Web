@@ -5,7 +5,7 @@
 		public static $TABLE_NAME = "links";
 		public static $COLUMN_ID = "id";
 		public static $COLUMN_COMPANYID = "companyId";
-
+		public static $COLUMN_STATUS = "status";
 
 		private $createStatement = NULL;
 		private $selectStatement = NULL;
@@ -19,14 +19,16 @@
 
 			$this->mysqli = $mysqli;
 
-			$this->createStatement = $mysqli->prepare("INSERT INTO " . LinkConnector::$TABLE_NAME . "(`" . LinkConnector::$COLUMN_COMPANYID . "`) VALUES(?)");
+			$this->createStatement = $mysqli->prepare("INSERT INTO " . LinkConnector::$TABLE_NAME . "(`" . LinkConnector::$COLUMN_COMPANYID . "`,`" . LinkConnector::$COLUMN_STATUS . "`) VALUES(?,?)");
 			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " WHERE `" . LinkConnector::$COLUMN_ID . "` = ?");
+			$this->selectByCompanyStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " WHERE `" . LinkConnector::$COLUMN_COMPANYID . "` = ?");
+			$this->selectByStatusStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " WHERE `" . LinkConnector::$COLUMN_STATUS . "` = ?");
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME);
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . LinkConnector::$TABLE_NAME . " WHERE `" . LinkConnector::$COLUMN_ID . "` = ?");
 		}
 
 		public function create($companyId) {
-			$this->createStatement->bind_param("i", $companyId);
+			$this->createStatement->bind_param("is", $companyId, "requested");
 			return $this->createStatement->execute();
 		}
 
@@ -34,8 +36,31 @@
 			$this->selectStatement->bind_param("i", $id);
 			if(!$this->selectStatement->execute()) return false;
 
-			return true;
+			$result = $this->selectStatement->get_result();
+			if(!$result) return false;
+			$link = $result->fetch_assoc();
+			
+			$this->selectStatement->free_result();
+			
+			return $link;
 		}
+		
+		public function selectByCompany($companyId) {
+			$this->selectByCompanyStatement->bind_param("i", $companyId);
+			if(!$this->selectByCompanyStatement->execute()) return false;
+			$result = $this->selectByCompanyStatement->get_result();
+			$resultArray = $result->fetch_all(MYSQLI_ASSOC);
+			return $resultArray;
+		}
+		
+		public function selectByStatus($status) {
+			$this->selectByStatusStatement->bind_param("s", $status);
+			if(!$this->selectByStatusStatement->execute()) return false;
+			$result = $this->selectByStatusStatement->get_result();
+			$resultArray = $result->fetch_all(MYSQLI_ASSOC);
+			return $resultArray;
+		}
+		
 		public function selectAll() {
 			if(!$this->selectAllStatement->execute()) return false;
 			$result = $this->selectAllStatement->get_result();
