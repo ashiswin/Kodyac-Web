@@ -22,6 +22,7 @@
 	}
 	else {
 		$response['success'] = true;
+		$response['companyId'] = $conn->insert_id;
 	}
 
 	echo(json_encode($response));
