@@ -7,7 +7,7 @@
 
 	$CompanyConnector = new CompanyConnector($conn);
 
-	$result = $CompanyConnector->select($username);
+	$result = $CompanyConnector->selectByUsername($username);
 	if(!$result) {
 		$response["message"] = "Invalid username or password 1";
 		$response["success"] = false;
@@ -20,7 +20,7 @@
 		}
 		else {
 			$response["success"] = false;
-			$response["message"] = "Invalid username or password 2 " . $passwordHash . "|" . $result[CompanyConnector::$COLUMN_PASSWORDHASH];
+			$response["message"] = "Invalid username or password";
 		}
 	}
 	
