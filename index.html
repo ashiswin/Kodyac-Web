@@ -57,7 +57,7 @@
 		                	$("#txtPassword")[0].reportValidity();
 				}
 				else {
-					$(this).html('<i class=\'fa fa-refresh spinning\'></i> Loggin In...');
+					$(this).html('<i class=\'fa fa-refresh spinning\'></i> Logging In...');
 					$(this).addClass('disabled').attr("disabled", "disbled");
 					$.post("scripts/Login.php", { username: username, password: password }, function(data) {
 						response = JSON.parse(data);
@@ -69,7 +69,7 @@
 						else {
 							$("#txtUsername")[0].setCustomValidity(response.message);
 				                	$("#txtUsername")[0].reportValidity();
-							$(this).removeClass('disabled').removeAttr('disabled');
+							$("#btnLogin").removeClass('disabled').removeAttr('disabled').html("Log In");
 						}
 					});
 				}
