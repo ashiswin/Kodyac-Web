@@ -9,7 +9,7 @@
 
 	$result = $CompanyConnector->select($username);
 	if(!$result) {
-		$response["message"] = "Invalid username or password";
+		$response["message"] = "Invalid username or password 1";
 		$response["success"] = false;
 	}
 	else {
