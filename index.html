@@ -66,6 +66,11 @@
 							$("#companyId").val(response.companyId);
 							$("#frmContinue").submit();
 						}
+						else {
+							$("#txtUsername")[0].setCustomValidity(response.message);
+				                	$("#txtUsername")[0].reportValidity();
+							$(this).removeClass('disabled').removeAttr('disabled');
+						}
 					});
 				}
 			});
