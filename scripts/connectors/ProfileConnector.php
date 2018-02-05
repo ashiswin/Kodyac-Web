@@ -25,7 +25,7 @@
 
 			$this->mysqli = $mysqli;
 
-			$this->createStatement = $mysqli->prepare("INSERT INTO " . ProfileConnector::$TABLE_NAME . "(`" . ProfileConnector::$COLUMN_LINKID . "`,`" . ProfileConnector::$COLUMN_NAME . "`,`" . ProfileConnector::$COLUMN_ADDRESS . "`,`" . ProfileConnector::$COLUMN_NRIC . "`,`" . ProfileConnector::$COLUMN_CONTACT . "`,`" . ProfileConnector::$COLUMN_NATIONALITY . "`,`" . ProfileConnector::$COLUMN_DOB . "`) VALUES(?,?,?,?,?,?,?,?)");
+			$this->createStatement = $mysqli->prepare("INSERT INTO " . ProfileConnector::$TABLE_NAME . "(`" . ProfileConnector::$COLUMN_LINKID . "`,`" . ProfileConnector::$COLUMN_NAME . "`,`" . ProfileConnector::$COLUMN_ADDRESS . "`,`" . ProfileConnector::$COLUMN_NRIC . "`,`" . ProfileConnector::$COLUMN_CONTACT . "`,`" . ProfileConnector::$COLUMN_NATIONALITY . "`,`" . ProfileConnector::$COLUMN_DOB . "`) VALUES(?,?,?,?,?,?,?)");
 			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . ProfileConnector::$TABLE_NAME . " WHERE `" . ProfileConnector::$COLUMN_ID . "` = ?");
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . ProfileConnector::$TABLE_NAME);
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . ProfileConnector::$TABLE_NAME . " WHERE `" . ProfileConnector::$COLUMN_ID . "` = ?");
