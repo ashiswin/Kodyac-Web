@@ -61,6 +61,7 @@
 					$(this).addClass('disabled').attr("disabled", "disbled");
 					$.post("scripts/Login.php", { username: username, password: password }, function(data) {
 						response = JSON.parse(data);
+						console.log(response);
 						if(response.success) {
 							$("#companyId").val(response.companyId);
 							$("#frmContinue").submit();
