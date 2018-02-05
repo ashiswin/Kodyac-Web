@@ -57,7 +57,7 @@
 		                	$("#txtPassword")[0].reportValidity();
 				}
 				else {
-					$(this).html('<i class=\'fa fa-refresh spinning\'></i> Registering...');
+					$(this).html('<i class=\'fa fa-refresh spinning\'></i> Loggin In...');
 					$(this).addClass('disabled').attr("disabled", "disbled");
 					$.post("scripts/Login.php", { username: username, password: password }, function(data) {
 						response = JSON.parse(data);
