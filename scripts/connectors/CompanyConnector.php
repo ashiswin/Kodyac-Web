@@ -26,7 +26,7 @@
 
 			$this->mysqli = $mysqli;
 
-			$this->createStatement = $mysqli->prepare("INSERT INTO " . CompanyConnector::$TABLE_NAME . "(`" . CompanyConnector::$COLUMN_NAME . "`,`" . CompanyConnector::$COLUMN_USERNAME . "`,`" . CompanyConnector::$COLUMN_PASSWORDHASH . "`,`" . CompanyConnector::$COLUMN_SALT . "`,`" . CompanyConnector::$COLUMN_POCNAME . "`,`" . CompanyConnector::$COLUMN_POCEMAIL . "`,`" . CompanyConnector::$COLUMN_POCCONTACTNUMBER . "`,`" . CompanyConnector::$COLUMN_METHODS . "`) VALUES(?,?,?,?,?,?,?,?,?)");
+			$this->createStatement = $mysqli->prepare("INSERT INTO " . CompanyConnector::$TABLE_NAME . "(`" . CompanyConnector::$COLUMN_NAME . "`,`" . CompanyConnector::$COLUMN_USERNAME . "`,`" . CompanyConnector::$COLUMN_PASSWORDHASH . "`,`" . CompanyConnector::$COLUMN_SALT . "`,`" . CompanyConnector::$COLUMN_POCNAME . "`,`" . CompanyConnector::$COLUMN_POCEMAIL . "`,`" . CompanyConnector::$COLUMN_POCCONTACTNUMBER . "`,`" . CompanyConnector::$COLUMN_METHODS . "`) VALUES(?,?,?,?,?,?,?,?)");
 			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . CompanyConnector::$TABLE_NAME . " WHERE `" . CompanyConnector::$COLUMN_ID . "` = ?");
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . CompanyConnector::$TABLE_NAME);
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . CompanyConnector::$TABLE_NAME . " WHERE `" . CompanyConnector::$COLUMN_ID . "` = ?");
