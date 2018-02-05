@@ -34,8 +34,40 @@
 				<a href="register.php" style="margin-top: 1vh">Register now</a>
 			</div>
 		</div>
+		<form action="manage.php" method="post" id="frmContinue">
+			<input type="hidden" id="companyId" name="companyId">
+		</form>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		
+		<script type="text/javascript">
+			$("#btnLogin").click(function(e) {
+				e.preventDefault();
+				
+				var username = $("#txtUsername").val().trim();
+				var password = $("#txtPassword").val().trim();
+				
+				if(!username || username.length == 0) {
+					$("#txtUsername")[0].setCustomValidity("Please enter a username");
+		                	$("#txtUsername")[0].reportValidity();
+				}
+				else if(!password || password.length == 0) {
+					$("#txtPassword")[0].setCustomValidity("Please enter a password");
+		                	$("#txtPassword")[0].reportValidity();
+				}
+				else {
+					$(this).html('<i class=\'fa fa-refresh spinning\'></i> Registering...');
+					$(this).addClass('disabled').attr("disabled", "disbled");
+					$.post("scripts/Login.php", { username: username, password: password }, function(data) {
+						response = JSON.parse(data);
+						if(response.success) {
+							$("#companyId").val(response.companyId);
+							$("#frmContinue").submit();
+						}
+					});
+				}
+			});
+		</script>
 	</body>
 </html>

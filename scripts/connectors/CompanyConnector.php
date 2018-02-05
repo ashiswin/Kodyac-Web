@@ -29,6 +29,7 @@
 			$this->createStatement = $mysqli->prepare("INSERT INTO " . CompanyConnector::$TABLE_NAME . "(`" . CompanyConnector::$COLUMN_NAME . "`,`" . CompanyConnector::$COLUMN_USERNAME . "`,`" . CompanyConnector::$COLUMN_PASSWORDHASH . "`,`" . CompanyConnector::$COLUMN_SALT . "`,`" . CompanyConnector::$COLUMN_POCNAME . "`,`" . CompanyConnector::$COLUMN_POCEMAIL . "`,`" . CompanyConnector::$COLUMN_POCCONTACTNUMBER . "`,`" . CompanyConnector::$COLUMN_METHODS . "`) VALUES(?,?,?,?,?,?,?,?)");
 			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . CompanyConnector::$TABLE_NAME . " WHERE `" . CompanyConnector::$COLUMN_ID . "` = ?");
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . CompanyConnector::$TABLE_NAME);
+			$this->selectByUsernameStatement = $mysqli->prepare("SELECT * FROM " . CompanyConnector::$TABLE_NAME . " WHERE `" . CompanyConnector::$COLUMN_USERNAME . "` = ?");
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . CompanyConnector::$TABLE_NAME . " WHERE `" . CompanyConnector::$COLUMN_ID . "` = ?");
 		}
 
@@ -40,9 +41,29 @@
 		public function select($id) {
 			$this->selectStatement->bind_param("i", $id);
 			if(!$this->selectStatement->execute()) return false;
-
-			return true;
+			
+			$result = $this->selectStatement->get_result();
+			if(!$result) return false;
+			$company = $result->fetch_assoc();
+			
+			$this->selectStatement->free_result();
+			
+			return $company;
 		}
+		
+		public function selectByUsername($username) {
+			$this->selectByUsernameStatement->bind_param("s", $username);
+			if(!$this->selectByUsernameStatement->execute()) return false;
+			
+			$result = $this->selectStatement->get_result();
+			if(!$result) return false;
+			$company = $result->fetch_assoc();
+			
+			$this->selectStatement->free_result();
+			
+			return $company;
+		}
+		
 		public function selectAll() {
 			if(!$this->selectAllStatement->execute()) return false;
 			$result = $this->selectAllStatement->get_result();
