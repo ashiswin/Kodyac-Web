@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>KodYaC</title>
+		<title>KodYaC - Registration</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<style type="text/css">
 			html, body {
 				margin: 0;
 				padding: 0;
+			}
+			.logo { 
+				background: url(img/logo.png) 50% 50% no-repeat; /* 50% 50% centers image in div */
+				background-size: 300px;
+				width: 200px;
+				height: 200px;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				border-radius: 5px;
 			}
 			@font-face {
 				font-family: "Martel";
@@ -19,13 +29,16 @@
 		</style>
 	</head>
 	<body>
-		<div class="text-center">
-			<div class="offset-md-5 col-md-2">
-				<img src="img/logo.png" class="img-fluid">
-			</div>
+		<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand" href="/"><img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+ KodYaC</a>
+		</nav>
+		<div class="bg-inverse">
+			<h1 style="font-family: 'Ubuntu', Arial, sans-serif; text-align: center; padding: 5vh; color: #FFFFFF; font-size: 3em">Registration</h1>
 		</div>
-		<h1 style="text-align: center; margin-top: 2vh; font-size: 5em; font-family: 'Ubuntu', Arial, sans-serif">KodYaC</h1>
-		<h3 style="text-align: center; font-family: 'Martel', Times New Roman, serif">KYC you can trust</h3>
 		<div class="form" style="margin-top: 2vh">
 			<div class="col-md-3 text-center" style="display: block;margin-left: auto;margin-right: auto;">
 				<input type="text" class="form-control" style="margin-right: 1vh" placeholder="Username" id="txtUsername">
