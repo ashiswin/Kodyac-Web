@@ -10,9 +10,10 @@
 			}
 			.logo { 
 				background: url(img/logo.jpg) 50% 50% no-repeat; /* 50% 50% centers image in div */
+				background-size: 300px;
 				margin-top: 10vh;
-				width: 300px;
-				height: 300px;
+				width: 200px;
+				height: 200px;
 				display: block;
 				margin-left: auto;
 				margin-right: auto;
@@ -29,13 +30,17 @@
 		</style>
 	</head>
 	<body>
-		<div class="logo">
+		<div class="text-center">
+			<div class="col-md-3 logo">
+			</div>
 		</div>
 		<h1 style="text-align: center; margin-top: 2vh; font-size: 5em; font-family: 'Ubuntu', Arial, sans-serif">KodYaC</h1>
 		<h3 style="text-align: center; font-family: 'Martel', Times New Roman, serif">KYC you can trust</h3>
-		<div class="form form-inline" style="margin-top: 2vh">
-			<div style="display: block; margin-left: auto; margin-right: auto;">
-				<input type="text" class="form-control" style="margin-right: 1vh" size="50" placeholder="E-mail"><button class="btn btn-primary">Update Me!</button>
+		<div class="form" style="margin-top: 2vh">
+			<div class="col-md-3" style="display: block;margin-left: auto;margin-right: auto;">
+				<input type="text" class="form-control" style="margin-right: 1vh" placeholder="Username" id="txtUsername">
+				<input type="password" class="form-control" style="margin-right: 1vh" placeholder="Password" id="txtPassword">
+				<button class="btn btn-primary" id="btnLogin" style="width: 100%; margin-top: 1vh">Log In</button>
 			</div>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
