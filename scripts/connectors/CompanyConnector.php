@@ -55,11 +55,11 @@
 			$this->selectByUsernameStatement->bind_param("s", $username);
 			if(!$this->selectByUsernameStatement->execute()) return false;
 			
-			$result = $this->selectStatement->get_result();
+			$result = $this->selectByUsernameStatement->get_result();
 			if(!$result) return false;
 			$company = $result->fetch_assoc();
 			
-			$this->selectStatement->free_result();
+			$this->selectByUsernameStatement->free_result();
 			
 			return $company;
 		}
