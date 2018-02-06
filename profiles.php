@@ -66,10 +66,10 @@
 				<colgroup>
 					<col span="1" style="width: 5%;">
 					<col span="1" style="width: 10%;">
-					<col span="1" style="width: 50%;">
+					<col span="1" style="width: 30%;">
 					<col span="1" style="width: 10%;">
-					<col span="1" style="width: 10%;">
-					<col span="1" style="width: 10%;">
+					<col span="1" style="width: 20%;">
+					<col span="1" style="width: 20%;">
 					<col span="1" style="width: 5%;">
 				</colgroup>
 				<thead>
