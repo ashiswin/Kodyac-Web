@@ -91,6 +91,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
 		<script type="text/javascript">
 			$("#navProfiles").addClass('active');
 			function pad(n, width, z) {
@@ -129,7 +130,7 @@
 				tblProfiles += "<td>" + pad(profiles[i].id, 10) + "</td>";
 				tblProfiles += "<td>" + prettyNull(profiles[i].name) + "</td>";
 				tblProfiles += "<td>" + prettyStatus(profiles[i].status) + "</td>";
-				tblProfiles += "<td>" + profiles[i].createdOn + "</td>";
+				tblProfiles += "<td>" + moment.unix(profiles[i].createdOn).format('MMMM Do YYYY, h:mm:ss a'); + "</td>";
 				tblProfiles += "<td>" + prettyNull(profiles[i].completedOn) + "</td>";
 				tblProfiles += "<td><a href=\"" + profiles[i].id + "\"><i class=\"fas fa-eye\"></i></a></td>";
 				tblProfiles += "</tr>";
