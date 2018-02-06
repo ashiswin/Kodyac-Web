@@ -87,6 +87,9 @@
 			$(".tabletab").click(function(e) {
 				e.preventDefault();
 				
+				$(".tabletab").removeClass('active');
+				$(this).addClass('active');
+				
 				var status = $(this).attr('href');
 			});
 		</script>
