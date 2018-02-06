@@ -132,6 +132,8 @@
 			$(".tabletab").click(function(e) {
 				e.preventDefault();
 				
+				if($(this).hasClass('disabled')) return;
+				
 				$(".tabletab").removeClass('active');
 				$(this).addClass('active');
 				
