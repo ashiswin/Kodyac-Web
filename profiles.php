@@ -66,7 +66,9 @@
 				<colgroup>
 					<col span="1" style="width: 5%;">
 					<col span="1" style="width: 10%;">
-					<col span="1" style="width: 70%;">
+					<col span="1" style="width: 50%;">
+					<col span="1" style="width: 10%;">
+					<col span="1" style="width: 10%;">
 					<col span="1" style="width: 10%;">
 					<col span="1" style="width: 5%;">
 				</colgroup>
@@ -76,6 +78,8 @@
 						<th>Profile ID</th>
 						<th>Profile Name</th>
 						<th>Status</th>
+						<th>Created On</th>
+						<th>Completed On</th>
 						<th><i class="fas fa-eye"></i></th>
 					</tr>
 				</thead>
@@ -103,6 +107,13 @@
 				return "Unknown";
 			}
 			
+			function prettyNull(s) {
+				if(s == null || s == "null" || s == "NULL") {
+					return "-";
+				}
+				return s;
+			}
+			
 			var profiles = JSON.parse("<?php echo addslashes(json_encode($profiles)); ?>");
 			
 			var requested = Array();
@@ -116,8 +127,10 @@
 				tblProfiles += "<tr>";
 				tblProfiles += "<td>" + (i + 1) + "</td>";
 				tblProfiles += "<td>" + pad(profiles[i].id, 10) + "</td>";
-				tblProfiles += "<td>" + profiles[i].name + "</td>";
+				tblProfiles += "<td>" + prettyNull(profiles[i].name) + "</td>";
 				tblProfiles += "<td>" + prettyStatus(profiles[i].status) + "</td>";
+				tblProfiles += "<td>" + profiles[i].createdOn + "</td>";
+				tblProfiles += "<td>" + prettyNull(profiles[i].completedOn) + "</td>";
 				tblProfiles += "<td><a href=\"" + profiles[i].id + "\"><i class=\"fas fa-eye\"></i></a></td>";
 				tblProfiles += "</tr>";
 				
