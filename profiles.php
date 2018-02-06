@@ -50,16 +50,16 @@
 					<a class="nav-link tabletab active" href="all">All</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link tabletab" id="#tabRequested" href="requested">Requested</a>
+					<a class="nav-link tabletab" id="tabRequested" href="requested">Requested</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link tabletab" id="#tabInprogress" href="inprogress">In Progress</a>
+					<a class="nav-link tabletab" id="tabInprogress" href="inprogress">In Progress</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link tabletab" id="#tabCompleted" href="completed">Completed</a>
+					<a class="nav-link tabletab" id="tabCompleted" href="completed">Completed</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link tabletab" id="#tabCancelled" href="cancelled">Cancelled</a>
+					<a class="nav-link tabletab" id="tabCancelled" href="cancelled">Cancelled</a>
 				</li>
 			</ul>
 			<table class="table" style="margin-top: 2vh">
@@ -120,7 +120,6 @@
 			}
 			if(inprogress.length == 0) {
 				$("#tabInprogress").addClass('disabled');
-				console.log("LOL");
 			}
 			if(completed.length == 0) {
 				$("#tabCompleted").addClass('disabled');
