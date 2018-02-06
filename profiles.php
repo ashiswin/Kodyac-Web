@@ -109,7 +109,7 @@
 			}
 			
 			function prettyNull(s) {
-				if(s == null || s == "null" || s == "NULL") {
+				if(s == null || s == "null" || s == "NULL" || s == "Invalid date") {
 					return "-";
 				}
 				return s;
