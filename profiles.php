@@ -120,6 +120,7 @@
 			}
 			if(inprogress.length == 0) {
 				$("#tabInprogress").addClass('disabled');
+				console.log("LOL");
 			}
 			if(completed.length == 0) {
 				$("#tabCompleted").addClass('disabled');
