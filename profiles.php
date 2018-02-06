@@ -50,16 +50,16 @@
 					<a class="nav-link tabletab active" href="all">All</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link tabletab" href="requested">Requested</a>
+					<a class="nav-link tabletab" id="#tabRequested" href="requested">Requested</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link tabletab" href="inprogress">In Progress</a>
+					<a class="nav-link tabletab" id="#tabInprogress" href="inprogress">In Progress</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link tabletab" href="completed">Completed</a>
+					<a class="nav-link tabletab" id="#tabCompleted" href="completed">Completed</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link tabletab" href="cancelled">Cancelled</a>
+					<a class="nav-link tabletab" id="#tabCancelled" href="cancelled">Cancelled</a>
 				</li>
 			</ul>
 			<table class="table" style="margin-top: 2vh">
@@ -83,10 +83,18 @@
 		<script type="text/javascript">
 			$("#navProfiles").addClass('active');
 			
+			function prettyStatus(status) {
+				if(status == "requested") return "Requested";
+				if(status == "inprogress") return "In Progress";
+				if(status == "completed") return "Completed";
+				if(status == "cancelled") return "Cancelled";
+				return "Unknown";
+			}
+			
 			var profiles = JSON.parse("<?php echo addslashes(json_encode($profiles)); ?>");
 			
 			var requested = Array();
-			var inprogess = Array();
+			var inprogress = Array();
 			var completed = Array();
 			var cancelled = Array();
 			
@@ -97,9 +105,27 @@
 				tblProfiles += "<td>" + (i + 1) + "</td>";
 				tblProfiles += "<td>" + profiles[i].id + "</td>";
 				tblProfiles += "<td>" + profiles[i].name + "</td>";
-				tblProfiles += "<td>" + profiles[i].status + "</td>";
+				tblProfiles += "<td>" + prettyStatus(profiles[i].status) + "</td>";
 				tblProfiles += "<td><a href=\"" + profiles[i].id + "\"><i class=\"fas fa-eye\"></i></a></td>";
 				tblProfiles += "</tr>";
+				
+				if(profiles[i].status == "requested") requested.push(profiles[i]);
+				else if(profiles[i].status == "inprogress") inprogress.push(profiles[i]);
+				else if(profiles[i].status == "completed") completed.push(profiles[i]);
+				else if(profiles[i].status == "cancelled") cancelled.push(profiles[i]);
+			}
+			
+			if(requested.length == 0) {
+				$("#tabRequested").addClass('disabled');
+			}
+			if(inprogress.length == 0) {
+				$("#tabInprogress").addClass('disabled');
+			}
+			if(completed.length == 0) {
+				$("#tabCompleted").addClass('disabled');
+			}
+			if(cancelled.length == 0) {
+				$("#tabCancelled").addClass('disabled');
 			}
 			
 			$("#tblProfiles").html(tblProfiles);
