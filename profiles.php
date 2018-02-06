@@ -42,31 +42,33 @@
 	<body>
 		<?php require_once 'nav.php' ?>
 		<div class="bg-inverse">
-			<h1 style="font-family: 'Martel', Times New Roman, serif; font-weight: bold; text-align: center; padding: 5vh; color: #FFFFFF; font-size: 3em">Dashboard</h1>
+			<h1 style="font-family: 'Martel', Times New Roman, serif; font-weight: bold; text-align: center; padding: 5vh; color: #FFFFFF; font-size: 3em">Profiles</h1>
 		</div>
 		<div class="container">
-			<div class="row">
-				<div class="col-md-6 text-center">
-					<h1>Total KYCs Requested</h1>
-					<h3 id="txtTotalKYCRequested"><?php echo $noRequested; ?></h3>
-				</div>
-				<div class="col-md-6 text-center">
-					<h1>Total KYCs Completed</h1>
-					<h3 id="txtTotalKYCCompleted"><?php echo $noCompleted; ?></h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 offset-md-3">
-					<canvas id="chrtStatuses" width="100%"></canvas>
-				</div>
-			</div>
+			<ul class="nav nav-pills">
+				<li class="nav-item">
+					<a class="nav-link active" id="tabAll" href="#">All</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="tabRequested" href="#">Requested</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="tabProgress" href="#">In Progress</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="tabCompleted" href="#">Completed</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="tabCancelled" href="#">Cancelled</a>
+				</li>
+			</ul>
 		</div>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+		<script type="text/javascript">
+			$("#navProfiles").addClass('active');
+		</script>
 	</body>
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-	<script type="text/javascript">
-		$("#navDashboard").addClass('active');
-	</script>
 </html>
