@@ -63,6 +63,13 @@
 				</li>
 			</ul>
 			<table class="table" style="margin-top: 2vh">
+				<colgroup>
+					<col span="1" style="width: 5%;">
+					<col span="1" style="width: 10%;">
+					<col span="1" style="width: 70%;">
+					<col span="1" style="width: 10%;">
+					<col span="1" style="width: 5%;">
+				</colgroup>
 				<thead>
 					<tr>
 						<th>#</th>
@@ -82,6 +89,11 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 		<script type="text/javascript">
 			$("#navProfiles").addClass('active');
+			function pad(n, width, z) {
+				z = z || '0';
+				n = n + '';
+				return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+			}
 			
 			function prettyStatus(status) {
 				if(status == "requested") return "Requested";
@@ -103,7 +115,7 @@
 			for(var i = 0; i < profiles.length; i++) {
 				tblProfiles += "<tr>";
 				tblProfiles += "<td>" + (i + 1) + "</td>";
-				tblProfiles += "<td>" + profiles[i].id + "</td>";
+				tblProfiles += "<td>" + pad(profiles[i].id, 10) + "</td>";
 				tblProfiles += "<td>" + profiles[i].name + "</td>";
 				tblProfiles += "<td>" + prettyStatus(profiles[i].status) + "</td>";
 				tblProfiles += "<td><a href=\"" + profiles[i].id + "\"><i class=\"fas fa-eye\"></i></a></td>";
