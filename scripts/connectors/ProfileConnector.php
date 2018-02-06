@@ -27,6 +27,7 @@
 
 			$this->createStatement = $mysqli->prepare("INSERT INTO " . ProfileConnector::$TABLE_NAME . "(`" . ProfileConnector::$COLUMN_LINKID . "`,`" . ProfileConnector::$COLUMN_NAME . "`,`" . ProfileConnector::$COLUMN_ADDRESS . "`,`" . ProfileConnector::$COLUMN_NRIC . "`,`" . ProfileConnector::$COLUMN_CONTACT . "`,`" . ProfileConnector::$COLUMN_NATIONALITY . "`,`" . ProfileConnector::$COLUMN_DOB . "`) VALUES(?,?,?,?,?,?,?)");
 			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . ProfileConnector::$TABLE_NAME . " WHERE `" . ProfileConnector::$COLUMN_ID . "` = ?");
+			$this->selectByLinkStatement = $mysqli->prepare("SELECT * FROM " . ProfileConnector::$TABLE_NAME . " WHERE `" . ProfileConnector::$COLUMN_LINKID . "` = ?");
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . ProfileConnector::$TABLE_NAME);
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . ProfileConnector::$TABLE_NAME . " WHERE `" . ProfileConnector::$COLUMN_ID . "` = ?");
 		}
@@ -40,7 +41,26 @@
 			$this->selectStatement->bind_param("i", $id);
 			if(!$this->selectStatement->execute()) return false;
 
-			return true;
+			$result = $this->selectStatement->get_result();
+			if(!$result) return false;
+			$profile = $result->fetch_assoc();
+			
+			$this->selectStatement->free_result();
+			
+			return $profile;
+		}
+		
+		public function selectByLink($linkId) {
+			$this->selectByLinkStatement->bind_param("i", $linkId);
+			if(!$this->selectByLinkStatement->execute()) return false;
+
+			$result = $this->selectByLinkStatement->get_result();
+			if(!$result) return false;
+			$profile = $result->fetch_assoc();
+			
+			$this->selectByLinkStatement->free_result();
+			
+			return $profile;
 		}
 		public function selectAll() {
 			if(!$this->selectAllStatement->execute()) return false;

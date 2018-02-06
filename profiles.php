@@ -17,6 +17,8 @@
 	
 	$company = $CompanyConnector->select($_SESSION['companyId']);
 	$profiles = $LinkConnector->selectByCompany($_SESSION['companyId']);
+	
+	var_dump($profiles);
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,6 +70,7 @@
 						<th>#</th>
 						<th>Profile ID</th>
 						<th>Profile Name</th>
+						<th>Status</th>
 						<th><i class="fas fa-eye"></i></th>
 					</tr>
 				</thead>
@@ -84,6 +87,24 @@
 			
 			var profiles = JSON.parse("<?php echo json_encode($profiles); ?>");
 			
+			var requested = Array();
+			var inprogess = Array();
+			var completed = Array();
+			var cancelled = Array();
+			
+			var tblProfiles = "";
+			
+			for(var i = 0; i < profiles.length; i++) {
+				tblProfiles += "<tr>";
+				tblProfiles += "<td>" + (i + 1) + "</td>";
+				tblProfiles += "<td>" + profiles[i].id + "</td>";
+				tblProfiles += "<td>" + profiles[i].name + "</td>";
+				tblProfiles += "<td>" + profiles[i].status + "</td>";
+				tblProfiles += "<td><a href=\"" + profiles[i].id + "\"><i class=\"fas fa-eye\"></i></a></td>";
+				tblProfiles += "</tr>";
+			}
+			
+			$("#tblProfiles").html(tblProfiles);
 			$(".tabletab").click(function(e) {
 				e.preventDefault();
 				
