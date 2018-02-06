@@ -10,9 +10,13 @@
 	
 	require_once 'scripts/utils/database.php';
 	require_once 'scripts/connectors/CompanyConnector.php';
+	require_once 'scripts/connectors/LinkConnector.php';
 	
 	$CompanyConnector = new CompanyConnector($conn);
+	$LinkConnector = new LinkConnector($conn);
+	
 	$company = $CompanyConnector->select($_SESSION['companyId']);
+	$profiles = $LinkConnector->selectByCompany($_SESSION['companyId']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,22 +47,22 @@
 		<div class="container">
 			<ul class="nav nav-pills">
 				<li class="nav-item">
-					<a class="nav-link active" id="tabAll" href="#">All</a>
+					<a class="nav-link tabletab active" href="all">All</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" id="tabRequested" href="#">Requested</a>
+					<a class="nav-link tabletab" href="requested">Requested</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" id="tabProgress" href="#">In Progress</a>
+					<a class="nav-link tabletab" href="inprogress">In Progress</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" id="tabCompleted" href="#">Completed</a>
+					<a class="nav-link tabletab" href="completed">Completed</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" id="tabCancelled" href="#">Cancelled</a>
+					<a class="nav-link tabletab" href="cancelled">Cancelled</a>
 				</li>
 			</ul>
-			<table class="table">
+			<table class="table" style="margin-top: 2vh">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -77,6 +81,14 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 		<script type="text/javascript">
 			$("#navProfiles").addClass('active');
+			
+			var profiles = JSON.parse("<?php echo json_encode($profiles); ?>");
+			
+			$(".tabletab").click(function(e) {
+				e.preventDefault();
+				
+				var status = $(this).attr('href');
+			});
 		</script>
 	</body>
 </html>
