@@ -17,8 +17,6 @@
 	
 	$company = $CompanyConnector->select($_SESSION['companyId']);
 	$profiles = $LinkConnector->selectByCompany($_SESSION['companyId']);
-	
-	var_dump($profiles);
 ?>
 <!DOCTYPE html>
 <html>
@@ -85,7 +83,7 @@
 		<script type="text/javascript">
 			$("#navProfiles").addClass('active');
 			
-			var profiles = JSON.parse("<?php echo json_encode($profiles); ?>");
+			var profiles = JSON.parse("<?php echo addslashes(json_encode($profiles)); ?>");
 			
 			var requested = Array();
 			var inprogess = Array();
