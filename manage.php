@@ -46,8 +46,8 @@
 		</div>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-8 offset-md-2" style="height: 20vh; box-shadow: 5px 10px #888888;">
-					<canvas id="chrtKYCInMonth"></canvas>
+				<div class="col-md-8 offset-md-2" style="height: 20vh;">
+					<canvas id="chrtKYCInMonth" style="box-shadow: 5px 10px #888888;"></canvas>
 				</div>
 			</div>
 			<div class="row">
