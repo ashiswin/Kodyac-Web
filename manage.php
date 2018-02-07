@@ -106,7 +106,7 @@
 					xAxes: [{
 						type: "time",
 						time: {
-							format: timeFormat,
+							format: 'MM/DD/YYYY HH:mm',
 							// round: 'day'
 							tooltipFormat: 'll HH:mm'
 						},
