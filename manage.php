@@ -70,7 +70,7 @@
 			var date = new Date(year, month - 1, 1);
 			var result = [];
 			while (date.getMonth() == month - 1) {
-				result.push(date.getDate());// + " " + names[month - 1]);
+				result.push(date.getDate() + " " + names[month - 1]);
 				date.setDate(date.getDate() + 1);
 			}
 			
@@ -90,7 +90,7 @@
 					borderColor: "#ff0000",
 					fill: false,
 					data: [
-						20,9,22,7,4,12,9,22,7,4,12,9,22,7,4,12,9,22,7,4,12,9,22,7,4,12
+						20,9,22,7,4,12,9,22,7,4,12,9,22,7,4,12,9,22,7,4,12,9,22,7,4,12,0,0
 					],
 				}, {
 					label: "My Second dataset",
@@ -98,7 +98,7 @@
 					borderColor: "#0000ff",
 					fill: false,
 					data: [
-						2,8,20,6,4,12,9,22,7,4,12,9,22,7,4,12,9,22,7,4,12,9,22,7,4,12
+						2,8,20,6,4,12,9,22,7,4,12,9,22,7,4,12,9,22,7,4,12,9,22,7,4,12,0,0
 					],
 				}]
 			},
