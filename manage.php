@@ -55,7 +55,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
-					<canvas id="chrtKYCInMonth" height="15vh" class="chart-card"></canvas>
+					<canvas id="chrtKYCInMonth" height="50vh" width="100%" class="chart-card"></canvas>
 				</div>
 			</div>
 			<div class="row">
