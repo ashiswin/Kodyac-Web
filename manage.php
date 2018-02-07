@@ -105,12 +105,7 @@
                 },
 				scales: {
 					xAxes: [{
-						type: "time",
-						time: {
-							format: 'MM/DD/YYYY HH:mm',
-							// round: 'day'
-							tooltipFormat: 'll HH:mm'
-						},
+						
 						scaleLabel: {
 							display: true,
 							labelString: 'Date'
