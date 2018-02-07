@@ -82,8 +82,8 @@
 				labels: [getDaysArray(2018, 2)],
 				datasets: [{
 					label: "My First dataset",
-					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-					borderColor: window.chartColors.red,
+					backgroundColor: color("#ff0000").alpha(0.5).rgbString(),
+					borderColor: "#ff0000",
 					fill: false,
 					data: [
 						20,9,22,7,4,12
