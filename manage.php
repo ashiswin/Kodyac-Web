@@ -90,8 +90,8 @@
 					],
 				}, {
 					label: "My Second dataset",
-					backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-					borderColor: window.chartColors.blue,
+					backgroundColor: color("#0000ff").alpha(0.5).rgbString(),
+					borderColor: "#0000ff",
 					fill: false,
 					data: [
 						2,8,20,6,4,12
