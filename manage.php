@@ -100,24 +100,11 @@
 				}]
 			},
 			options: {
-                title:{
-                    text: "Chart.js Time Scale"
-                },
-				scales: {
-					xAxes: [{
-						scaleLabel: {
-							display: true,
-							labelString: 'Date'
-						}
-					}],
-					yAxes: [{
-						scaleLabel: {
-							display: true,
-							labelString: 'value'
-						}
-					}]
-				},
+				title:{
+				    text: "Chart.js Time Scale"
+				}
 			}
+				
 		};
 		
 		var ctx = document.getElementById("chrtKYCInMonth").getContext("2d");
