@@ -76,11 +76,14 @@
 			
 			return result;
 		}
+		var days = getDaysArray(2018, 2);
+		console.log(days);
+		
 		var color = Chart.helpers.color;
 		var config = {
 			type: 'line',
 			data: {
-				labels: [getDaysArray(2018, 2)],
+				labels: [days],
 				datasets: [{
 					label: "My First dataset",
 					backgroundColor: color("#ff0000").alpha(0.5).rgbString(),
