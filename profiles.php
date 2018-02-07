@@ -21,7 +21,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>KodYaC - Dashboard</title>
+		<title>KodYaC - Profile</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 		<style type="text/css">
@@ -109,7 +109,7 @@
 			}
 			
 			function prettyNull(s) {
-				if(s == null || s == "null" || s == "NULL" || s == "Invalid date") {
+				if(s == null || s == "null" || s == "NULL" || s == "Invalid d	ate") {
 					return "-";
 				}
 				return s;

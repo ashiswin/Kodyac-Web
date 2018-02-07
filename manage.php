@@ -46,13 +46,8 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 text-center">
-					<h1>Total KYCs Requested</h1>
-					<h3 id="txtTotalKYCRequested"><?php echo $noRequested; ?></h3>
-				</div>
-				<div class="col-md-6 text-center">
-					<h1>Total KYCs Completed</h1>
-					<h3 id="txtTotalKYCCompleted"><?php echo $noCompleted; ?></h3>
+				<div class="col-md-12 text-center">
+					<canvas id="chrtKYCInMonth"></canvas>
 				</div>
 			</div>
 			<div class="row">
@@ -68,5 +63,69 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 	<script type="text/javascript">
 		$("#navDashboard").addClass('active');
+		
+		var getDaysArray = function(year, month) {
+			var names = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
+			var date = new Date(year, month - 1, 1);
+			var result = [];
+			while (date.getMonth() == month - 1) {
+				result.push(date.getDate() + " " + names[month - 1]);
+				date.setDate(date.getDate() + 1);
+			}
+			
+			return result;
+		}
+		var color = Chart.helpers.color;
+		var config = {
+			type: 'line',
+			data: {
+				labels: [getDaysArray(2018, 2)],
+				datasets: [{
+					label: "My First dataset",
+					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.red,
+					fill: false,
+					data: [
+						20,9,22,7,4,12
+					],
+				}, {
+					label: "My Second dataset",
+					backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.blue,
+					fill: false,
+					data: [
+						2,8,20,6,4,12
+					],
+				}]
+			},
+			options: {
+                title:{
+                    text: "Chart.js Time Scale"
+                },
+				scales: {
+					xAxes: [{
+						type: "time",
+						time: {
+							format: timeFormat,
+							// round: 'day'
+							tooltipFormat: 'll HH:mm'
+						},
+						scaleLabel: {
+							display: true,
+							labelString: 'Date'
+						}
+					}, ],
+					yAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'value'
+						}
+					}]
+				},
+			}
+		};
+		
+		var ctx = document.getElementById("chrtKYCInMonth").getContext("2d");
+		window.myLine = new Chart(ctx, config);
 	</script>
 </html>
