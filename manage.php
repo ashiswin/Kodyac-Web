@@ -44,9 +44,9 @@
 		<div class="bg-inverse">
 			<h1 style="font-family: 'Martel', Times New Roman, serif; font-weight: bold; text-align: center; padding: 5vh; color: #FFFFFF; font-size: 3em">Dashboard</h1>
 		</div>
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-12 text-center">
+				<div class="col-md-12 text-center" style="box-shadow: 5px 10px #888888;">
 					<canvas id="chrtKYCInMonth"></canvas>
 				</div>
 			</div>
