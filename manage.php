@@ -54,7 +54,7 @@
 		</div>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-8 offset-md-2" style="height: 20vh;">
+				<div class="col-md-12" style="height: 15vh;">
 					<canvas id="chrtKYCInMonth" class="chart-card"></canvas>
 				</div>
 			</div>
