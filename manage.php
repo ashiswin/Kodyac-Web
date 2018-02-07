@@ -70,7 +70,7 @@
 			var date = new Date(year, month - 1, 1);
 			var result = [];
 			while (date.getMonth() == month - 1) {
-				result.push(date.getDate() + " " + names[month - 1]);
+				result.push(date.getDate());// + " " + names[month - 1]);
 				date.setDate(date.getDate() + 1);
 			}
 			
