@@ -37,6 +37,14 @@
 				font-family: "Ubuntu Bold";
 				src: url("font/Ubuntu-B.ttf") format("truetype");
 			}
+			.chart-card {
+				background: #fff;
+				border-radius: 2px;
+				display: inline-block;
+				margin: 1rem;
+				position: relative;
+				box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+			}
 		</style>
 	</head>
 	<body>
@@ -47,7 +55,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-8 offset-md-2" style="height: 20vh;">
-					<canvas id="chrtKYCInMonth" style="box-shadow: 5px 10px #888888;"></canvas>
+					<canvas id="chrtKYCInMonth" class="chart-card"></canvas>
 				</div>
 			</div>
 			<div class="row">
