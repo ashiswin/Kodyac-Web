@@ -87,6 +87,41 @@
 				</tbody>
 			</table>
 		</div>
+		<div class="modal fade" id="mdlViewProfile">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">View Profile</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-md-8">
+								<h1 id="mdlProfileName"></h1>
+								<br>
+								DOB:&nbsp;<span id="mdlProfileDOB"></span>
+								<br>
+								NRIC:&nbsp;<span id="mdlProfileNRIC"></span>
+								<br>
+								Contact:&nbsp;<span id="mdlProfileContact"></span>
+								<br>
+								Address:&nbsp;<span id="mdlProfileAddress"></span>
+								<br>
+								Nationality:&nbsp;<span id="mdlProfileNationality"></span>
+							</div>
+							<div class="col-md-4">
+								<img id="mdlProfilePictore" width="100%" />
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
@@ -109,7 +144,7 @@
 			}
 			
 			function prettyNull(s) {
-				if(s == null || s == "null" || s == "NULL" || s == "Invalid d	ate") {
+				if(s == null || s == "null" || s == "NULL" || s == "Invalid date") {
 					return "-";
 				}
 				return s;
@@ -132,7 +167,7 @@
 				tblProfiles += "<td>" + prettyStatus(profiles[i].status) + "</td>";
 				tblProfiles += "<td>" + moment(profiles[i].createdOn, "YYYY-MM-DD hh:mm:ss").format('MMMM Do YYYY') + "</td>";
 				tblProfiles += "<td>" + prettyNull(moment(profiles[i].completedOn, "YYYY-MM-DD hh:mm:ss").format('MMMM Do YYYY')) + "</td>";
-				tblProfiles += "<td><a href=\"" + profiles[i].id + "\"><i class=\"fas fa-eye\"></i></a></td>";
+				tblProfiles += "<td><a class=\"viewprofile\" href=\"" + profiles[i].id + "\"><i class=\"fas fa-eye\"></i></a></td>";
 				tblProfiles += "</tr>";
 				
 				if(profiles[i].status == "requested") requested.push(profiles[i]);
@@ -164,6 +199,18 @@
 				$(this).addClass('active');
 				
 				var status = $(this).attr('href');
+			});
+			$(".viewprofile").click(function(e) {
+				e.preventDefault();
+				
+				var i = $(this).attr('href');
+				$("#mdlProfileName").html(profiles[i].name);
+				$("#mdlProfileDOB").html(profiles[i].dob);
+				$("#mdlProfileNationality").html(profiles[i].nationality);
+				$("#mdlProfileNRIC").html(profiles[i].nric);
+				$("#mdlProfileContact").html(profiles[i].contact);
+				$("#mdlProfileAddress").html(profiles[i].address);
+				$("#mdlViewProfile").modal();
 			});
 		</script>
 	</body>
