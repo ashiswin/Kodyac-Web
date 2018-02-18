@@ -44,7 +44,26 @@
 			<h1 style="font-family: 'Martel', Times New Roman, serif; font-weight: bold; text-align: center; padding: 5vh; color: #FFFFFF; font-size: 3em">API Keys</h1>
 		</div>
 		<div class="container">
-			
+			<table class="table" style="margin-top: 2vh">
+				<colgroup>
+					<col span="1" style="width: 5%;">
+					<col span="1" style="width: 20%;">
+					<col span="1" style="width: 50%;">
+					<col span="1" style="width: 20%;">
+					<col span="1" style="width: 5%;">
+				</colgroup>
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>API Key Name</th>
+						<th>Key</th>
+						<th>Created On</th>
+						<th><i class="fas fa-trash"></i></th>
+					</tr>
+				</thead>
+				<tbody id="tblKeys">
+				</tbody>
+			</table>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
@@ -53,7 +72,14 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 		<script type="text/javascript">
 			$("#navAPIKeys").addClass('active');
-			
+			var companyId = <?php echo $_SESSION['companyId']; ?>;
+			$.get("scripts/GetAPIKeys.php?companyId=" + companyId, function(data) {
+				response = JSON.parse(data);
+				console.log(response);
+				if(response.success) {
+					
+				}
+			});
 		</script>
 	</body>
 </html>

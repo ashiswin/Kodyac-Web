@@ -53,6 +53,23 @@
 		</div>
 		<div class="container-fluid">
 			<div class="row">
+				<div class="col-md-4">
+					Links Generated
+					<br>
+					<h1>1024</h1>
+				</div>
+				<div class="col-md-4">
+					In Progress
+					<br>
+					<h1>94</h1>
+				</div>
+				<div class="col-md-4">
+					Completed
+					<br>
+					<h1>109</h1>
+				</div>
+			</div>
+			<div class="row">
 				<div class="col-md-10 offset-md-1">
 					<canvas id="chrtKYCInMonth" height="75vh" class="chart-card"></canvas>
 				</div>
