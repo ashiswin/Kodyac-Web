@@ -201,7 +201,7 @@
 				
 				var status = $(this).attr('href');
 				
-				if(status == "All") {
+				if(status == "all") {
 					$("#tblProfiles").html(tblProfiles);
 				}
 				else {
