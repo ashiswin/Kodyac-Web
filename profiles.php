@@ -167,7 +167,7 @@
 				tblProfiles += "<td>" + prettyStatus(profiles[i].status) + "</td>";
 				tblProfiles += "<td>" + moment(profiles[i].createdOn, "YYYY-MM-DD hh:mm:ss").format('MMMM Do YYYY') + "</td>";
 				tblProfiles += "<td>" + prettyNull(moment(profiles[i].completedOn, "YYYY-MM-DD hh:mm:ss").format('MMMM Do YYYY')) + "</td>";
-				tblProfiles += "<td><a class=\"viewprofile\" href=\"" + profiles[i].id + "\"><i class=\"fas fa-eye\"></i></a></td>";
+				tblProfiles += "<td><a class=\"viewprofile\" href=\"" + i + "\"><i class=\"fas fa-eye\"></i></a></td>";
 				tblProfiles += "</tr>";
 				
 				if(profiles[i].status == "requested") requested.push(profiles[i]);
