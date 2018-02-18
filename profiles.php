@@ -112,7 +112,7 @@
 								Nationality:&nbsp;<span id="mdlProfileNationality"></span>
 							</div>
 							<div class="col-md-4">
-								<img id="mdlProfilePictore" width="100%" />
+								<img id="mdlProfilePicture" width="100%" />
 							</div>
 						</div>
 					</div>
