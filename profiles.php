@@ -209,16 +209,22 @@
 				}
 				
 				$(".viewprofile").click(function(e) {
+					var subprofiles = null;
+					if(status == "all") subprofiles = profiles;
+					if(status == "requested") subprofiles = requested;
+					if(status == "inprogress") subprofiles = inprogress;
+					if(status == "completed") subprofiles = completed;
+					if(status == "cancelled") subprofiles = cancelled;
 					e.preventDefault();
 				
 					var i = $(this).attr('href');
-					$("#mdlProfileName").html(profiles[i].name);
-					$("#mdlProfileDOB").html(profiles[i].dob);
-					$("#mdlProfileNationality").html(profiles[i].nationality);
-					$("#mdlProfileNRIC").html(profiles[i].nric);
-					$("#mdlProfileContact").html(profiles[i].contact);
-					$("#mdlProfileAddress").html(profiles[i].address);
-					$("#mdlProfilePicture").attr('src', 'uploads/' + profiles[i].id + '.jpg');
+					$("#mdlProfileName").html(subprofiles[i].name);
+					$("#mdlProfileDOB").html(subprofiles[i].dob);
+					$("#mdlProfileNationality").html(subprofiles[i].nationality);
+					$("#mdlProfileNRIC").html(subprofiles[i].nric);
+					$("#mdlProfileContact").html(subprofiles[i].contact);
+					$("#mdlProfileAddress").html(subprofiles[i].address);
+					$("#mdlProfilePicture").attr('src', 'uploads/' + subprofiles[i].id + '.jpg');
 					$("#mdlViewProfile").modal();
 				});
 			});
