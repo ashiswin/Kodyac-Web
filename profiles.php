@@ -210,6 +210,7 @@
 				$("#mdlProfileNRIC").html(profiles[i].nric);
 				$("#mdlProfileContact").html(profiles[i].contact);
 				$("#mdlProfileAddress").html(profiles[i].address);
+				$("#mdlProfilePicture").attr('src', 'uploads/' + profiles[i].id + '.jpg');
 				$("#mdlViewProfile").modal();
 			});
 		</script>
