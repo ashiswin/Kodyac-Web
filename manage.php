@@ -51,23 +51,27 @@
 		<div class="bg-inverse">
 			<h1 style="font-family: 'Martel', Times New Roman, serif; font-weight: bold; text-align: center; padding: 5vh; color: #FFFFFF; font-size: 3em">Dashboard</h1>
 		</div>
-		<div class="container-fluid">
+		<div class="container-fluid" style="padding: 1vh">
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-3">
 					Links Generated
 					<br>
 					<h1>1024</h1>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
 					In Progress
 					<br>
 					<h1>94</h1>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
 					Completed
 					<br>
 					<h1>109</h1>
 				</div>
+				<div class="col-md-3">
+					Outstanding
+					<br>
+					<h1>200</h1>
 			</div>
 			<div class="row">
 				<canvas id="chrtKYCInMonth" height="75vh" class="chart-card"></canvas>
