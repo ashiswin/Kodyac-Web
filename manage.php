@@ -51,8 +51,8 @@
 		<div class="bg-inverse">
 			<h1 style="font-family: 'Martel', Times New Roman, serif; font-weight: bold; text-align: center; padding: 5vh; color: #FFFFFF; font-size: 3em">Dashboard</h1>
 		</div>
-		<div class="container-fluid" style="padding: 1vh">
-			<div class="row">
+		<div class="container-fluid">
+			<div class="row" style="margin: 1vh">
 				<div class="col-md-3">
 					Links Generated
 					<br>
@@ -72,6 +72,7 @@
 					Outstanding
 					<br>
 					<h1>200</h1>
+				</div>
 			</div>
 			<div class="row">
 				<canvas id="chrtKYCInMonth" height="75vh" class="chart-card"></canvas>
