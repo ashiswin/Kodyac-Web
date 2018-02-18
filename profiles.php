@@ -129,6 +129,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 		<script type="text/javascript">
 			$("#navProfiles").addClass('active');
+			
 			function pad(n, width, z) {
 				z = z || '0';
 				n = n + '';
@@ -199,7 +200,29 @@
 				$(this).addClass('active');
 				
 				var status = $(this).attr('href');
+				
+				if(status == "All") {
+					$("#tblProfiles").html(tblProfiles);
+				}
+				else {
+					loadSubTable(status);
+				}
+				
+				$(".viewprofile").click(function(e) {
+					e.preventDefault();
+				
+					var i = $(this).attr('href');
+					$("#mdlProfileName").html(profiles[i].name);
+					$("#mdlProfileDOB").html(profiles[i].dob);
+					$("#mdlProfileNationality").html(profiles[i].nationality);
+					$("#mdlProfileNRIC").html(profiles[i].nric);
+					$("#mdlProfileContact").html(profiles[i].contact);
+					$("#mdlProfileAddress").html(profiles[i].address);
+					$("#mdlProfilePicture").attr('src', 'uploads/' + profiles[i].id + '.jpg');
+					$("#mdlViewProfile").modal();
+				});
 			});
+			
 			$(".viewprofile").click(function(e) {
 				e.preventDefault();
 				
@@ -213,6 +236,28 @@
 				$("#mdlProfilePicture").attr('src', 'uploads/' + profiles[i].id + '.jpg');
 				$("#mdlViewProfile").modal();
 			});
+			
+			function loadSubTable(status) {
+				var tblProfiles = "";
+				var profiles = null;
+				
+				if(status == "requested") profiles = requested;
+				if(status == "inprogress") profiles = inprogress;
+				if(status == "completed") profiles = completed;
+				if(status == "cancelled") profiles = cancelled;
+				for(var i = 0; i < profiles.length; i++) {
+					tblProfiles += "<tr>";
+					tblProfiles += "<td>" + (i + 1) + "</td>";
+					tblProfiles += "<td>" + pad(profiles[i].id, 10) + "</td>";
+					tblProfiles += "<td>" + prettyNull(profiles[i].name) + "</td>";
+					tblProfiles += "<td>" + prettyStatus(profiles[i].status) + "</td>";
+					tblProfiles += "<td>" + moment(profiles[i].createdOn, "YYYY-MM-DD hh:mm:ss").format('MMMM Do YYYY') + "</td>";
+					tblProfiles += "<td>" + prettyNull(moment(profiles[i].completedOn, "YYYY-MM-DD hh:mm:ss").format('MMMM Do YYYY')) + "</td>";
+					tblProfiles += "<td><a class=\"viewprofile\" href=\"" + i + "\"><i class=\"fas fa-eye\"></i></a></td>";
+					tblProfiles += "</tr>";
+				}
+				$("#tblProfiles").html(tblProfiles);
+			}
 		</script>
 	</body>
 </html>
