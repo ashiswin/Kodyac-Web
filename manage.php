@@ -78,7 +78,7 @@
 				<div class="chart-card">
 					<h3>Monthly Statistics</h3>
 					<hr>
-					<canvas id="chrtKYCInMonth" height="75vh"></canvas>
+					<canvas id="chrtKYCInMonth" height="75vh" class="chart-card"></canvas>
 				</div>
 			</div>
 			<div class="row" style="margin: 1vh">
