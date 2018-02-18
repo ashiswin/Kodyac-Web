@@ -74,10 +74,10 @@
 					<h1>200</h1>
 				</div>
 			</div>
-			<div class="row" style="margin: 1vh">
+			<div class="row chart-card" style="margin: 1vh">
 					<h3>Monthly Statistics</h3>
 					<hr>
-					<canvas id="chrtKYCInMonth" height="75vh" class="chart-card"></canvas>
+					<canvas id="chrtKYCInMonth" height="75vh"></canvas>
 			</div>
 			<div class="row" style="margin: 1vh">
 				<div class="col-md-6 offset-md-3">
