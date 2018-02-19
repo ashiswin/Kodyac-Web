@@ -29,7 +29,8 @@
 		}
 
 		public function create($companyId, $apiKey) {
-			$this->createStatement->bind_param("iss", $companyId, "requested", $apiKey);
+			$status = "requested";
+			$this->createStatement->bind_param("iss", $companyId, $status, $apiKey);
 			return $this->createStatement->execute();
 		}
 
