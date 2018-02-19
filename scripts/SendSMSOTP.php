@@ -21,6 +21,6 @@
 	$result = $smsGateway->sendMessageToNumber($number, $message, $deviceID, $options);
 	
 	$response["success"] = true;
-	
+	var_dump($result);
 	echo(json_encode($response));
 ?>
