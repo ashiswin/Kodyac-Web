@@ -89,10 +89,15 @@
 						tblKeys += "<td>" + response.keys[i].apiKey + "</td>";
 						tblKeys += "<td>" + response.keys[i].createdOn + "</td>";
 						tblKeys += "<td>" + response.keys[i].requestCount + "</td>";
-						tblKeys += "<td><a href=\"" + i + "\" class=\"delete\"><i class=\"fas fa-trash\"></i></a></th>";
-						tblKeys += "</td>";
+						tblKeys += "<td><a href=\"" + i + "\" class=\"delete\"><i class=\"fas fa-trash\"></i></a></td>";
+						tblKeys += "</tr>";
 					}
+					tblKeys += "<tr><td colspan=6><a id=\"create\"><i class=\"fas fa-plus\"></i>&nbsp;&nbsp;Create API key</a></td></tr>";
 					$("#tblKeys").html(tblKeys);
+					
+					$(".delete").click(function (e) {
+						e.preventDefault();
+					});
 				}
 			});
 		</script>

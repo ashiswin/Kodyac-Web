@@ -29,7 +29,7 @@
 			$this->selectByCompanyStatement = $mysqli->prepare("SELECT * FROM " . APIKeyConnector::$TABLE_NAME . " WHERE `" . APIKeyConnector::$COLUMN_COMPANYID . "` = ?");
 			$this->selectByKeyStatement = $mysqli->prepare("SELECT * FROM " . APIKeyConnector::$TABLE_NAME . " WHERE `" . APIKeyConnector::$COLUMN_APIKEY . "` = ?");
 			$this->addRequestStatement = $mysqli->prepare("UPDATE " . APIKeyConnector::$TABLE_NAME . " SET `" . APIKeyConnector::$COLUMN_REQUESTCOUNT . "` = `" . APIKeyConnector::$COLUMN_REQUESTCOUNT . "` + 1 WHERE `" . APIKeyConnector::$COLUMN_ID . "` = ?");
-			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . APIKeyConnector::$TABLE_NAME . " WHERE `" . APIKeyConnector::$COLUMN_ID . "` = ?");
+			$this->deleteStatement = $mysqli->prepare("UPDATE " . APIKeyConnector::$TABLE_NAME . " SET `" . APIKeyConnector::$COLUMN_ISDELETED . "` = 1 WHERE `" . APIKeyConnector::$COLUMN_ID . "` = ?");
 		}
 
 		public function create($companyId, $name, $apiKey) {
