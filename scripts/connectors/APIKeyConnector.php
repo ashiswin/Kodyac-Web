@@ -27,6 +27,7 @@
 			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . APIKeyConnector::$TABLE_NAME . " WHERE `" . APIKeyConnector::$COLUMN_ID . "` = ?");
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . APIKeyConnector::$TABLE_NAME);
 			$this->selectByKeyStatement = $mysqli->prepare("SELECT * FROM " . APIKeyConnector::$TABLE_NAME . " WHERE `" . APIKeyConnector::$COLUMN_APIKEY . "` = ?");
+			$this->addRequestStatement = $mysqli->prepare("UPDATE " . APIKeyConnector::$TABLE_NAME . " SET `" . APIKeyConnector::$COLUMN_REQUESTCOUNT . "` = `" . APIKeyConnector::$COLUMN_REQUESTCOUNT . "` + 1 WHERE `" . APIKeyConnector::$COLUMN_ID . "` = ?");
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . APIKeyConnector::$TABLE_NAME . " WHERE `" . APIKeyConnector::$COLUMN_ID . "` = ?");
 		}
 
@@ -67,7 +68,12 @@
 			$resultArray = $result->fetch_all(MYSQLI_ASSOC);
 			return $resultArray;
 		}
-
+		
+		public function addRequest($id) {
+			$this->addRequestStatement->bind_param("i", $id);
+			return $this->addRequestStatement->execute();
+		}
+		
 		public function delete($id) {
 			$this->deleteStatement->bind_param("i", $id);
 			if(!$this->deleteStatement->execute()) return false;

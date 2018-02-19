@@ -20,6 +20,7 @@
 		$response['message'] = "Failed to create link!";
 	}
 	else {
+		$APIKeyConnector->addRequest($apiKeyEntry[APIKeyConnector::$COLUMN_ID]);
 		$response['success'] = true;
 	}
 
