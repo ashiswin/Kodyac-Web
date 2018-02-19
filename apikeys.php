@@ -44,7 +44,7 @@
 			<h1 style="font-family: 'Martel', Times New Roman, serif; font-weight: bold; text-align: center; padding: 5vh; color: #FFFFFF; font-size: 3em">API Keys</h1>
 		</div>
 		<div class="container">
-			<div class="alert alert-success" id="altApiKeyCreated">
+			<div class="alert alert-success fade in" id="altApiKeyCreated">
 				<strong>Success!</strong> API key was created!
 			</div>
 			<table class="table" style="margin-top: 2vh">
@@ -95,6 +95,24 @@
 				</div>
 			</div>
 		</div>
+		<div class="modal fade" id="mdlDeleteKey">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Delete API Key</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>Are you sure you want to delete API key <span id="apiKeyName"></span></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal" id="btnDelete">Delete</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
@@ -105,12 +123,16 @@
 			$("#altApiKeyCreated").hide();
 			
 			var companyId = <?php echo $_SESSION['companyId']; ?>;
+			var keys = null;
+			
 			function loadKeys() {
 				$.get("scripts/GetAPIKeys.php?companyId=" + companyId, function(data) {
 					response = JSON.parse(data);
 					console.log(response);
 					if(response.success) {
 						var tblKeys = "";
+						keys = response.keys;
+						
 						for(var i = 0; i < response.keys.length; i++) {
 							if(response.keys[i].isDeleted == 1) continue;
 						
@@ -128,6 +150,10 @@
 					
 						$(".delete").click(function(e) {
 							e.preventDefault();
+							var i = $(this).attr('href');
+							
+							$("#apiKeyName").html(keys[i].name);
+							$("#mdlDeleteKey").modal();
 						});
 						$("#create").click(function(e) {
 							e.preventDefault();
