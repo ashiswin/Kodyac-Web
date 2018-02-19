@@ -44,13 +44,13 @@
 			<h1 style="font-family: 'Martel', Times New Roman, serif; font-weight: bold; text-align: center; padding: 5vh; color: #FFFFFF; font-size: 3em">API Keys</h1>
 		</div>
 		<div class="container">
-			<div class="alert alert-success alert-dismissible fade" role="alert" id="altApiKeyCreated">
+			<div class="alert alert-success alert-dismissible fade show" role="alert" id="altApiKeyCreated">
 				<strong>Success!</strong> API key was created!
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="alert alert-success alert-dismissible fade" role="alert" id="altApiKeyDeleted">
+			<div class="alert alert-success alert-dismissible fade show" role="alert" id="altApiKeyDeleted">
 				<strong>Success!</strong> API key was deleted!
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
