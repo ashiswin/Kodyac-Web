@@ -26,6 +26,7 @@
 			$this->createStatement = $mysqli->prepare("INSERT INTO " . APIKeyConnector::$TABLE_NAME . "(`" . APIKeyConnector::$COLUMN_COMPANYID . "`,`" . APIKeyConnector::$COLUMN_NAME . "`,`" . APIKeyConnector::$COLUMN_APIKEY . "`) VALUES(?,?,?)");
 			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . APIKeyConnector::$TABLE_NAME . " WHERE `" . APIKeyConnector::$COLUMN_ID . "` = ?");
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . APIKeyConnector::$TABLE_NAME);
+			$this->selectByCompanyStatement = $mysqli->prepare("SELECT * FROM " . APIKeyConnector::$TABLE_NAME . " WHERE `" . APIKeyConnector::$COLUMN_COMPANYID . "` = ?");
 			$this->selectByKeyStatement = $mysqli->prepare("SELECT * FROM " . APIKeyConnector::$TABLE_NAME . " WHERE `" . APIKeyConnector::$COLUMN_APIKEY . "` = ?");
 			$this->addRequestStatement = $mysqli->prepare("UPDATE " . APIKeyConnector::$TABLE_NAME . " SET `" . APIKeyConnector::$COLUMN_REQUESTCOUNT . "` = `" . APIKeyConnector::$COLUMN_REQUESTCOUNT . "` + 1 WHERE `" . APIKeyConnector::$COLUMN_ID . "` = ?");
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . APIKeyConnector::$TABLE_NAME . " WHERE `" . APIKeyConnector::$COLUMN_ID . "` = ?");
@@ -65,6 +66,14 @@
 		public function selectAll() {
 			if(!$this->selectAllStatement->execute()) return false;
 			$result = $this->selectAllStatement->get_result();
+			$resultArray = $result->fetch_all(MYSQLI_ASSOC);
+			return $resultArray;
+		}
+		
+		public function selectByCompany($companyId) {
+			$this->selectByCompanyStatement->bind_param("i", $companyId);
+			if(!$this->selectByCompanyStatement->execute()) return false;
+			$result = $this->selectByCompanyStatement->get_result();
 			$resultArray = $result->fetch_all(MYSQLI_ASSOC);
 			return $resultArray;
 		}

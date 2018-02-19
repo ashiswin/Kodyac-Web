@@ -10,7 +10,7 @@
 	
 	$apiKeyEntry = $APIKeyConnector->selectByKey($apiKey);
 	
-	if(!$apiKeyEntry) {
+	if(!$apiKeyEntry || $apiKeyEntry[APIKeyConnector::$COLUMN_ISDELETED] == 1) {
 		$response['success'] = false;
 		$response['message'] = "Invalid API key used!";
 	}

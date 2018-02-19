@@ -6,6 +6,8 @@
 	$companyId = $_POST['companyId'];
 	$name = $_POST['name'];
 	
+	// TODO: Check if companyId exists
+	
 	$apiKey = random_str(32);
 	$APIKeyConnector = new APIKeyConnector($conn);
 	
