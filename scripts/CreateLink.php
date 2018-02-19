@@ -19,9 +19,10 @@
 		$response['message'] = "Failed to create link!";
 	}
 	else {
+		$linkId = $conn->insert_id;
 		$APIKeyConnector->addRequest($apiKeyEntry[APIKeyConnector::$COLUMN_ID]);
 		$response['success'] = true;
-		$response['link'] = "http://www.kodyac.tech/links/kyc.php?id=" . $conn->insert_id;
+		$response['link'] = "http://www.kodyac.tech/links/kyc.php?id=" . $linkId;
 	}
 
 	echo(json_encode($response));
