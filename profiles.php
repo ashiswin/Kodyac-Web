@@ -224,7 +224,9 @@
 					$("#mdlProfileNRIC").html(subprofiles[i].nric);
 					$("#mdlProfileContact").html(subprofiles[i].contact);
 					$("#mdlProfileAddress").html(subprofiles[i].address);
-					$("#mdlProfilePicture").attr('src', 'uploads/' + subprofiles[i].id + '.jpg');
+					$("#mdlProfilePicture").attr('src', 'uploads/' + subprofiles[i].id + '.jpg').error(function() {
+						$(this).attr('src', 'http://via.placeholder.com/150x350');
+					});
 					$("#mdlViewProfile").modal();
 				});
 			});
