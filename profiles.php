@@ -228,7 +228,7 @@
 						url:'uploads/' + subprofiles[i].id + '.jpg',
 						type:'GET',
 						error: function(){
-							$("#mdlProfilePicture").attr('src', 'http://via.placeholder.com/150x350')
+							$("#mdlProfilePicture").attr('src', 'http://via.placeholder.com/150x200')
 						},
 						success: function(){
 							$("#mdlProfilePicture").attr('src', 'uploads/' + subprofiles[i].id + '.jpg')
@@ -248,7 +248,16 @@
 				$("#mdlProfileNRIC").html(profiles[i].nric);
 				$("#mdlProfileContact").html(profiles[i].contact);
 				$("#mdlProfileAddress").html(profiles[i].address);
-				$("#mdlProfilePicture").attr('src', 'uploads/' + profiles[i].id + '.jpg');
+				$.ajax({
+					url:'uploads/' + subprofiles[i].id + '.jpg',
+					type:'GET',
+					error: function(){
+						$("#mdlProfilePicture").attr('src', 'http://via.placeholder.com/150x200')
+					},
+					success: function(){
+						$("#mdlProfilePicture").attr('src', 'uploads/' + subprofiles[i].id + '.jpg')
+					}
+				});
 				$("#mdlViewProfile").modal();
 			});
 			
