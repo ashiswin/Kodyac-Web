@@ -3,7 +3,6 @@
 	require_once 'connectors/LinkConnector.php';
 	require_once 'connectors/APIKeyConnector.php';
 	
-	$companyId = $_POST['companyId'];
 	$apiKey = $_POST['apiKey'];
 	
 	$LinkConnector = new LinkConnector($conn);
@@ -15,7 +14,7 @@
 		$response['success'] = false;
 		$response['message'] = "Invalid API key used!";
 	}
-	else if(!$LinkConnector->create($companyId)) {
+	else if(!$LinkConnector->create($apiKey[APIKeyConnector::$COLUMN_COMPANYID], $apiKey)) {
 		$response['success'] = false;
 		$response['message'] = "Failed to create link!";
 	}
