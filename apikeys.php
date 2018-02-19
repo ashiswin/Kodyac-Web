@@ -77,11 +77,13 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<div class="col-md-2">
-							<label for="txtKeyName">Name:</label>
-						</div>
-						<div class="col-md-10">
-							<input type="text" class="form-control" id="txtKeyName">
+						<div class="row">
+							<div class="col-md-2">
+								<label for="txtKeyName">Name:</label>
+							</div>
+							<div class="col-md-10">
+								<input type="text" class="form-control" id="txtKeyName">
+							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
