@@ -92,7 +92,7 @@
 						tblKeys += "<td><a href=\"" + i + "\" class=\"delete\"><i class=\"fas fa-trash\"></i></a></td>";
 						tblKeys += "</tr>";
 					}
-					tblKeys += "<tr><td colspan=6><a id=\"create\"><i class=\"fas fa-plus\"></i>&nbsp;&nbsp;Create API key</a></td></tr>";
+					tblKeys += "<tr><td colspan=6><a href=\"/\" id=\"create\"><i class=\"fas fa-plus\"></i>&nbsp;&nbsp;Create API key</a></td></tr>";
 					$("#tblKeys").html(tblKeys);
 					
 					$(".delete").click(function (e) {
