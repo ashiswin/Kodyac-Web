@@ -224,8 +224,15 @@
 					$("#mdlProfileNRIC").html(subprofiles[i].nric);
 					$("#mdlProfileContact").html(subprofiles[i].contact);
 					$("#mdlProfileAddress").html(subprofiles[i].address);
-					$("#mdlProfilePicture").attr('src', 'uploads/' + subprofiles[i].id + '.jpg').error(function() {
-						$(this).attr('src', 'http://via.placeholder.com/150x350');
+					$.ajax({
+						url:'uploads/' + subprofiles[i].id + '.jpg',
+						type:'HEAD',
+						error: function(){
+							$("#mdlProfilePicture").attr('src', 'http://via.placeholder.com/150x350')
+						},
+						success: function(){
+							$("#mdlProfilePicture").attr('src', 'uploads/' + subprofiles[i].id + '.jpg')
+						}
 					});
 					$("#mdlViewProfile").modal();
 				});
