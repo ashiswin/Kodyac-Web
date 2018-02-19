@@ -22,7 +22,7 @@
 			$this->mysqli = $mysqli;
 
 			$this->createStatement = $mysqli->prepare("INSERT INTO " . OTPConnector::$TABLE_NAME . "(`" . OTPConnector::$COLUMN_LINKID . "`,`" . OTPConnector::$COLUMN_OTP . "`) VALUES(?,?)");
-			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . OTPConnector::$TABLE_NAME . " WHERE `" . OTPConnector::$COLUMN_LINKID . "` = ?");
+			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . OTPConnector::$TABLE_NAME . " WHERE `" . OTPConnector::$COLUMN_OTP . "` = ?");
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . OTPConnector::$TABLE_NAME . " WHERE `" . OTPConnector::$COLUMN_ID . "` = ?");
 		}
 
@@ -31,8 +31,8 @@
 			return $this->createStatement->execute();
 		}
 
-		public function select($linkId) {
-			$this->selectStatement->bind_param("i", $linkId);
+		public function select($otp) {
+			$this->selectStatement->bind_param("s", $otp);
 			if(!$this->selectStatement->execute()) return false;
 			
 			$result = $this->selectStatement->get_result();
