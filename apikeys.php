@@ -77,7 +77,19 @@
 				response = JSON.parse(data);
 				console.log(response);
 				if(response.success) {
-					
+					var tblKeys = "";
+					for(var i = 0; i < response.keys.length; i++) {
+						if(response.keys[i].isDeleted == 0) continue;
+						
+						tblKeys += "<tr>";
+						tblKeys += "<td>" + (i + 1) + "</td>";
+						tblKeys += "<td>" + response.keys[i].name + "</td>";
+						tblKeys += "<td>" + response.keys[i].apiKey + "</td>";
+						tblKeys += "<td>" + response.keys[i].createdOn + "</td>";
+						tblKeys += "<td><a href=\"" + i + "\" class=\"delete\"><i class=\"fas fa-trash\"></i></a></th>";
+						tblKeys ++ "</td>";
+					}
+					$("#tblKeys").html(tblKeys);
 				}
 			});
 		</script>

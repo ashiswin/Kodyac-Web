@@ -6,7 +6,7 @@
 
 	$APIKeyConnector = new APIKeyConnector($conn);
 
-	$response['company'] = $APIKeyConnector->selectByCompany($companyId);
+	$response['keys'] = $APIKeyConnector->selectByCompany($companyId);
 	$response['success'] = true;
 
 	echo(json_encode($response));
