@@ -44,7 +44,7 @@
 			<h1 style="font-family: 'Martel', Times New Roman, serif; font-weight: bold; text-align: center; padding: 5vh; color: #FFFFFF; font-size: 3em">API Keys</h1>
 		</div>
 		<div class="container">
-			<div class="alert alert-success" id="altApiKeyCreated">
+			<div class="alert alert-success fade" id="altApiKeyCreated">
 				<strong>Success!</strong> API key was created!
 			</div>
 			<div class="alert alert-success" id="altApiKeyDeleted">
