@@ -95,7 +95,10 @@
 					tblKeys += "<tr><td colspan=6><a href=\"/\" id=\"create\"><i class=\"fas fa-plus\"></i>&nbsp;&nbsp;Create API key</a></td></tr>";
 					$("#tblKeys").html(tblKeys);
 					
-					$(".delete").click(function (e) {
+					$(".delete").click(function(e) {
+						e.preventDefault();
+					});
+					$("#create").click(function(e) {
 						e.preventDefault();
 					});
 				}
