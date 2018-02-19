@@ -47,7 +47,7 @@
 		
 		public function setUsed($otp) {
 			$this->updateStatement->bind_param("s", $otp);
-			if(!$this->selectStatement->execute()) return false;
+			if(!$this->updateStatement->execute()) return false;
 			
 			return true;
 		}
