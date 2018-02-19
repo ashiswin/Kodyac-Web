@@ -19,7 +19,6 @@
 		'expires_at' => strtotime('+5 minutes') // Cancel the message in 5 minutes if the message is not yet sent
 	];
 
-	//Please note options is no required and can be left out
 	$result = $smsGateway->sendMessageToNumber($number, $message, $deviceID, $options);
 	
 	$OTPConnector = new OTPConnector($conn);
