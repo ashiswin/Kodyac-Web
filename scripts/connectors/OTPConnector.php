@@ -21,9 +21,9 @@
 
 			$this->mysqli = $mysqli;
 
-			$this->createStatement = $mysqli->prepare("INSERT INTO " . CompanyConnector::$TABLE_NAME . "(`" . CompanyConnector::$COLUMN_LINKID . "`,`" . CompanyConnector::$COLUMN_OTP . "`) VALUES(?,?)");
-			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . CompanyConnector::$TABLE_NAME . " WHERE `" . CompanyConnector::$COLUMN_LINKID . "` = ?");
-			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . CompanyConnector::$TABLE_NAME . " WHERE `" . CompanyConnector::$COLUMN_ID . "` = ?");
+			$this->createStatement = $mysqli->prepare("INSERT INTO " . OTPConnector::$TABLE_NAME . "(`" . OTPConnector::$COLUMN_LINKID . "`,`" . OTPConnector::$COLUMN_OTP . "`) VALUES(?,?)");
+			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . OTPConnector::$TABLE_NAME . " WHERE `" . OTPConnector::$COLUMN_LINKID . "` = ?");
+			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . OTPConnector::$TABLE_NAME . " WHERE `" . OTPConnector::$COLUMN_ID . "` = ?");
 		}
 
 		public function create($linkId, $otp) {
