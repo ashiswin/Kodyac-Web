@@ -2,7 +2,7 @@
 	require_once 'utils/database.php';
 	require_once 'connectors/LinkConnector.php';
 
-	$id = $_GET['id'];
+	$id = $_POST['id'];
 
 	$LinkConnector = new LinkConnector($conn);
 
