@@ -15,6 +15,7 @@
 	}
 	else if($linkid == $otp[OTPConnector::$COLUMN_LINKID]) {
 		$response["success"] = true;
+		$OTPConnector->setUsed($otpString);
 	}
 	else {
 		$response["success"] = false;
