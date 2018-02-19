@@ -47,9 +47,7 @@
 			<div class="alert alert-success fade in" id="altApiKeyCreated">
 				<strong>Success!</strong> API key was created!
 			</div>
-			<div class="alert alert-success fade in" id="altApiKeyDeleted">
-				<strong>Success!</strong> API key was deleted!
-			</div>
+			
 			<table class="table" style="margin-top: 2vh">
 				<colgroup>
 					<col span="1" style="width: 5%;">
