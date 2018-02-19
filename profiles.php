@@ -226,7 +226,7 @@
 					$("#mdlProfileAddress").html(subprofiles[i].address);
 					$.ajax({
 						url:'uploads/' + subprofiles[i].id + '.jpg',
-						type:'HEAD',
+						type:'GET',
 						error: function(){
 							$("#mdlProfilePicture").attr('src', 'http://via.placeholder.com/150x350')
 						},
