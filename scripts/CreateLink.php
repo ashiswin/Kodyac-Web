@@ -14,7 +14,7 @@
 		$response['success'] = false;
 		$response['message'] = "Invalid API key used!";
 	}
-	else if(!$LinkConnector->create($apiKey[APIKeyConnector::$COLUMN_COMPANYID], $apiKey)) {
+	else if(!$LinkConnector->create($apiKeyEntry[APIKeyConnector::$COLUMN_COMPANYID], $apiKey)) {
 		$response['success'] = false;
 		$response['message'] = "Failed to create link!";
 	}
