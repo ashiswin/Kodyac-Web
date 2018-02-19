@@ -67,6 +67,29 @@
 				</tbody>
 			</table>
 		</div>
+		<div class="modal fade" id="mdlCreateKey">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Create API Key</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="col-md-2">
+							<label for="txtKeyName">Name:</label>
+						</div>
+						<div class="col-md-10">
+							<input type="text" class="form-control" id="txtKeyName">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" id="btnAdd">Add</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
@@ -100,6 +123,7 @@
 					});
 					$("#create").click(function(e) {
 						e.preventDefault();
+						$("#mdlCreateKey").modal();
 					});
 				}
 			});
