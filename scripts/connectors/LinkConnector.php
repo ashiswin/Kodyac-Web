@@ -25,6 +25,7 @@
 			$this->selectByCompanyStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " INNER JOIN profiles ON links.id=profiles.linkId WHERE `" . LinkConnector::$COLUMN_COMPANYID . "` = ?");
 			$this->selectByStatusStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " INNER JOIN profiles ON links.id=profiles.linkId WHERE `" . LinkConnector::$COLUMN_STATUS . "` = ?");
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " INNER JOIN profiles ON links.id=profiles.linkId");
+			$this->setStatusStatement = $mysqli->prepare("UPDATE " . LinkConnector::$TABLE_NAME . " SET `" . LinkConnector::$COLUMN_STATUS . "` = ? WHERE `" . LinkConnector::$COLUMN_ID . "` = ?");
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . LinkConnector::$TABLE_NAME . " WHERE `" . LinkConnector::$COLUMN_ID . "` = ?");
 		}
 
@@ -69,7 +70,12 @@
 			$resultArray = $result->fetch_all(MYSQLI_ASSOC);
 			return $resultArray;
 		}
-
+		
+		public function setStatus($id, $status) {
+			$this->setStatusStatement->bind_param("si", $status, $id);
+			return $this->setStatusStatement->execute();
+		}
+		
 		public function delete($id) {
 			$this->deleteStatement->bind_param("i", $id);
 			if(!$this->deleteStatement->execute()) return false;
