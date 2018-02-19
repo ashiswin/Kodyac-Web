@@ -47,6 +47,9 @@
 			<div class="alert alert-success fade in" id="altApiKeyCreated">
 				<strong>Success!</strong> API key was created!
 			</div>
+			<div class="alert alert-success fade in" id="altApiKeyDeleted">
+				<strong>Success!</strong> API key was deleted!
+			</div>
 			<table class="table" style="margin-top: 2vh">
 				<colgroup>
 					<col span="1" style="width: 5%;">
@@ -105,7 +108,8 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<p>Are you sure you want to delete API key <span id="apiKeyName"></span></p>
+						<p>Are you sure you want to delete API key <span id="apiKeyName"></span>?</p>
+						<input type="hidden" id="hdnKeyId" />
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal" id="btnDelete">Delete</button>
@@ -121,6 +125,7 @@
 		<script type="text/javascript">
 			$("#navAPIKeys").addClass('active');
 			$("#altApiKeyCreated").hide();
+			$("#altApiKeyDeleted").hide();
 			
 			var companyId = <?php echo $_SESSION['companyId']; ?>;
 			var keys = null;
@@ -153,7 +158,20 @@
 							var i = $(this).attr('href');
 							
 							$("#apiKeyName").html(keys[i].name);
+							$("#hdnKeyId").val(keys[i].id);
 							$("#mdlDeleteKey").modal();
+						});
+						$("#btnDelete").click(function(e) {
+							var id = $("#hdnKeyId").val();
+							$.post("scripts/DeleteAPIKey.php", { id: id }, function(data) {
+								response = JSON.parse(data);
+								console.log(response);
+								if(response.success) {
+									$("#altApiKeyDeleted").show();
+									$("#hdnKeyId").val("");
+									loadKeys();
+								}
+							});
 						});
 						$("#create").click(function(e) {
 							e.preventDefault();
