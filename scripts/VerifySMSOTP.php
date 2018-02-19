@@ -11,7 +11,7 @@
 	$dbdate = strtotime($otp[OTPConnector::$COLUMN_CREATEDON]);
 	if (time() - $dbdate > 5 * 60) {
 		$response["success"] = false;
-		$response["message"] = "OTP expired";
+		$response["message"] = "OTP expired after " . (time() - $dbdate) . "s";
 	}
 	else if(strcmp($otp[OTPConnector::$COLUMN_OTP], $otpString) == 0) {
 		$response["success"] = true;
