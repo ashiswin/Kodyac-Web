@@ -11,12 +11,14 @@
 	$dbdate = strtotime($otp[OTPConnector::$COLUMN_CREATEDON]);
 	if (time() - $dbdate > 5 * 60) {
 		$response["success"] = false;
+		$response["message"] = "OTP expired";
 	}
 	else if(strcmp($otp[OTPConnector::$COLUMN_OTP], $otpString) == 0) {
 		$response["success"] = true;
 	}
 	else {
 		$response["success"] = false;
+		$response["message"] = "OTP incorrect";
 	}
 	
 	echo(json_encode($response));
