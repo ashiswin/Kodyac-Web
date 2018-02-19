@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	
+	if(isset($_SESSION['companyId'])) {
+		header("Location: manage.php");
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
