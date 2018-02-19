@@ -79,7 +79,7 @@
 				if(response.success) {
 					var tblKeys = "";
 					for(var i = 0; i < response.keys.length; i++) {
-						if(response.keys[i].isDeleted == 0) continue;
+						if(response.keys[i].isDeleted == 1) continue;
 						
 						tblKeys += "<tr>";
 						tblKeys += "<td>" + (i + 1) + "</td>";
