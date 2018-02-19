@@ -44,6 +44,9 @@
 			<h1 style="font-family: 'Martel', Times New Roman, serif; font-weight: bold; text-align: center; padding: 5vh; color: #FFFFFF; font-size: 3em">API Keys</h1>
 		</div>
 		<div class="container">
+			<div class="alert alert-success" id="altApiKeyCreated">
+				<strong>Success!</strong> API key was created!
+			</div>
 			<table class="table" style="margin-top: 2vh">
 				<colgroup>
 					<col span="1" style="width: 5%;">
@@ -99,36 +102,54 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 		<script type="text/javascript">
 			$("#navAPIKeys").addClass('active');
+			$("#altApiKeyCreated").hide();
+			
 			var companyId = <?php echo $_SESSION['companyId']; ?>;
-			$.get("scripts/GetAPIKeys.php?companyId=" + companyId, function(data) {
-				response = JSON.parse(data);
-				console.log(response);
-				if(response.success) {
-					var tblKeys = "";
-					for(var i = 0; i < response.keys.length; i++) {
-						if(response.keys[i].isDeleted == 1) continue;
+			function loadKeys() {
+				$.get("scripts/GetAPIKeys.php?companyId=" + companyId, function(data) {
+					response = JSON.parse(data);
+					console.log(response);
+					if(response.success) {
+						var tblKeys = "";
+						for(var i = 0; i < response.keys.length; i++) {
+							if(response.keys[i].isDeleted == 1) continue;
 						
-						tblKeys += "<tr>";
-						tblKeys += "<td>" + (i + 1) + "</td>";
-						tblKeys += "<td>" + response.keys[i].name + "</td>";
-						tblKeys += "<td>" + response.keys[i].apiKey + "</td>";
-						tblKeys += "<td>" + response.keys[i].createdOn + "</td>";
-						tblKeys += "<td>" + response.keys[i].requestCount + "</td>";
-						tblKeys += "<td><a href=\"" + i + "\" class=\"delete\"><i class=\"fas fa-trash\"></i></a></td>";
-						tblKeys += "</tr>";
-					}
-					tblKeys += "<tr><td colspan=6><a href=\"/\" id=\"create\"><i class=\"fas fa-plus\"></i>&nbsp;&nbsp;Create API key</a></td></tr>";
-					$("#tblKeys").html(tblKeys);
+							tblKeys += "<tr>";
+							tblKeys += "<td>" + (i + 1) + "</td>";
+							tblKeys += "<td>" + response.keys[i].name + "</td>";
+							tblKeys += "<td>" + response.keys[i].apiKey + "</td>";
+							tblKeys += "<td>" + response.keys[i].createdOn + "</td>";
+							tblKeys += "<td>" + response.keys[i].requestCount + "</td>";
+							tblKeys += "<td><a href=\"" + i + "\" class=\"delete\"><i class=\"fas fa-trash\"></i></a></td>";
+							tblKeys += "</tr>";
+						}
+						tblKeys += "<tr><td colspan=6><a href=\"/\" id=\"create\"><i class=\"fas fa-plus\"></i>&nbsp;&nbsp;Create API key</a></td></tr>";
+						$("#tblKeys").html(tblKeys);
 					
-					$(".delete").click(function(e) {
-						e.preventDefault();
-					});
-					$("#create").click(function(e) {
-						e.preventDefault();
-						$("#mdlCreateKey").modal();
-					});
-				}
-			});
+						$(".delete").click(function(e) {
+							e.preventDefault();
+						});
+						$("#create").click(function(e) {
+							e.preventDefault();
+							$("#mdlCreateKey").modal();
+						});
+						$("#btnAdd").click(function(e) {
+							var name = $("#txtKeyName").val();
+							$.post("scripts/CreateAPIKey.php", { companyId: companyId, name: name }, function(data) {
+								response = JSON.parse(data);
+								console.log(response);
+								if(response.success) {
+									$("#altApiKeyCreated").show();
+									$("#txtKeyName").val("");
+									loadKeys();
+								}
+							});
+						});
+					}
+				});
+			}
+			
+			loadKeys();
 		</script>
 	</body>
 </html>
