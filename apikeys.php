@@ -48,8 +48,9 @@
 				<colgroup>
 					<col span="1" style="width: 5%;">
 					<col span="1" style="width: 20%;">
-					<col span="1" style="width: 50%;">
+					<col span="1" style="width: 40%;">
 					<col span="1" style="width: 20%;">
+					<col span="1" style="width: 10%;">
 					<col span="1" style="width: 5%;">
 				</colgroup>
 				<thead>
@@ -58,6 +59,7 @@
 						<th>API Key Name</th>
 						<th>Key</th>
 						<th>Created On</th>
+						<th>Total Requests</th>
 						<th><i class="fas fa-trash"></i></th>
 					</tr>
 				</thead>
@@ -86,6 +88,7 @@
 						tblKeys += "<td>" + response.keys[i].name + "</td>";
 						tblKeys += "<td>" + response.keys[i].apiKey + "</td>";
 						tblKeys += "<td>" + response.keys[i].createdOn + "</td>";
+						tblKeys += "<td>" + response.keys[i].requestCount + "</td>";
 						tblKeys += "<td><a href=\"" + i + "\" class=\"delete\"><i class=\"fas fa-trash\"></i></a></th>";
 						tblKeys += "</td>";
 					}

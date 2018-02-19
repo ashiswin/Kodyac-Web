@@ -21,6 +21,7 @@
 	else {
 		$APIKeyConnector->addRequest($apiKeyEntry[APIKeyConnector::$COLUMN_ID]);
 		$response['success'] = true;
+		$response['link'] = "http://www.kodyac.tech/links/kyc.php?id=" . $conn->insert_id;
 	}
 
 	echo(json_encode($response));
