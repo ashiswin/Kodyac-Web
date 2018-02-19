@@ -6,6 +6,7 @@
 		public static $COLUMN_ID = "id";
 		public static $COLUMN_COMPANYID = "companyId";
 		public static $COLUMN_STATUS = "status";
+		public static $COLUMN_APIKEY = "apiKey";
 
 		private $createStatement = NULL;
 		private $selectStatement = NULL;
@@ -19,7 +20,7 @@
 
 			$this->mysqli = $mysqli;
 
-			$this->createStatement = $mysqli->prepare("INSERT INTO " . LinkConnector::$TABLE_NAME . "(`" . LinkConnector::$COLUMN_COMPANYID . "`,`" . LinkConnector::$COLUMN_STATUS . "`) VALUES(?,?)");
+			$this->createStatement = $mysqli->prepare("INSERT INTO " . LinkConnector::$TABLE_NAME . "(`" . LinkConnector::$COLUMN_COMPANYID . "`,`" . LinkConnector::$COLUMN_STATUS . "`,`" . LinkConnector::$COLUMN_APIKEY . "`) VALUES(?,?,?)");
 			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " INNER JOIN profiles ON links.id=profiles.linkId WHERE `" . LinkConnector::$COLUMN_ID . "` = ?");
 			$this->selectByCompanyStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " INNER JOIN profiles ON links.id=profiles.linkId WHERE `" . LinkConnector::$COLUMN_COMPANYID . "` = ?");
 			$this->selectByStatusStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " INNER JOIN profiles ON links.id=profiles.linkId WHERE `" . LinkConnector::$COLUMN_STATUS . "` = ?");
@@ -27,8 +28,8 @@
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . LinkConnector::$TABLE_NAME . " WHERE `" . LinkConnector::$COLUMN_ID . "` = ?");
 		}
 
-		public function create($companyId) {
-			$this->createStatement->bind_param("is", $companyId, "requested");
+		public function create($companyId, $apiKey) {
+			$this->createStatement->bind_param("iss", $companyId, "requested", $apiKey);
 			return $this->createStatement->execute();
 		}
 

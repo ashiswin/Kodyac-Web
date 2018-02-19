@@ -11,7 +11,9 @@
 	$dob = $_POST['dob'];
 
 	$ProfileConnector = new ProfileConnector($conn);
-
+	
+	// TODO: Check if linkId exists
+	
 	if(!$ProfileConnector->create($linkId, $name, $address, $nric, $contact, $nationality, $dob)) {
 		$response['success'] = false;
 		$response['message'] = "Failed to create profile!";

@@ -1,18 +1,15 @@
 <?php
-	class CompanyConnector {
+	class APIKeyConnector {
 		private $mysqli = NULL;
 
-		public static $TABLE_NAME = "companies";
+		public static $TABLE_NAME = "apikeys";
 		public static $COLUMN_ID = "id";
+		public static $COLUMN_COMPANYID = "companyId";
 		public static $COLUMN_NAME = "name";
-		public static $COLUMN_USERNAME = "username";
-		public static $COLUMN_PASSWORDHASH = "passwordHash";
-		public static $COLUMN_SALT = "salt";
-		public static $COLUMN_POCNAME = "pocName";
-		public static $COLUMN_POCEMAIL = "pocEmail";
-		public static $COLUMN_POCCONTACTNUMBER = "pocContactNumber";
-		public static $COLUMN_METHODS = "methods";
-
+		public static $COLUMN_APIKEY = "apiKey";
+		public static $COLUMN_REQUESTCOUNT = "requestCount";
+		public static $COLUMN_CREATEDON = "createdOn";
+		public static $COLUMN_ISDELETED = "isDeleted";
 
 		private $createStatement = NULL;
 		private $selectStatement = NULL;
@@ -26,15 +23,15 @@
 
 			$this->mysqli = $mysqli;
 
-			$this->createStatement = $mysqli->prepare("INSERT INTO " . CompanyConnector::$TABLE_NAME . "(`" . CompanyConnector::$COLUMN_NAME . "`,`" . CompanyConnector::$COLUMN_USERNAME . "`,`" . CompanyConnector::$COLUMN_PASSWORDHASH . "`,`" . CompanyConnector::$COLUMN_SALT . "`,`" . CompanyConnector::$COLUMN_POCNAME . "`,`" . CompanyConnector::$COLUMN_POCEMAIL . "`,`" . CompanyConnector::$COLUMN_POCCONTACTNUMBER . "`,`" . CompanyConnector::$COLUMN_METHODS . "`) VALUES(?,?,?,?,?,?,?,?)");
-			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . CompanyConnector::$TABLE_NAME . " WHERE `" . CompanyConnector::$COLUMN_ID . "` = ?");
-			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . CompanyConnector::$TABLE_NAME);
-			$this->selectByUsernameStatement = $mysqli->prepare("SELECT * FROM " . CompanyConnector::$TABLE_NAME . " WHERE `" . CompanyConnector::$COLUMN_USERNAME . "` = ?");
-			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . CompanyConnector::$TABLE_NAME . " WHERE `" . CompanyConnector::$COLUMN_ID . "` = ?");
+			$this->createStatement = $mysqli->prepare("INSERT INTO " . APIKeyConnector::$TABLE_NAME . "(`" . APIKeyConnector::$COLUMN_COMPANYID . "`,`" . APIKeyConnector::$COLUMN_NAME . "`,`" . APIKeyConnector::$COLUMN_APIKEY . "`) VALUES(?,?,?)");
+			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . APIKeyConnector::$TABLE_NAME . " WHERE `" . APIKeyConnector::$COLUMN_ID . "` = ?");
+			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . APIKeyConnector::$TABLE_NAME);
+			$this->selectByKeyStatement = $mysqli->prepare("SELECT * FROM " . APIKeyConnector::$TABLE_NAME . " WHERE `" . APIKeyConnector::$COLUMN_APIKEY . "` = ?");
+			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . APIKeyConnector::$TABLE_NAME . " WHERE `" . APIKeyConnector::$COLUMN_ID . "` = ?");
 		}
 
-		public function create($name, $username, $passwordHash, $salt, $pocName, $pocEmail, $pocContactNumber, $methods) {
-			$this->createStatement->bind_param("ssssssss", $name, $username, $passwordHash, $salt, $pocName, $pocEmail, $pocContactNumber, $methods);
+		public function create($companyId, $name, $apiKey) {
+			$this->createStatement->bind_param("sss", $companyId, $name, $apiKey);
 			return $this->createStatement->execute();
 		}
 
@@ -44,24 +41,24 @@
 			
 			$result = $this->selectStatement->get_result();
 			if(!$result) return false;
-			$company = $result->fetch_assoc();
+			$apiKey = $result->fetch_assoc();
 			
 			$this->selectStatement->free_result();
 			
-			return $company;
+			return $apiKey;
 		}
 		
-		public function selectByUsername($username) {
-			$this->selectByUsernameStatement->bind_param("s", $username);
-			if(!$this->selectByUsernameStatement->execute()) return false;
+		public function selectByKey($key) {
+			$this->selectByKeyStatement->bind_param("s", $key);
+			if(!$this->selectByKeyStatement->execute()) return false;
 			
-			$result = $this->selectByUsernameStatement->get_result();
+			$result = $this->selectByKeyStatement->get_result();
 			if(!$result) return false;
-			$company = $result->fetch_assoc();
+			$apiKey = $result->fetch_assoc();
 			
-			$this->selectByUsernameStatement->free_result();
+			$this->selectByKeyStatement->free_result();
 			
-			return $company;
+			return $apiKey;
 		}
 		
 		public function selectAll() {

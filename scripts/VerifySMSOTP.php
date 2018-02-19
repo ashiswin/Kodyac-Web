@@ -11,11 +11,11 @@
 	$dbdate = strtotime($otp[OTPConnector::$COLUMN_CREATEDON]);
 	if(strtotime("now") - $dbdate > 5 * 60) {
 		$response["success"] = false;
-		$response["message"] = "OTP expired after " . (time() - $dbdate) . "s";
+		$response["message"] = "This OTP has expired. Please request a new one.";
 	}
 	else if($otp[OTPConnector::$COLUMN_USED] == 1) {
 		$response["success"] = false;
-		$response["message"] = "OTP has already been used";
+		$response["message"] = "This OTP has already been used.";
 	}
 	else if($linkid == $otp[OTPConnector::$COLUMN_LINKID]) {
 		$response["success"] = true;
@@ -23,7 +23,7 @@
 	}
 	else {
 		$response["success"] = false;
-		$response["message"] = "OTP incorrect";
+		$response["message"] = "This OTP is invalid.";
 	}
 	
 	echo(json_encode($response));
