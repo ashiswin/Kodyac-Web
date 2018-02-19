@@ -249,13 +249,13 @@
 				$("#mdlProfileContact").html(profiles[i].contact);
 				$("#mdlProfileAddress").html(profiles[i].address);
 				$.ajax({
-					url:'uploads/' + subprofiles[i].id + '.jpg',
+					url:'uploads/' + profiles[i].id + '.jpg',
 					type:'GET',
 					error: function(){
 						$("#mdlProfilePicture").attr('src', 'http://via.placeholder.com/150x200')
 					},
 					success: function(){
-						$("#mdlProfilePicture").attr('src', 'uploads/' + subprofiles[i].id + '.jpg')
+						$("#mdlProfilePicture").attr('src', 'uploads/' + profiles[i].id + '.jpg')
 					}
 				});
 				$("#mdlViewProfile").modal();
