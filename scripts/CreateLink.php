@@ -23,7 +23,7 @@
 	else {
 		$linkId = $conn->insert_id;
 		$APIKeyConnector->addRequest($apiKeyEntry[APIKeyConnector::$COLUMN_ID]);
-		$ProfileConnector->create($linkId, "Unknown", "Unknown", "Unknown", "Unknown", "Unknown", "Unknown")
+		$ProfileConnector->create($linkId, "Unknown", "Unknown", "Unknown", "Unknown", "Unknown", "Unknown");
 		$response['success'] = true;
 		$response['link'] = "http://www.kodyac.tech/links/kyc.php?id=" . $linkId;
 	}
