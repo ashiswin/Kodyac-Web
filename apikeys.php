@@ -133,11 +133,10 @@
 			function loadKeys() {
 				$.get("scripts/GetAPIKeys.php?companyId=" + companyId, function(data) {
 					response = JSON.parse(data);
-					console.log(response);
 					if(response.success) {
 						var tblKeys = "";
 						keys = response.keys;
-						
+						$(".delete").off( "click");
 						for(var i = 0; i < response.keys.length; i++) {
 							if(response.keys[i].isDeleted == 1) continue;
 						
@@ -161,38 +160,37 @@
 							$("#hdnKeyId").val(keys[i].id);
 							$("#mdlDeleteKey").modal();
 						});
-						$("#btnDelete").click(function(e) {
-							var id = $("#hdnKeyId").val();
-							$.post("scripts/DeleteAPIKey.php", { id: id }, function(data) {
-								response = JSON.parse(data);
-								console.log(response);
-								if(response.success) {
-									$("#altApiKeyDeleted").show();
-									$("#hdnKeyId").val("");
-									loadKeys();
-								}
-							});
-						});
+						
 						$("#create").click(function(e) {
 							e.preventDefault();
 							$("#mdlCreateKey").modal();
 						});
-						$("#btnAdd").click(function(e) {
-							var name = $("#txtKeyName").val();
-							$.post("scripts/CreateAPIKey.php", { companyId: companyId, name: name }, function(data) {
-								response = JSON.parse(data);
-								console.log(response);
-								if(response.success) {
-									$("#altApiKeyCreated").show();
-									$("#txtKeyName").val("");
-									loadKeys();
-								}
-							});
-						});
+						
 					}
 				});
 			}
-			
+			$("#btnDelete").click(function(e) {
+				var id = $("#hdnKeyId").val();
+				$.post("scripts/DeleteAPIKey.php", { id: id }, function(data) {
+					response = JSON.parse(data);
+					if(response.success) {
+						$("#altApiKeyDeleted").show();
+						$("#hdnKeyId").val("");
+						loadKeys();
+					}
+				});
+			});
+			$("#btnAdd").click(function(e) {
+				var name = $("#txtKeyName").val();
+				$.post("scripts/CreateAPIKey.php", { companyId: companyId, name: name }, function(data) {
+					response = JSON.parse(data);
+					if(response.success) {
+						$("#altApiKeyCreated").show();
+						$("#txtKeyName").val("");
+						loadKeys();
+					}
+				});
+			});
 			loadKeys();
 		</script>
 	</body>
