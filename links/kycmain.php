@@ -66,7 +66,7 @@
 			<span style="font-family: 'Ubuntu', Arial, sans-serif">KodYaC</span></a>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<div class="ml-auto">
-					<div class="progress" style="width: 90vh;">
+					<div class="progress" style="width: 90vh; margin-top: 1vh;">
 						<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
 					</div>
 				</div>
