@@ -62,7 +62,7 @@
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a class="navbar-brand" href="<?php echo $_SERVER['PHP_SELF']; ?>"><img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+			<a class="navbar-brand" href="<?php echo $_SERVER['PHP_SELF']; ?>"><img src="../img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
 			<span style="font-family: 'Ubuntu', Arial, sans-serif">KodYaC</span></a>
 		</nav>
 		<div class="container-fluid"><!-- To get it to take up the whole width -->
@@ -75,7 +75,7 @@
 								$methods = explode("|", $company[CompanyConnector::$COLUMN_METHODS]);
 								
 								if(in_array("sms", $methods)) {
-									echo "<tr id=\"mtdSMS\" class=\"bg-danger\"><td><h4>SMS Verification</h4><div style=\"font-size: 12px; color: white;\">Status: Incomplete</div></td></tr>";
+									echo "<tr id=\"mtdSMS\" class=\"bg-danger\" style=\"color: white;\"><td><h4>SMS Verification</h4><div style=\"font-size: 12px;\">Status: Incomplete</div></td></tr>";
 								}
 							?>
 						</table>
