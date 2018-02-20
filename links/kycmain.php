@@ -58,7 +58,7 @@
 	</head>
 	<body>
 		<!-- HTML file containing the navbar to reduce repetition of code -->
-		<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+		<nav class="navbar navbar-toggleable-md">
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -75,7 +75,7 @@
 								$methods = explode("|", $company[CompanyConnector::$COLUMN_METHODS]);
 								
 								if(in_array("sms", $methods)) {
-									echo "<tr id=\"mtdSMS\"><td class=\"bg-danger\"><h4>SMS Verification</h4><div style=\"font-size: 12px; color: #AAAAAA;\">Status: Incomplete</div></td></tr>";
+									echo "<tr id=\"mtdSMS\" class=\"bg-danger\"><td><h4>SMS Verification</h4><div style=\"font-size: 12px; color: white;\">Status: Incomplete</div></td></tr>";
 								}
 							?>
 						</table>

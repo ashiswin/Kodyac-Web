@@ -40,11 +40,11 @@
 		</style>
 	</head>
 	<body>
-		<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+		<nav class="navbar navbar-toggleable-md">
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a class="navbar-brand" href="<?php echo $_SERVER['PHP_SELF']; ?>"><img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+			<a class="navbar-brand" href="<?php echo $_SERVER['PHP_SELF']; ?>"><img src="../img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
 			<span style="font-family: 'Ubuntu', Arial, sans-serif">KodYaC</span></a>
 		</nav>
 		<div class="container-fluid">
