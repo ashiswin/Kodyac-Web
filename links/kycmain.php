@@ -62,9 +62,12 @@
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a class="navbar-brand" href="<?php echo $_SERVER['PHP_SELF']; ?>"><img src="../img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+			<a class="navbar-brand" href="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $_GET['id']; ?>"><img src="../img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
 			<span style="font-family: 'Ubuntu', Arial, sans-serif">KodYaC</span></a>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="3">0 of 3</div>
+				</div>
 				<button class="ml-auto btn btn-success disabled" disabled="true">Complete</button>
 			</div>
 		</nav>
