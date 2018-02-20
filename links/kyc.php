@@ -47,7 +47,7 @@
 					<br>
 					<h1 style="font-family: 'Ubuntu Bold', Arial, sans-serif">Welcome to <?php echo $company[CompanyConnector::$COLUMN_NAME]; ?>'s KYC Process</h1>
 					<br>
-					<button class="btn btn-primary">Begin</button>
+					<button class="btn btn-primary" width="50%">Let's Begin!</button>
 				</div>
 			</div>
 		</div>
