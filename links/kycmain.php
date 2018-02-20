@@ -109,7 +109,7 @@
 				$(".detail-pane").hide();
 				
 				$("#SMSPane").show();
-				$(this).addClass("bg-selected");
+				$(this).addClass("bg-info");
 			});
 		</script>
 	</body>
