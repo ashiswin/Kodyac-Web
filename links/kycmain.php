@@ -94,7 +94,7 @@
 				<div class="col-md-9 col-xs-9 scrollable" style="border-left: 1px solid #CCCCCC;">
 					<!-- Begin Details panel -->
 					<div class="detail-pane" id="SMSPane">
-						<h1>SMS Verification</h1>
+						<h1 style="margin-top: 2vh">SMS Verification</h1>
 					</div>
 				</div>
 			</div>
@@ -103,14 +103,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			$(".detail-pane").hide();
-			
 			$("#mtdSMS").click(function() {
 				$(".detail-pane").hide();
 				
 				$("#SMSPane").show();
 				$(this).addClass("bg-info");
 			});
+			
+			$("#mtdSMS").trigger('click');
 		</script>
 	</body>
 </html>
