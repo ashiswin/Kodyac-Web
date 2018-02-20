@@ -99,7 +99,14 @@
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-md-8">
-								<h1 id="mdlProfileName"></h1>
+								<div class="row">
+									<div class="col-md-10">
+										<h1 id="mdlProfileName"></h1>
+									</div>
+									<div class="col-md-2">
+										<span class="badge" id="bdgStatus"></span>
+									</div>
+								</div>
 								<br>
 								DOB:&nbsp;<span id="mdlProfileDOB"></span>
 								<br>
@@ -258,6 +265,13 @@
 						$("#mdlProfilePicture").attr('src', 'uploads/' + profiles[i].id + '.jpg')
 					}
 				});
+				
+				$("#bdgStatus").removeClass("badge-*");
+				
+				if(profiles[i].status == "requested") $("#bdgStatus").addClass("badge-default");
+				if(profiles[i].status == "inprogress") $("#bdgStatus").addClass("badge-primary");
+				if(profiles[i].status == "completed") $("#bdgStatus").addClass("badge-success");
+				if(profiles[i].status == "cancelled") $("#bdgStatus").addClass("badge-default");
 				$("#mdlViewProfile").modal();
 			});
 			
