@@ -37,18 +37,47 @@
 				font-family: "Ubuntu Bold";
 				src: url("../font/Ubuntu-B.ttf") format("truetype");
 			}
+			html, body {
+				margin: 0;
+				height: 100%;
+				overflow: hidden
+			}
+			.row.main-content {
+				height: 100%;
+			}
+
+			.scrollable {
+				overflow-y: auto !important;
+				overflow-x: auto;
+				height: 90vh;
+			}
+			.center {
+				margin: auto;
+			}
 		</style>
 	</head>
 	<body>
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-6 offset-md-3 text-center">
-					<!--<img src="../uploads/company-<?php echo $company[CompanyConnector::$COLUMN_ID]; ?>" width="100%">-->
-					<img src="http://via.placeholder.com/350x150" width="100%">
-					<br>
-					<h1 style="font-family: 'Ubuntu Bold', Arial, sans-serif; margin-top: 2vh;">Welcome to <?php echo $company[CompanyConnector::$COLUMN_NAME]; ?>'s KYC Process</h1>
-					<br>
-					<a href="kycmain.php?id=<?php echo $_GET['id']; ?>" class="btn btn-primary" width="50%">Let's Begin!</a>
+		<div class="container-fluid"><!-- To get it to take up the whole width -->
+			<div class="row main-content">
+				<!-- Create side pane with events -->
+				<div class="col-md-4 col-xs-4">
+					<div class="scrollable">
+						<table class="table table-hover">
+							<?php
+								$methods = explode("|", $company[CompanyConnector::$COLUMN_METHODS]);
+								
+								if(in_array("sms", $methods)) {
+									echo "<tr id=\"mtdSMS\"><td class=\"bg-danged\"><h4>SMS Verification</h4><div style=\"font-size: 12px; color: #AAAAAA;\">Status: Incomplete</div></td></tr>";
+								}
+							?>
+						</table>
+					</div>
+				</div>
+				<!-- Begin main detail view -->
+				<div class="col-md-8 col-xs-8 scrollable" style="border-left: 1px solid #CCCCCC;">
+					<!-- Begin Details panel -->
+					<div id="detailsPane">
+					</div>
 				</div>
 			</div>
 		</div>
