@@ -64,6 +64,9 @@
 			</button>
 			<a class="navbar-brand" href="<?php echo $_SERVER['PHP_SELF']; ?>"><img src="../img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
 			<span style="font-family: 'Ubuntu', Arial, sans-serif">KodYaC</span></a>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<button class="ml-auto btn btn-success disabled" disabled="true">Complete</button>
+			</div>
 		</nav>
 		<div class="container-fluid"><!-- To get it to take up the whole width -->
 			<div class="row main-content">
@@ -77,6 +80,12 @@
 								if(in_array("sms", $methods)) {
 									echo "<tr id=\"mtdSMS\"><td><h4>SMS Verification</h4><div style=\"font-size: 12px; color: red;\">Status: Incomplete</div></td></tr>";
 								}
+								if(in_array("nric", $methods)) {
+									echo "<tr id=\"mtdNRIC\"><td><h4>NRIC Verification</h4><div style=\"font-size: 12px; color: red;\">Status: Incomplete</div></td></tr>";
+								}
+								if(in_array("biometric", $methods)) {
+									echo "<tr id=\"mtdBiometric\"><td><h4>Biometric Verification</h4><div style=\"font-size: 12px; color: red;\">Status: Incomplete</div></td></tr>";
+								}
 							?>
 						</table>
 					</div>
@@ -84,7 +93,7 @@
 				<!-- Begin main detail view -->
 				<div class="col-md-9 col-xs-9 scrollable" style="border-left: 1px solid #CCCCCC;">
 					<!-- Begin Details panel -->
-					<div id="detailsPane">
+					<div class="detail-pane" id="SMSPane">
 					</div>
 				</div>
 			</div>
@@ -92,5 +101,8 @@
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		<script type="text/javascript">
+			$(".detail-pane").hide();
+		</script>
 	</body>
 </html>
