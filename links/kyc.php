@@ -43,7 +43,8 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-6 offset-md-3 text-center">
-					<img src="../uploads/company-<?php echo $company[CompanyConnector::$COLUMN_ID]; ?>" width="100%">
+					<!--<img src="../uploads/company-<?php echo $company[CompanyConnector::$COLUMN_ID]; ?>" width="100%">-->
+					<img src="http://via.placeholder.com/350x150" width="100%">
 					<br>
 					<h1 style="font-family: 'Ubuntu Bold', Arial, sans-serif">Welcome to <?php echo $company[CompanyConnector::$COLUMN_NAME]; ?>'s KYC Process</h1>
 					<br>
