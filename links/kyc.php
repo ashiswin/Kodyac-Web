@@ -40,7 +40,7 @@
 		</style>
 	</head>
 	<body>
-		<nav class="navbar navbar-toggleable-md">
+		<nav class="navbar navbar-toggleable-md" style="border-bottom: 1px solid #CCCCCC;">
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
