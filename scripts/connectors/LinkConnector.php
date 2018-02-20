@@ -21,7 +21,7 @@
 			$this->mysqli = $mysqli;
 
 			$this->createStatement = $mysqli->prepare("INSERT INTO " . LinkConnector::$TABLE_NAME . "(`" . LinkConnector::$COLUMN_COMPANYID . "`,`" . LinkConnector::$COLUMN_STATUS . "`,`" . LinkConnector::$COLUMN_APIKEY . "`) VALUES(?,?,?)");
-			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " INNER JOIN profiles ON links.id=profiles.linkId WHERE `" . LinkConnector::$COLUMN_ID . "` = ?");
+			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " INNER JOIN profiles ON links.id=profiles.linkId WHERE " . LinkConnector::$TABLE_NAME . "." . LinkConnector::$COLUMN_ID . " = ?");
 			$this->selectByCompanyStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " INNER JOIN profiles ON links.id=profiles.linkId WHERE `" . LinkConnector::$COLUMN_COMPANYID . "` = ?");
 			$this->selectByStatusStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " INNER JOIN profiles ON links.id=profiles.linkId WHERE `" . LinkConnector::$COLUMN_STATUS . "` = ?");
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " INNER JOIN profiles ON links.id=profiles.linkId");
