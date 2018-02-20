@@ -75,7 +75,7 @@
 								$methods = explode("|", $company[CompanyConnector::$COLUMN_METHODS]);
 								
 								if(in_array("sms", $methods)) {
-									echo "<tr id=\"mtdSMS\" class=\"bg-danger\" style=\"color: white;\"><td><h4>SMS Verification</h4><div style=\"font-size: 12px;\">Status: Incomplete</div></td></tr>";
+									echo "<tr id=\"mtdSMS\"><td><h4>SMS Verification</h4><div style=\"font-size: 12px; color: red;\">Status: Incomplete</div></td></tr>";
 								}
 							?>
 						</table>
