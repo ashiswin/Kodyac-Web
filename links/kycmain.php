@@ -68,8 +68,8 @@
 				<div class="ml-auto">
 					<div class="progress" style="width: 90vh; margin-top: 1vh;">
 						<div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+						0%
 					</div>
-					0%
 				</div>
 				<button class="ml-auto btn btn-success disabled" disabled="true">Complete</button>
 			</div>
