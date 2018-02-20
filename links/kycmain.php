@@ -66,7 +66,7 @@
 			<span style="font-family: 'Ubuntu', Arial, sans-serif">KodYaC</span></a>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<div class="progress ml-auto">
-					<div class="navbar navbar-text progress-bar" role="progressbar" style="width: 90vh;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="3">0 of 3</div>
+					<div class="navbar navbar-text progress-bar" role="progressbar" style="width: 90vh;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3">0 of 3</div>
 				</div>
 				<button class="ml-auto btn btn-success disabled" disabled="true">Complete</button>
 			</div>
