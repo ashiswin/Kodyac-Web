@@ -17,6 +17,7 @@
 	}
 	
 	$company = $CompanyConnector->select($link[LinkConnector::$COLUMN_COMPANYID]);
+	$methods = explode("|", $company[CompanyConnector::$COLUMN_METHODS]);
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +69,7 @@
 				<div class="ml-auto">
 					<div class="progress" style="width: 90vh; margin-top: 1vh;">
 						<div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-						<span id="percentage" style="margin-left: 1vh">0 out of 3</span>
+						<span id="percentage" style="margin-left: 1vh">0 out of <?php echo count($methods); ?></span>
 					</div>
 				</div>
 				<button class="ml-auto btn btn-success disabled" disabled="true">Complete</button>
@@ -81,8 +82,6 @@
 					<div class="scrollable">
 						<table class="table table-hover">
 							<?php
-								$methods = explode("|", $company[CompanyConnector::$COLUMN_METHODS]);
-								
 								if(in_array("sms", $methods)) {
 									echo "<tr id=\"mtdSMS\"><td><h4>SMS Verification</h4><div style=\"font-size: 12px; color: red;\">Status: Incomplete</div></td></tr>";
 								}
