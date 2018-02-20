@@ -31,11 +31,11 @@
 			}
 			@font-face {
 				font-family: "Martel";
-				src: url("font/martel-regular.otf") format("opentype");
+				src: url("../font/martel-regular.otf") format("opentype");
 			}
 			@font-face {
 				font-family: "Ubuntu Bold";
-				src: url("font/Ubuntu-B.ttf") format("truetype");
+				src: url("../font/Ubuntu-B.ttf") format("truetype");
 			}
 		</style>
 	</head>
@@ -46,7 +46,7 @@
 					<!--<img src="../uploads/company-<?php echo $company[CompanyConnector::$COLUMN_ID]; ?>" width="100%">-->
 					<img src="http://via.placeholder.com/350x150" width="100%">
 					<br>
-					<h1 style="font-family: 'Ubuntu Bold', Arial, sans-serif">Welcome to <?php echo $company[CompanyConnector::$COLUMN_NAME]; ?>'s KYC Process</h1>
+					<h1 style="font-family: 'Ubuntu Bold', Arial, sans-serif; margin-top: 2vh;">Welcome to <?php echo $company[CompanyConnector::$COLUMN_NAME]; ?>'s KYC Process</h1>
 					<br>
 					<button class="btn btn-primary" width="50%">Let's Begin!</button>
 				</div>
