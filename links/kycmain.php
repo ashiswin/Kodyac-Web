@@ -58,25 +58,12 @@
 	</head>
 	<body>
 		<!-- HTML file containing the navbar to reduce repetition of code -->
-		<nav class="navbar navbar-default">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="<?php echo $_SERVER['PHP_SELF']; ?>">KodYaC</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li id="navCreate"><a href="createevent.php">Create Event</a></li>
-					<li id="navManage"><a href="manageevents.php">Manage Events</a></li>
-					<li id="navUsers"><a href="users.php">Voters</a></li>
-					<li id="navAccount"><a href="account.php">Account</a></li>
-					<li id="navLogout"><a href="logout.php">Logout</a></li>
-				</ul>
-			</div>
+		<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand" href="<?php echo $_SERVER['PHP_SELF']; ?>"><img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+			<span style="font-family: 'Ubuntu', Arial, sans-serif">KodYaC</span></a>
 		</nav>
 		<div class="container-fluid"><!-- To get it to take up the whole width -->
 			<div class="row main-content">

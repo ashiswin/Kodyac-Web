@@ -40,16 +40,12 @@
 		</style>
 	</head>
 	<body>
-		<nav class="navbar navbar-default">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="<?php echo $_SERVER['PHP_SELF']; ?>">KodYaC</a>
-			</div>
+		<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand" href="<?php echo $_SERVER['PHP_SELF']; ?>"><img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+			<span style="font-family: 'Ubuntu', Arial, sans-serif">KodYaC</span></a>
 		</nav>
 		<div class="container-fluid">
 			<div class="row">
