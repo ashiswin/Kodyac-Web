@@ -37,6 +37,11 @@
 				font-family: "Ubuntu Bold";
 				src: url("font/Ubuntu-B.ttf") format("truetype");
 			}
+			@media (max-width: 992px) {
+				.container {
+					width: 100%;
+				}
+			}
 		</style>
 	</head>
 	<body>
