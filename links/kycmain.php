@@ -141,7 +141,6 @@
 								<select id="slcCountryCode" class="form-control"><?php echo file_get_contents('countrycodes.txt'); ?></select>
 								<input type="text" placeholder="Phone number" class="form-control" id="txtNumber" />
 								<button class="btn btn-primary" id="btnSendSMS">Send SMS</button>
-								<button class="btn btn-secondary" id="btnResendSMS">Resend SMS</button>
 							</div>
 						</form>
 						<br>
@@ -163,6 +162,7 @@
 			var linkId = <?php echo $_GET['id']; ?>;
 			var totalMethods = <?php echo count($methods); ?>;
 			var completionCount = <?php echo count($completedMethods); ?>;
+			var completedMethods = JSON.parse("<?php echo(json_encode($completedMethods)); ?>");
 			
 			// Change status of link to In Progress
 			$.post("../scripts/BeginKYC.php", { id: linkId }, function(data) {});
@@ -178,6 +178,11 @@
 			}
 			
 			notifyCompletion();
+			
+			if(completedMethods.includes("sms")) {
+				$("#btnVerifyOTP").addClass('btn-success').html("<i class=\"fas fa-check\"></i> Verified").addClass('disabled').attr("disabled", "disbled");
+				$("#btnSendSMS").addClass('disabled').attr("disabled", "disbled");
+			}
 			
 			$("#mtdSMS").click(function() {
 				$(".detail-pane").hide();
