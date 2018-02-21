@@ -123,8 +123,7 @@
 		
 		var links = JSON.parse("<?php echo addslashes(json_encode($links)); ?>");
 		var requestCount = new Array(days.length);
-		console.log(links);
-		console.log(date.getFullYear() + "-" + (date.getMonth() + 1));
+		
 		for(var i = 0; i < links.length; i++) {
 			var l = links[i];
 			if(l.createdOn.indexOf(date.getFullYear() + "-" + (date.getMonth() + 1)) != -1) {
@@ -139,7 +138,7 @@
 				}
 			}
 		}
-		
+		console.log(requestCount);
 		var color = Chart.helpers.color;
 		var config = {
 			type: 'line',
