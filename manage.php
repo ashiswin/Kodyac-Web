@@ -118,8 +118,26 @@
 			
 			return result;
 		}
-		var days = getDaysArray(2018, 2);
-		console.log(days);
+		var date = new Date();
+		var days = getDaysArray(date.getFullYear(), date.getMonth());
+		
+		var links = JSON.parse("<?php echo addslashes(json_encode($links)); ?>");
+		var requestCount = new Array(days.length);
+		
+		for(var i = 0; i < links.length; i++) {
+			var l = links[i];
+			if(l.createdOn.contains(date.getFullYear() + "-" + date.getMonth())) {
+				var date = l.split(" ")[0];
+				var day = parseInt(date[date.length - 2] + date[date.length - 1]) - 1;
+				
+				if(requestCount[day] == undefined) {
+					requestCount[day] = 1;
+				}
+				else {
+					requestCount[day]++;
+				}
+			}
+		}
 		
 		var color = Chart.helpers.color;
 		var config = {
@@ -127,15 +145,13 @@
 			data: {
 				labels: days,
 				datasets: [{
-					label: "My First dataset",
+					label: "KYC Requests",
 					backgroundColor: color("#ff0000").alpha(0.5).rgbString(),
 					borderColor: "#ff0000",
 					fill: false,
-					data: [
-						20,9,22,7,4,12
-					],
+					data: requestCount,
 				}, {
-					label: "My Second dataset",
+					label: "KYC Completions",
 					backgroundColor: color("#0000ff").alpha(0.5).rgbString(),
 					borderColor: "#0000ff",
 					fill: false,
