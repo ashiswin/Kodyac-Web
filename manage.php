@@ -127,6 +127,10 @@
 		for(var i = 0; i < links.length; i++) {
 			var l = links[i];
 			var d = l.createdOn.split(" ")[0];
+			console.log(parseInt(date[0] + date[1] + date[2] + date[3]));
+			console.log(date.getFullYear());
+			console.log(parseInt(date[5] + date[6]));
+			console.log(date.getMonth() + 1);
 			if(parseInt(date[0] + date[1] + date[2] + date[3]) == date.getFullYear() && parseInt(date[5] + date[6]) == date.getMonth() + 1) {
 				var day = parseInt(d[d.length - 2] + d[d.length - 1]) - 1;
 				
