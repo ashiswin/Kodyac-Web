@@ -126,7 +126,7 @@
 		
 		for(var i = 0; i < links.length; i++) {
 			var l = links[i];
-			if(l.createdOn.contains(date.getFullYear() + "-" + date.getMonth())) {
+			if(l.createdOn.indexOf(date.getFullYear() + "-" + date.getMonth()) != -1) {
 				var date = l.split(" ")[0];
 				var day = parseInt(date[date.length - 2] + date[date.length - 1]) - 1;
 				
