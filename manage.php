@@ -153,13 +153,13 @@
 					label: "KYC Requests",
 					backgroundColor: color("#ff0000").alpha(0.5).rgbString(),
 					borderColor: "#ff0000",
-					fill: false,
+					fill: "#ffcccc",
 					data: requestCount,
 				}, {
 					label: "KYC Completions",
 					backgroundColor: color("#0000ff").alpha(0.5).rgbString(),
 					borderColor: "#0000ff",
-					fill: false,
+					fill: "#ccccff",
 					data: completeCount,
 				}]
 			},
@@ -173,12 +173,12 @@
 				scales:{
 					xAxes: [{
 						gridLines: {
-							display:false
+							color: "#999999",
 						}
 					}],
 					yAxes: [{
 						gridLines: {
-							display:false
+							color: "#999999",
 						}   
 					}]
 				}
