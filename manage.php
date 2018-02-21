@@ -123,24 +123,17 @@
 		
 		var links = JSON.parse("<?php echo addslashes(json_encode($links)); ?>");
 		var requestCount = new Array(days.length);
+		for(var i = 0; i < days.length; i++) {
+			requestCount[i] = 0;
+		}
 		
 		for(var i = 0; i < links.length; i++) {
 			var l = links[i];
 			var d = l.createdOn.split(" ")[0];
-			console.log(parseInt(d[0] + d[1] + d[2] + d[3]));
-			console.log(date.getFullYear());
-			console.log(parseInt(d[5] + d[6]));
-			console.log(date.getMonth() + 1);
 			if(parseInt(d[0] + d[1] + d[2] + d[3]) == date.getFullYear() && parseInt(d[5] + d[6]) == date.getMonth() + 1) {
 				var day = parseInt(d[d.length - 2] + d[d.length - 1]) - 1;
 				
-				if(requestCount[day] == undefined) {
-					requestCount[day] = 1;
-				}
-				else {
-					requestCount[day]++;
-				}
-				console.log(requestCount[day]);
+				requestCount[day]++;
 			}
 		}
 		console.log(requestCount);
