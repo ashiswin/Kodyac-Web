@@ -25,6 +25,7 @@
 	<head>
 		<title><?php echo $company[CompanyConnector::$COLUMN_NAME]; ?>'s KYC Procedure</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 		<style type="text/css">
 			html, body {
 				margin: 0;
@@ -54,6 +55,18 @@
 			}
 			.center {
 				margin: auto;
+			}
+			.spinning {
+				animation: spin 1s infinite linear;
+				-webkit-animation: spin2 1s infinite linear;
+			}
+			@keyframes spin {
+				from { transform: scale(1) rotate(0deg); }
+				to { transform: scale(1) rotate(360deg); }
+			}
+			@-webkit-keyframes spin2 {
+				from { -webkit-transform: rotate(0deg); }
+				to { -webkit-transform: rotate(360deg); }
 			}
 		</style>
 	</head>
@@ -100,22 +113,22 @@
 					<!-- Begin Details panel -->
 					<div class="detail-pane" id="SMSPane">
 						<h1 style="margin-top: 2vh">SMS Verification</h1>
-							<form class="form form-inline">
-								<div class="form-group">
-									<select id="slcCountryCode" class="form-control"><?php echo file_get_contents('countrycodes.txt'); ?></select>
-									<input type="text" placeholder="Phone number" class="form-control" id="txtNumber" />
-									<button class="btn btn-primary" id="btnSendSMS">Send SMS</button>
-									<button class="btn btn-secondary" id="btnResendSMS">Resend SMS</button>
-								</div>
-							</form>
-							<br>
-							<form class="form form-inline">
-								<div class="form-group">
-									<input type="text" placeholder="One-Time Pass" class="form-control" id="txtOTP" />
-									<button class="btn btn-primary" id="btnVerifyOTP">Verify OTP</button>
-								</div>
-							</form>
 						<br>
+						<form class="form form-inline">
+							<div class="form-group">
+								<select id="slcCountryCode" class="form-control"><?php echo file_get_contents('countrycodes.txt'); ?></select>
+								<input type="text" placeholder="Phone number" class="form-control" id="txtNumber" />
+								<button class="btn btn-primary" id="btnSendSMS">Send SMS</button>
+								<button class="btn btn-secondary" id="btnResendSMS">Resend SMS</button>
+							</div>
+						</form>
+						<br>
+						<form class="form form-inline">
+							<div class="form-group">
+								<input type="text" placeholder="One-Time Pass" class="form-control" id="txtOTP" />
+								<button class="btn btn-primary" id="btnVerifyOTP">Verify OTP</button>
+							</div>
+						</form>
 						
 					</div>
 				</div>
@@ -125,14 +138,41 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		<script type="text/javascript">
+			var linkId = <?php echo $_GET['id']; ?>;
+			
 			$("#mtdSMS").click(function() {
 				$(".detail-pane").hide();
 				
 				$("#SMSPane").show();
 				$(this).addClass("bg-info");
 			});
-			
 			$("#mtdSMS").trigger('click');
+			
+			$("#btnSendSMS").click(function(e) {
+				e.preventDefault();
+				
+				var number = $("#txtNumber").val();
+				if(!number || number.length == 0) {
+					$("#txtNumber")[0].setCustomValidity("Please enter your mobile phone number");
+		                	$("#txtNumber")[0].reportValidity();
+					
+					return;
+				}
+				
+				var fullNumber = "+" + $("#slcCountryCode").val() + number;
+				$("#btnSendSMS").html("<i class=\"fas fa-sync-alt spinning\"></i> Sending").addClass('disabled').attr("disabled", "disbled");
+				$.post("../scripts/SendSMSOTP.php", { number: fullNumber, linkId: linkId }, function(data) {
+					response = JSON.parse(data);
+					if(response.success) {
+						$("#btnSendSMS").removeClass('disabled').removeAttr('disabled').addClass('btn-success').html("<i class=\"fas fa-sync-tick\"></i> Sent");
+					}
+					else {
+						$("#btnSendSMS").removeClass('disabled').removeAttr('disabled').addClass('btn-danger').html("<i class=\"fas fa-sync-times\"></i> Send Failed");
+					}
+					setTimeout(function(){
+						$("#btnSendSMS").removeClass('btn-danger').removeClass('btn-success').addClass('btn-primary')
+					}, 2000);
+				});
 		</script>
 	</body>
 </html>
