@@ -18,7 +18,7 @@
 	
 	$methods = "";
 	
-	if(!in_array($method, $methods)) {
+	if(strpos($methods, $method) !== false) {
 		if($link[LinkConnector::$COLUMN_COMPLETEDMETHODS] == null || strlen($link[LinkConnector::$COLUMN_COMPLETEDMETHODS]) == 0) {
 			$methods = $method;
 		}
