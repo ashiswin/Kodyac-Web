@@ -18,6 +18,7 @@
 	
 	$company = $CompanyConnector->select($link[LinkConnector::$COLUMN_COMPANYID]);
 	$methods = explode("|", $company[CompanyConnector::$COLUMN_METHODS]);
+	$completedMethods = explode("|", $link[LinkConnector::$COLUMN_COMPLETEDMETHODS]);
 ?>
 
 <!DOCTYPE html>
@@ -96,13 +97,34 @@
 						<table class="table table-hover">
 							<?php
 								if(in_array("sms", $methods)) {
-									echo "<tr id=\"mtdSMS\"><td><h4>SMS Verification</h4><div style=\"font-size: 12px;\">Status: <span id=\"mtdSMSStatus\" style=\"color: red\">Incomplete</span></div></td></tr>";
+									echo "<tr id=\"mtdSMS\"><td><h4>SMS Verification</h4><div style=\"font-size: 12px;\">Status: "
+									if(in_array("sms", $completedMethods)) {
+										echo "<span id=\"mtdSMSStatus\" style=\"color: green\">Complete</span></div>";
+									}
+									else {
+										echo "<span id=\"mtdSMSStatus\" style=\"color: red\">Incomplete</span></div>";
+									}
+									echo "</td></tr>";
 								}
 								if(in_array("nric", $methods)) {
-									echo "<tr id=\"mtdNRIC\"><td><h4>NRIC Verification</h4><div style=\"font-size: 12px; color: red;\">Status: Incomplete</div></td></tr>";
+									echo "<tr id=\"mtdNRIC\"><td><h4>NRIC Verification</h4><div style=\"font-size: 12px; color: red;\">Status: "
+									if(in_array("sms", $completedMethods)) {
+										echo "<span id=\"mtdNRICStatus\" style=\"color: green\">Complete</span></div>";
+									}
+									else {
+										echo "<span id=\"mtdNRICStatus\" style=\"color: red\">Incomplete</span></div>";
+									}
+									echo "</td></tr>";
 								}
 								if(in_array("biometric", $methods)) {
-									echo "<tr id=\"mtdBiometric\"><td><h4>Biometric Verification</h4><div style=\"font-size: 12px; color: red;\">Status: Incomplete</div></td></tr>";
+									echo "<tr id=\"mtdBiometric\"><td><h4>Biometric Verification</h4><div style=\"font-size: 12px; color: red;\">Status: "
+									if(in_array("sms", $completedMethods)) {
+										echo "<span id=\"mtdBiometricStatus\" style=\"color: green\">Complete</span></div>";
+									}
+									else {
+										echo "<span id=\"mtdBiometricStatus\" style=\"color: red\">Incomplete</span></div>";
+									}
+									echo "</td></tr>";
 								}
 							?>
 						</table>
@@ -140,7 +162,7 @@
 		<script type="text/javascript">
 			var linkId = <?php echo $_GET['id']; ?>;
 			var totalMethods = <?php echo count($methods); ?>;
-			var completionCount = 0;
+			var completionCount = <?php echo count($completedMethods); ?>;
 			
 			// Change status of link to In Progress
 			$.post("../scripts/BeginKYC.php", { id: linkId }, function(data) {});
