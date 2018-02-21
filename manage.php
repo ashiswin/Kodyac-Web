@@ -92,11 +92,6 @@
 					<canvas id="chrtKYCInMonth" height="75vh"></canvas>
 				</div>
 			</div>
-			<div class="row" style="margin: 1vh">
-				<div class="col-md-6 offset-md-3">
-					<canvas id="chrtStatuses" width="100%"></canvas>
-				</div>
-			</div>
 		</div>
 	</body>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
