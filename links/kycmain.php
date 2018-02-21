@@ -19,7 +19,9 @@
 	$company = $CompanyConnector->select($link[LinkConnector::$COLUMN_COMPANYID]);
 	$methods = explode("|", $company[CompanyConnector::$COLUMN_METHODS]);
 	$completedMethods = explode("|", $link[LinkConnector::$COLUMN_COMPLETEDMETHODS]);
-	var_dump($completedMethods);
+	if(strcmp($completedMethods[0], "") == 0) {
+		unset($completedMethods[0]);
+	}
 ?>
 
 <!DOCTYPE html>
