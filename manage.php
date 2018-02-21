@@ -89,9 +89,7 @@
 				<div class="col-md-12 chart-card" style="padding: 1vh">
 					<h3>Monthly Statistics</h3>
 					<hr>
-					<div class="col-md-10">
-						<canvas id="chrtKYCInMonth" height="75vh"></canvas>
-					</div>
+					<canvas id="chrtKYCInMonth" height="75vh"></canvas>
 				</div>
 			</div>
 			<div class="row" style="margin: 1vh">
@@ -149,6 +147,9 @@
 			options: {
 				title:{
 				    text: "Chart.js Time Scale"
+				}
+				legend:{
+					position: 'right'
 				}
 			}
 				
