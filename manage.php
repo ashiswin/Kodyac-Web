@@ -126,6 +126,8 @@
 		
 		for(var i = 0; i < links.length; i++) {
 			var l = links[i];
+			console.log(l.createdOn);
+			console.log(l.createdOn.indexOf(date.getFullYear() + "-" + (date.getMonth() + 1)));
 			if(l.createdOn.indexOf(date.getFullYear() + "-" + (date.getMonth() + 1)) != -1) {
 				var date = l.split(" ")[0];
 				var day = parseInt(date[date.length - 2] + date[date.length - 1]) - 1;
@@ -136,6 +138,7 @@
 				else {
 					requestCount[day]++;
 				}
+				console.log(requestCount[day]);
 			}
 		}
 		console.log(requestCount);
