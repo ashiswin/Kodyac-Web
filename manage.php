@@ -119,7 +119,7 @@
 			return result;
 		}
 		var date = new Date();
-		var days = getDaysArray(date.getFullYear(), date.getMonth());
+		var days = getDaysArray(date.getFullYear(), date.getMonth() + 1);
 		
 		var links = JSON.parse("<?php echo addslashes(json_encode($links)); ?>");
 		var requestCount = new Array(days.length);
