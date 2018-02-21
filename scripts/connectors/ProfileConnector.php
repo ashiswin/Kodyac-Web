@@ -29,6 +29,7 @@
 			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . ProfileConnector::$TABLE_NAME . " WHERE `" . ProfileConnector::$COLUMN_ID . "` = ?");
 			$this->selectByLinkStatement = $mysqli->prepare("SELECT * FROM " . ProfileConnector::$TABLE_NAME . " WHERE `" . ProfileConnector::$COLUMN_LINKID . "` = ?");
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . ProfileConnector::$TABLE_NAME);
+			$this->updateContactStatement = $mysqli->prepare("UPDATE " . ProfileConnector::$TABLE_NAME . " SET `" . ProfileConnector::$COLUMN_CONTACT . "` = ? WHERE `" . ProfileConnector::$COLUMN_LINKID . "` = ?");
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . ProfileConnector::$TABLE_NAME . " WHERE `" . ProfileConnector::$COLUMN_ID . "` = ?");
 		}
 
@@ -68,7 +69,12 @@
 			$resultArray = $result->fetch_all(MYSQLI_ASSOC);
 			return $resultArray;
 		}
-
+		
+		public function updateContact($linkId, $number) {
+			$this->updateContacStatement->bind_param("si", $number, $linkId);
+			return $this->updateContacStatement->execute();
+		}
+		
 		public function delete($id) {
 			$this->deleteStatement->bind_param("i", $id);
 			if(!$this->deleteStatement->execute()) return false;

@@ -1,11 +1,14 @@
 <?php
 	include "utils/database.php";
 	include "connectors/OTPConnector.php";
+	include "connectors/ProfileConnector.php";
 	
 	$otpString = $_POST['otp'];
 	$linkid = $_POST['linkId'];
 	
 	$OTPConnector = new OTPConnector($conn);
+	$ProfileConnector = new ProfileConnector($conn);
+	
 	$otp = $OTPConnector->select($otpString);
 	
 	$dbdate = strtotime($otp[OTPConnector::$COLUMN_CREATEDON]);
@@ -19,7 +22,10 @@
 	}
 	else if($linkid == $otp[OTPConnector::$COLUMN_LINKID]) {
 		$response["success"] = true;
+		$response["number"] = $otp[OTPConnector::$COLUMN_NUMBER]);
+		
 		$OTPConnector->setUsed($otpString);
+		$ProfileConnector->updateContact($otp[OTPConnector::$COLUMN_NUMBER]);
 	}
 	else {
 		$response["success"] = false;

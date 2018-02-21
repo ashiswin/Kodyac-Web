@@ -22,7 +22,7 @@
 	$result = $smsGateway->sendMessageToNumber($number, $message, $deviceID, $options);
 	
 	$OTPConnector = new OTPConnector($conn);
-	$OTPConnector->create($linkid, $otp);
+	$OTPConnector->create($linkid, $otp, $number);
 	
 	$response["success"] = true;
 	

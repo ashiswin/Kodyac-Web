@@ -6,6 +6,7 @@
 		public static $COLUMN_ID = "id";
 		public static $COLUMN_LINKID = "linkId";
 		public static $COLUMN_OTP = "otp";
+		public static $COLUMN_NUMBER = "number";
 		public static $COLUMN_CREATEDON = "createdOn";
 		public static $COLUMN_USED = "used";
 
@@ -21,14 +22,14 @@
 
 			$this->mysqli = $mysqli;
 
-			$this->createStatement = $mysqli->prepare("INSERT INTO " . OTPConnector::$TABLE_NAME . "(`" . OTPConnector::$COLUMN_LINKID . "`,`" . OTPConnector::$COLUMN_OTP . "`) VALUES(?,?)");
+			$this->createStatement = $mysqli->prepare("INSERT INTO " . OTPConnector::$TABLE_NAME . "(`" . OTPConnector::$COLUMN_LINKID . "`,`" . OTPConnector::$COLUMN_OTP . "`,`" . OTPConnector::$COLUMN_NUMBER . "`) VALUES(?,?,?)");
 			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . OTPConnector::$TABLE_NAME . " WHERE `" . OTPConnector::$COLUMN_OTP . "` = ?");
 			$this->updateStatement = $mysqli->prepare("UPDATE " . OTPConnector::$TABLE_NAME . " SET `" . OTPConnector::$COLUMN_USED . "` = \"1\" WHERE `" . OTPConnector::$COLUMN_OTP . "` = ?");
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . OTPConnector::$TABLE_NAME . " WHERE `" . OTPConnector::$COLUMN_ID . "` = ?");
 		}
 
-		public function create($linkId, $otp) {
-			$this->createStatement->bind_param("is", $linkId, $otp);
+		public function create($linkId, $otp, $number) {
+			$this->createStatement->bind_param("iss", $linkId, $otp, $number);
 			return $this->createStatement->execute();
 		}
 

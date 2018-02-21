@@ -168,7 +168,8 @@
 			var linkId = <?php echo $_GET['id']; ?>;
 			var totalMethods = <?php echo count($methods); ?>;
 			var completionCount = <?php echo count($completedMethods); ?>;
-			var completedMethods = JSON.parse("<?php echo(addslashes(json_encode($completedMethods))); ?>");
+			var link = JSON.parse("<?php echo(addslashes(json_encode($link))); ?>");
+			var completedMethods = link.completedMethods;
 			
 			// Change status of link to In Progress
 			$.post("../scripts/BeginKYC.php", { id: linkId }, function(data) {});
@@ -190,6 +191,7 @@
 				$("#btnSendSMS").addClass('disabled').attr("disabled", "disbled");
 				$("#txtNumber").addClass('disabled').attr("disabled", "disbled");
 				$("#txtOTP").addClass('disabled').attr("disabled", "disbled");
+				$("#txtNumber").val(link.contact);
 			}
 			
 			$("#mtdSMS").click(function() {
