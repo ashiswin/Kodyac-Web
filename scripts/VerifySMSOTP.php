@@ -22,7 +22,7 @@
 	}
 	else if($linkid == $otp[OTPConnector::$COLUMN_LINKID]) {
 		$response["success"] = true;
-		$response["number"] = $otp[OTPConnector::$COLUMN_NUMBER]);
+		$response["number"] = $otp[OTPConnector::$COLUMN_NUMBER];
 		
 		$OTPConnector->setUsed($otpString);
 		$ProfileConnector->updateContact($otp[OTPConnector::$COLUMN_NUMBER]);
