@@ -96,7 +96,7 @@
 						<table class="table table-hover">
 							<?php
 								if(in_array("sms", $methods)) {
-									echo "<tr id=\"mtdSMS\"><td><h4>SMS Verification</h4><div style=\"font-size: 12px; color: red;\">Status: Incomplete</div></td></tr>";
+									echo "<tr id=\"mtdSMS\"><td><h4>SMS Verification</h4><div style=\"font-size: 12px;\">Status: <span id=\"mtdSMSStatus\" style=\"color: red\">Incomplete</span></div></td></tr>";
 								}
 								if(in_array("nric", $methods)) {
 									echo "<tr id=\"mtdNRIC\"><td><h4>NRIC Verification</h4><div style=\"font-size: 12px; color: red;\">Status: Incomplete</div></td></tr>";
@@ -205,6 +205,7 @@
 					response = JSON.parse(data);
 					if(response.success) {
 						$("#btnVerifyOTP").addClass('btn-success').html("<i class=\"fas fa-check\"></i> Verified");
+						$("#mtdSMSStatus").css('color', 'green').html("Complete");
 						completionCount++;
 						notifyCompletion();
 					}
