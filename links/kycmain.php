@@ -188,7 +188,6 @@
 				
 				if(completedMethods != null && completedMethods.includes("sms")) {
 					smsVerified();
-					$("#txtNumber").val(link.contact);
 				}
 			}
 			
@@ -202,6 +201,9 @@
 			
 			notifyCompletion();
 			
+			if(completedMethods != null && completedMethods.includes("sms")) {
+				$("#txtNumber").val(link.contact);
+			}
 			$("#mtdSMS").click(function() {
 				$(".detail-pane").hide();
 				$(".method-items").removeClass("bg-info");
