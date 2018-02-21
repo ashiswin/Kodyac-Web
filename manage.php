@@ -126,11 +126,9 @@
 		
 		for(var i = 0; i < links.length; i++) {
 			var l = links[i];
-			console.log(l.createdOn);
-			console.log(l.createdOn.indexOf(date.getFullYear() + "-" + (date.getMonth() + 1)));
-			if(l.createdOn.indexOf(date.getFullYear() + "-" + (date.getMonth() + 1)) != -1) {
-				var date = l.split(" ")[0];
-				var day = parseInt(date[date.length - 2] + date[date.length - 1]) - 1;
+			var d = l.createdOn.split(" ")[0];
+			if(parseInt(date[0] + date[1] + date[2] + date[3]) == date.getFullYear() && parseInt(date[5] + date[6]) == date.getMonth() + 1) {
+				var day = parseInt(d[d.length - 2] + d[d.length - 1]) - 1;
 				
 				if(requestCount[day] == undefined) {
 					requestCount[day] = 1;
