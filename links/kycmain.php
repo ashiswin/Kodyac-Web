@@ -107,8 +107,8 @@
 									echo "</td></tr>";
 								}
 								if(in_array("nric", $methods)) {
-									echo "<tr id=\"mtdNRIC\"><td><h4>NRIC Verification</h4><div style=\"font-size: 12px; color: red;\">Status: ";
-									if(in_array("sms", $completedMethods)) {
+									echo "<tr id=\"mtdNRIC\"><td><h4>NRIC Verification</h4><div style=\"font-size: 12px;\">Status: ";
+									if(in_array("nric", $completedMethods)) {
 										echo "<span id=\"mtdNRICStatus\" style=\"color: green\">Complete</span></div>";
 									}
 									else {
@@ -117,8 +117,8 @@
 									echo "</td></tr>";
 								}
 								if(in_array("biometric", $methods)) {
-									echo "<tr id=\"mtdBiometric\"><td><h4>Biometric Verification</h4><div style=\"font-size: 12px; color: red;\">Status: ";
-									if(in_array("sms", $completedMethods)) {
+									echo "<tr id=\"mtdBiometric\"><td><h4>Biometric Verification</h4><div style=\"font-size: 12px\">Status: ";
+									if(in_array("biometric", $completedMethods)) {
 										echo "<span id=\"mtdBiometricStatus\" style=\"color: green\">Complete</span></div>";
 									}
 									else {
