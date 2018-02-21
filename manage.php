@@ -123,8 +123,11 @@
 		
 		var links = JSON.parse("<?php echo addslashes(json_encode($links)); ?>");
 		var requestCount = new Array(days.length);
+		var completeCount = new Array(days.length);
+		
 		for(var i = 0; i < days.length; i++) {
 			requestCount[i] = 0;
+			completeCount[i] = 0;
 		}
 		
 		for(var i = 0; i < links.length; i++) {
@@ -134,6 +137,10 @@
 				var day = parseInt(d[d.length - 2] + d[d.length - 1]) - 1;
 				
 				requestCount[day]++;
+				
+				if(l.status == "completed") {
+					completeCount[day]++;
+				}
 			}
 		}
 		console.log(requestCount);
@@ -153,9 +160,7 @@
 					backgroundColor: color("#0000ff").alpha(0.5).rgbString(),
 					borderColor: "#0000ff",
 					fill: false,
-					data: [
-						2,8,20,6,4,12
-					],
+					data: completeCount,
 				}]
 			},
 			options: {
