@@ -210,7 +210,7 @@
 				$(".detail-pane").hide();
 				$(".method-items").removeClass("bg-info");
 				
-				$("#SMSBiometric").show();
+				$("#BiometricPane").show();
 				$(this).addClass("bg-info");
 			});
 			$("#mtdSMS").trigger('click');
