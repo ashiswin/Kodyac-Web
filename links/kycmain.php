@@ -97,7 +97,7 @@
 						<table class="table table-hover">
 							<?php
 								if(in_array("sms", $methods)) {
-									echo "<tr id=\"mtdSMS\"><td><h4>SMS Verification</h4><div style=\"font-size: 12px;\">Status: "
+									echo "<tr id=\"mtdSMS\"><td><h4>SMS Verification</h4><div style=\"font-size: 12px;\">Status: ";
 									if(in_array("sms", $completedMethods)) {
 										echo "<span id=\"mtdSMSStatus\" style=\"color: green\">Complete</span></div>";
 									}
@@ -107,7 +107,7 @@
 									echo "</td></tr>";
 								}
 								if(in_array("nric", $methods)) {
-									echo "<tr id=\"mtdNRIC\"><td><h4>NRIC Verification</h4><div style=\"font-size: 12px; color: red;\">Status: "
+									echo "<tr id=\"mtdNRIC\"><td><h4>NRIC Verification</h4><div style=\"font-size: 12px; color: red;\">Status: ";
 									if(in_array("sms", $completedMethods)) {
 										echo "<span id=\"mtdNRICStatus\" style=\"color: green\">Complete</span></div>";
 									}
@@ -117,7 +117,7 @@
 									echo "</td></tr>";
 								}
 								if(in_array("biometric", $methods)) {
-									echo "<tr id=\"mtdBiometric\"><td><h4>Biometric Verification</h4><div style=\"font-size: 12px; color: red;\">Status: "
+									echo "<tr id=\"mtdBiometric\"><td><h4>Biometric Verification</h4><div style=\"font-size: 12px; color: red;\">Status: ";
 									if(in_array("sms", $completedMethods)) {
 										echo "<span id=\"mtdBiometricStatus\" style=\"color: green\">Complete</span></div>";
 									}
