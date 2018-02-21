@@ -16,8 +16,19 @@
 	$LinkConnector = new LinkConnector($conn);
 	
 	$company = $CompanyConnector->select($_SESSION['companyId']);
-	$noRequested = count($LinkConnector->selectByCompany($_SESSION['companyId']));
-	$noCompleted = count($LinkConnector->selectByStatus("completed"));
+	$links = $LinkConnector->selectByCompany($_SESSION['companyId']);
+	$noRequested = count($links);
+	$noCompleted = 0;
+	$noInProgress = 0;
+	
+	for($i = 0; $i < count($links); $i++) {
+		if(strcmp($links[$i][LinkConnector::$COLUMN_STATUS], "inprogress") == 0) {
+			$noInProgress++;
+		}
+		else if(strcmp($links[$i][LinkConnector::$COLUMN_STATUS], "completed") == 0) {
+			$noCompleted++;
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,22 +67,22 @@
 				<div class="col-md-3">
 					Links Generated
 					<br>
-					<h1>1024</h1>
+					<h1><?php echo $noRequested; ?></h1>
 				</div>
 				<div class="col-md-3">
 					In Progress
 					<br>
-					<h1>94</h1>
+					<h1><?php echo $noInProgress; ?></h1>
 				</div>
 				<div class="col-md-3">
 					Completed
 					<br>
-					<h1>109</h1>
+					<h1><?php echo $noCompleted; ?></h1>
 				</div>
 				<div class="col-md-3">
 					Outstanding
 					<br>
-					<h1>200</h1>
+					<h1><?php echo ($noRequested - $noCompleted); ?></h1>
 				</div>
 			</div>
 			<div class="row" style="margin: 1vh">
