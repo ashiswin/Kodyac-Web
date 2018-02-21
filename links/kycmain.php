@@ -162,7 +162,7 @@
 			var linkId = <?php echo $_GET['id']; ?>;
 			var totalMethods = <?php echo count($methods); ?>;
 			var completionCount = <?php echo count($completedMethods); ?>;
-			var completedMethods = JSON.parse("<?php echo(json_encode($completedMethods)); ?>");
+			var completedMethods = JSON.parse("<?php echo(addslashes(json_encode($completedMethods))); ?>");
 			
 			// Change status of link to In Progress
 			$.post("../scripts/BeginKYC.php", { id: linkId }, function(data) {});
