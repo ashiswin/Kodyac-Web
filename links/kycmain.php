@@ -194,6 +194,7 @@
 				$("#btnSendSMS").addClass('disabled').attr("disabled", "disbled");
 				$("#txtNumber").addClass('disabled').attr("disabled", "disbled");
 				$("#txtOTP").addClass('disabled').attr("disabled", "disbled");
+				$("#slcCountryCode").hide();
 				$("#txtNumber").val(link.contact);
 			}
 			
@@ -242,7 +243,7 @@
 						$("#btnSendSMS").removeClass('disabled').removeAttr('disabled').addClass('btn-danger').html("<i class=\"fas fa-times\"></i> Send Failed");
 					}
 					setTimeout(function(){
-						$("#btnSendSMS").removeClass('btn-danger').removeClass('btn-success').addClass('btn-primary').html("Send");
+						$("#btnSendSMS").removeClass('btn-danger').removeClass('btn-success').addClass('btn-primary').html("Send SMS");
 					}, 2000);
 				});
 			});
