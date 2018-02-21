@@ -185,18 +185,22 @@
 				if(totalMethods == completionCount) {
 					$("#btnCompleted").removeAttr('disabled');
 				}
+				
+				if(completedMethods != null && completedMethods.includes("sms")) {
+					smsVerified();
+					$("#txtNumber").val(link.contact);
+				}
 			}
 			
-			notifyCompletion();
-			
-			if(completedMethods != null && completedMethods.includes("sms")) {
+			function smsVerified() {
 				$("#btnVerifyOTP").addClass('btn-success').html("<i class=\"fas fa-check\"></i> Verified").addClass('disabled').attr("disabled", "disbled");
 				$("#btnSendSMS").addClass('disabled').attr("disabled", "disbled");
 				$("#txtNumber").addClass('disabled').attr("disabled", "disbled");
 				$("#txtOTP").addClass('disabled').attr("disabled", "disbled");
 				$("#slcCountryCode").hide();
-				$("#txtNumber").val(link.contact);
 			}
+			
+			notifyCompletion();
 			
 			$("#mtdSMS").click(function() {
 				$(".detail-pane").hide();
