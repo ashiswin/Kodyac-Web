@@ -97,7 +97,7 @@
 						<table class="table table-hover">
 							<?php
 								if(in_array("sms", $methods)) {
-									echo "<tr id=\"mtdSMS\"><td><h4>SMS Verification</h4><div style=\"font-size: 12px;\">Status: ";
+									echo "<tr id=\"mtdSMS\" class=\"method-items\"><td><h4>SMS Verification</h4><div style=\"font-size: 12px;\">Status: ";
 									if(in_array("sms", $completedMethods)) {
 										echo "<span id=\"mtdSMSStatus\" style=\"color: green\">Complete</span></div>";
 									}
@@ -107,7 +107,7 @@
 									echo "</td></tr>";
 								}
 								if(in_array("nric", $methods)) {
-									echo "<tr id=\"mtdNRIC\"><td><h4>NRIC Verification</h4><div style=\"font-size: 12px;\">Status: ";
+									echo "<tr id=\"mtdNRIC\" class=\"method-items\"><td><h4>NRIC Verification</h4><div style=\"font-size: 12px;\">Status: ";
 									if(in_array("nric", $completedMethods)) {
 										echo "<span id=\"mtdNRICStatus\" style=\"color: green\">Complete</span></div>";
 									}
@@ -117,7 +117,7 @@
 									echo "</td></tr>";
 								}
 								if(in_array("biometric", $methods)) {
-									echo "<tr id=\"mtdBiometric\"><td><h4>Biometric Verification</h4><div style=\"font-size: 12px\">Status: ";
+									echo "<tr id=\"mtdBiometric\" class=\"method-items\"><td><h4>Biometric Verification</h4><div style=\"font-size: 12px\">Status: ";
 									if(in_array("biometric", $completedMethods)) {
 										echo "<span id=\"mtdBiometricStatus\" style=\"color: green\">Complete</span></div>";
 									}
@@ -152,6 +152,12 @@
 						</form>
 						
 					</div>
+					<div class="detail-pane" id="NRICPane">
+						<h1 style="margin-top: 2vh">NRIC Verification</h1>
+					</div>
+					<div class="detail-pane" id="BiometricPane">
+						<h1 style="margin-top: 2vh">Biometric Verification</h1>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -182,12 +188,29 @@
 			if(completedMethods.includes("sms")) {
 				$("#btnVerifyOTP").addClass('btn-success').html("<i class=\"fas fa-check\"></i> Verified").addClass('disabled').attr("disabled", "disbled");
 				$("#btnSendSMS").addClass('disabled').attr("disabled", "disbled");
+				$("#txtNumber").addClass('disabled').attr("disabled", "disbled");
+				$("#txtOTP").addClass('disabled').attr("disabled", "disbled");
 			}
 			
 			$("#mtdSMS").click(function() {
 				$(".detail-pane").hide();
+				$(".method-items").removeClass("bg-info");
 				
 				$("#SMSPane").show();
+				$(this).addClass("bg-info");
+			});
+			$("#mtdNRIC").click(function() {
+				$(".detail-pane").hide();
+				$(".method-items").removeClass("bg-info");
+				
+				$("#NRICPane").show();
+				$(this).addClass("bg-info");
+			});
+			$("#mtdBiometric").click(function() {
+				$(".detail-pane").hide();
+				$(".method-items").removeClass("bg-info");
+				
+				$("#SMSBiometric").show();
 				$(this).addClass("bg-info");
 			});
 			$("#mtdSMS").trigger('click');
