@@ -69,17 +69,17 @@
 					<br>
 					<h1><?php echo $noRequested; ?></h1>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-3" style="border-left: 1px solid #CCCCCC;">
 					In Progress
 					<br>
 					<h1><?php echo $noInProgress; ?></h1>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-3" style="border-left: 1px solid #CCCCCC;">
 					Completed
 					<br>
 					<h1><?php echo $noCompleted; ?></h1>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-3" style="border-left: 1px solid #CCCCCC;">
 					Outstanding
 					<br>
 					<h1><?php echo ($noRequested - $noCompleted); ?></h1>
