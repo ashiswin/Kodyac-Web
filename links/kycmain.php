@@ -274,7 +274,12 @@
 							$("#btnVerifyOTP").addClass('btn-success').html("<i class=\"fas fa-check\"></i> Verified");
 							$("#mtdSMSStatus").css('color', 'green').html("Complete");
 							completionCount++;
-							completedMethods.push("sms");
+							if(completedMethods == null) {
+								completedMethods = ["sms"];
+							}
+							else {
+								completedMethods.push("sms");
+							}
 							notifyCompletion();
 						});
 					}
