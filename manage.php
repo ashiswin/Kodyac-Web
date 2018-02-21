@@ -147,7 +147,7 @@
 			options: {
 				title:{
 				    text: "Chart.js Time Scale"
-				}
+				},
 				legend:{
 					position: 'right'
 				}
