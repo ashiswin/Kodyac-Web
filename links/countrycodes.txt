@@ -1,4 +1,4 @@
-<option data-countryCode="SG" value="65" Selected>SG (+65)</option>
+<option data-countryCode="SG" value="65" Selected>Singapore (+65)</option>
 	<option data-countryCode="US" value="1">USA (+1)</option>
 	<optgroup label="Other countries">
 		<option data-countryCode="DZ" value="213">Algeria (+213)</option>
