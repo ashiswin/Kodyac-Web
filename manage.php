@@ -119,11 +119,12 @@
 			return result;
 		}
 		var date = new Date();
-		var days = getDaysArray(date.getFullYear(), date.getMonth() + 1);
+		var days = getDaysArray(date.getFullYear(), date.getMonth());
 		
 		var links = JSON.parse("<?php echo addslashes(json_encode($links)); ?>");
 		var requestCount = new Array(days.length);
-		
+		console.log(links);
+		console.log(date.getFullYear() + "-" + (date.getMonth() + 1));
 		for(var i = 0; i < links.length; i++) {
 			var l = links[i];
 			if(l.createdOn.indexOf(date.getFullYear() + "-" + (date.getMonth() + 1)) != -1) {
