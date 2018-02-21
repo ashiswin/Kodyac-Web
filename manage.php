@@ -173,12 +173,12 @@
 				scales:{
 					xAxes: [{
 						gridLines: {
-							color: "#CCCCCC",
+							color: "#EEEEEE",
 						}
 					}],
 					yAxes: [{
 						gridLines: {
-							color: "#CCCCCC",
+							color: "#EEEEEE",
 						}   
 					}]
 				}
