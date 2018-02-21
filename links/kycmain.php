@@ -164,14 +164,43 @@
 				$.post("../scripts/SendSMSOTP.php", { number: fullNumber, linkId: linkId }, function(data) {
 					response = JSON.parse(data);
 					if(response.success) {
-						$("#btnSendSMS").removeClass('disabled').removeAttr('disabled').addClass('btn-success').html("<i class=\"fas fa-tick\"></i> Sent");
+						$("#btnSendSMS").removeClass('disabled').removeAttr('disabled').addClass('btn-success').html("<i class=\"fas fa-check\"></i> Sent");
 					}
 					else {
-						$("#btnSendSMS").removeClass('disabled').removeAttr('disabled').addClass('btn-danger').html("<i class=\"fas fa-sync-times\"></i> Send Failed");
+						$("#btnSendSMS").removeClass('disabled').removeAttr('disabled').addClass('btn-danger').html("<i class=\"fas fa-times\"></i> Send Failed");
 					}
 					setTimeout(function(){
 						$("#btnSendSMS").removeClass('btn-danger').removeClass('btn-success').addClass('btn-primary').html("Send");
 					}, 2000);
+				});
+			});
+			
+			$("#btnVerifyOTP").click(function(e) {
+				e.preventDefault();
+				
+				var otp = $("#txtOTP").val();
+				if(!otp || otp.length == 0) {
+					$("#txtOTP")[0].setCustomValidity("Please enter the OTP you received");
+		                	$("#txtOTP")[0].reportValidity();
+					
+					return;
+				}
+				
+				$("#btnVerifyOTP").html("<i class=\"fas fa-sync-alt spinning\"></i> Verifying").addClass('disabled').attr("disabled", "disbled");
+				$.post("../scripts/VerifySMSOTP.php", { otp: otp, linkId: linkId }, function(data) {
+					response = JSON.parse(data);
+					if(response.success) {
+						$("#btnVerifyOTP").removeClass('disabled').removeAttr('disabled').addClass('btn-success').html("<i class=\"fas fa-check\"></i> Verified");
+					}
+					else {
+						$("#btnVerifyOTP").removeClass('disabled').removeAttr('disabled').addClass('btn-danger').html("<i class=\"fas fa-times\"></i> Verification Failed");
+						$("#txtOTP")[0].setCustomValidity(response.message);
+		                		$("#txtOTP")[0].reportValidity();
+						
+						setTimeout(function(){
+							$("#btnVerifyOTP").removeClass('btn-danger').addClass('btn-primary').html("Verify");
+						}, 2000);
+					}
 				});
 			});
 		</script>
