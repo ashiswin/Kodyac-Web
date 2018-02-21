@@ -142,6 +142,9 @@
 			var totalMethods = <?php echo count($methods); ?>;
 			var completionCount = 0;
 			
+			// Change status of link to In Progress
+			$.post("../scripts/BeginKYC.php", { id: linkId }, function(data) {});
+			
 			function notifyCompletion() {
 				$("#prgCompletion").css('width', (completionCount * 100 / totalMethods) + '%');
 				$("#methodCount").html(totalMethods);
@@ -204,10 +207,12 @@
 				$.post("../scripts/VerifySMSOTP.php", { otp: otp, linkId: linkId }, function(data) {
 					response = JSON.parse(data);
 					if(response.success) {
-						$("#btnVerifyOTP").addClass('btn-success').html("<i class=\"fas fa-check\"></i> Verified");
-						$("#mtdSMSStatus").css('color', 'green').html("Complete");
-						completionCount++;
-						notifyCompletion();
+						$.post("../scripts/AddMethodCompletion.php", { method: "sms", linkId: linkId }, function(data2) {
+							$("#btnVerifyOTP").addClass('btn-success').html("<i class=\"fas fa-check\"></i> Verified");
+							$("#mtdSMSStatus").css('color', 'green').html("Complete");
+							completionCount++;
+							notifyCompletion();
+						});
 					}
 					else {
 						$("#btnVerifyOTP").removeClass('disabled').removeAttr('disabled').addClass('btn-danger').html("<i class=\"fas fa-times\"></i> Verification Failed");
