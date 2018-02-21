@@ -71,8 +71,8 @@
 		}
 		
 		public function updateContact($linkId, $number) {
-			$this->updateContacStatement->bind_param("si", $number, $linkId);
-			return $this->updateContacStatement->execute();
+			$this->updateContactStatement->bind_param("si", $number, $linkId);
+			return $this->updateContactStatement->execute();
 		}
 		
 		public function delete($id) {
