@@ -18,14 +18,16 @@
 	
 	$methods = "";
 	
-	if($link[LinkConnector::$COLUMN_COMPLETEDMETHODS] == null || strlen($link[LinkConnector::$COLUMN_COMPLETEDMETHODS]) == 0) {
-		$methods = $method;
-	}
-	else {
-		$methods .= "|" . $method;
-	}
+	if(!in_array($method, $methods)) {
+		if($link[LinkConnector::$COLUMN_COMPLETEDMETHODS] == null || strlen($link[LinkConnector::$COLUMN_COMPLETEDMETHODS]) == 0) {
+			$methods = $method;
+		}
+		else {
+			$methods .= "|" . $method;
+		}
 	
-	$LinkConnector->setCompletedMethods($linkid, $methods);
+		$LinkConnector->setCompletedMethods($linkid, $methods);
+	}
 	
 	$response["success"] = true;
 	
