@@ -79,7 +79,7 @@
 		}
 		
 		public function setCompletedMethods($id, $methods) {
-			$this->setCompletedMethodsStatement->bind_param("ss", $status, $methods);
+			$this->setCompletedMethodsStatement->bind_param("si", $methods, $id);
 			return $this->setCompletedMethodsStatement->execute();
 		}
 		
