@@ -119,14 +119,14 @@
 			return result;
 		}
 		var date = new Date();
-		var days = getDaysArray(date.getFullYear(), date.getMonth());
+		var days = getDaysArray(date.getFullYear(), date.getMonth() + 1);
 		
 		var links = JSON.parse("<?php echo addslashes(json_encode($links)); ?>");
 		var requestCount = new Array(days.length);
 		
 		for(var i = 0; i < links.length; i++) {
 			var l = links[i];
-			if(l.createdOn.indexOf(date.getFullYear() + "-" + date.getMonth()) != -1) {
+			if(l.createdOn.indexOf(date.getFullYear() + "-" + (date.getMonth() + 1)) != -1) {
 				var date = l.split(" ")[0];
 				var day = parseInt(date[date.length - 2] + date[date.length - 1]) - 1;
 				
