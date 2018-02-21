@@ -165,10 +165,22 @@
 			},
 			options: {
 				title:{
-				    text: "Chart.js Time Scale"
+					text: ""
 				},
 				legend:{
 					position: 'right'
+				},
+				scales:{
+					xAxes: [{
+						gridLines: {
+							display:false
+						}
+					}],
+					yAxes: [{
+						gridLines: {
+							display:false
+						}   
+					}]
 				}
 			}
 				

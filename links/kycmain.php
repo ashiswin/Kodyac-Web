@@ -86,7 +86,7 @@
 				<div class="ml-auto">
 					<div class="progress" style="width: 90vh; margin-top: 1vh;">
 						<div id="prgCompletion" class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-						<span id="percentage" style="margin-left: 1vh"><span id="completionCount"></span> out of <span id="methodCount"></span></span>
+						<span id="percentage" style="margin-left: 1vh"><span id="completionCount"></span> out of <span id="methodCount"></span> complete</span>
 					</div>
 				</div>
 				<button class="ml-auto btn btn-success disabled" disabled="true" id="btnComplete">Complete</button>
