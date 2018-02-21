@@ -100,6 +100,13 @@
 					<!-- Begin Details panel -->
 					<div class="detail-pane" id="SMSPane">
 						<h1 style="margin-top: 2vh">SMS Verification</h1>
+							<form class="form form-inline">
+								<select id="slcCountryCode" class="form-control"></select>
+								<input type="text" class="form-control" id="txtNumber" />
+								<button class="btn btn-primary" id="btnSendSMS">Send SMS</button>
+							</form>
+						<br>
+						
 					</div>
 				</div>
 			</div>
