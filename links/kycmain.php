@@ -81,11 +81,11 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<div class="ml-auto">
 					<div class="progress" style="width: 90vh; margin-top: 1vh;">
-						<div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-						<span id="percentage" style="margin-left: 1vh">0 out of <?php echo count($methods); ?></span>
+						<div id="prgCompletion" class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+						<span id="percentage" style="margin-left: 1vh"><span id="completionCount"></span> out of <span id="methodCount"></span></span>
 					</div>
 				</div>
-				<button class="ml-auto btn btn-success disabled" disabled="true">Complete</button>
+				<button class="ml-auto btn btn-success disabled" disabled="true" id="btnComplete">Complete</button>
 			</div>
 		</nav>
 		<div class="container-fluid"><!-- To get it to take up the whole width -->
@@ -139,6 +139,20 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		<script type="text/javascript">
 			var linkId = <?php echo $_GET['id']; ?>;
+			var totalMethods = <?php echo count($methods); ?>;
+			var completionCount = 0;
+			
+			function notifyCompletion() {
+				$("#prgCompletion").css('width', (completionCount * 100 / totalMethods) + '%');
+				$("#methodCount").html(totalMethods);
+				$("#completionCount").html(completionCount);
+				
+				if(totalMethods == completionCount) {
+					$("#btnCompleted").removeAttr('disabled');
+				}
+			}
+			
+			notifyCompletion();
 			
 			$("#mtdSMS").click(function() {
 				$(".detail-pane").hide();
@@ -190,7 +204,9 @@
 				$.post("../scripts/VerifySMSOTP.php", { otp: otp, linkId: linkId }, function(data) {
 					response = JSON.parse(data);
 					if(response.success) {
-						$("#btnVerifyOTP").removeClass('disabled').removeAttr('disabled').addClass('btn-success').html("<i class=\"fas fa-check\"></i> Verified");
+						$("#btnVerifyOTP").addClass('btn-success').html("<i class=\"fas fa-check\"></i> Verified");
+						completionCount++;
+						notifyCompletion();
 					}
 					else {
 						$("#btnVerifyOTP").removeClass('disabled').removeAttr('disabled').addClass('btn-danger').html("<i class=\"fas fa-times\"></i> Verification Failed");
