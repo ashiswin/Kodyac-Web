@@ -164,13 +164,13 @@
 				$.post("../scripts/SendSMSOTP.php", { number: fullNumber, linkId: linkId }, function(data) {
 					response = JSON.parse(data);
 					if(response.success) {
-						$("#btnSendSMS").removeClass('disabled').removeAttr('disabled').addClass('btn-success').html("<i class=\"fas fa-sync-tick\"></i> Sent");
+						$("#btnSendSMS").removeClass('disabled').removeAttr('disabled').addClass('btn-success').html("<i class=\"fas fa-tick\"></i> Sent");
 					}
 					else {
 						$("#btnSendSMS").removeClass('disabled').removeAttr('disabled').addClass('btn-danger').html("<i class=\"fas fa-sync-times\"></i> Send Failed");
 					}
 					setTimeout(function(){
-						$("#btnSendSMS").removeClass('btn-danger').removeClass('btn-success').addClass('btn-primary')
+						$("#btnSendSMS").removeClass('btn-danger').removeClass('btn-success').addClass('btn-primary').html("Send");
 					}, 2000);
 				});
 			});
