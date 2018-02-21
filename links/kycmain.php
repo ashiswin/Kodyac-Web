@@ -186,7 +186,7 @@
 			
 			notifyCompletion();
 			
-			if(completedMethods.includes("sms")) {
+			if(completedMethods != null && completedMethods.includes("sms")) {
 				$("#btnVerifyOTP").addClass('btn-success').html("<i class=\"fas fa-check\"></i> Verified").addClass('disabled').attr("disabled", "disbled");
 				$("#btnSendSMS").addClass('disabled').attr("disabled", "disbled");
 				$("#txtNumber").addClass('disabled').attr("disabled", "disbled");
