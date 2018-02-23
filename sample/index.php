@@ -32,18 +32,15 @@
 		</style>
 	</head>
 	<body>
-		<div class="text-center">
-			<div class="offset-md-5 col-md-2">
-				<img src="img/logo.png" class="img-fluid">
-			</div>
-		</div>
 		<h1 style="text-align: center; font-size: 5em; font-family: 'Ubuntu Bold', Arial, sans-serif">ABC Company</h1>
 		<div class="form" style="margin-top: 2vh">
 			<form class="col-md-3 text-center" style="display: block;margin-left: auto;margin-right: auto;">
 				<input type="text" class="form-control" style="margin-right: 1vh" placeholder="API Key" id="txtKey">
 				<button class="btn btn-primary" id="btnLogin" style="width: 100%; margin-top: 1vh">Generate Link</button>
+				<br>
+				<br>
+				<a href="" id="link"></a>
 			</form>
-			<a href="" id="link"></a>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
@@ -66,6 +63,7 @@
 						response = JSON.parse(data);
 						if(response.success) {
 							$("#link").attr('href', response.link).html("Go to KYC");
+							$("#btnLogin").removeClass('disabled').removeAttr('disabled').html("Generate Link");
 						}
 						else {
 							$("#txtKey")[0].setCustomValidity(response.message);
