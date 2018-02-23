@@ -67,9 +67,9 @@
 		                	$("#txtKey")[0].reportValidity();
 				}
 				else {
-					$(this).html('<i class=\'fas fa-refresh spinning\'></i> Generating...');
+					$(this).html('<i class=\'fas fa-sync-alt spinning\'></i> Generating...');
 					$(this).addClass('disabled').attr("disabled", "disbled");
-					$.post("..scripts/CreateLink.php", { apiKey: key }, function(data) {
+					$.post("../scripts/CreateLink.php", { apiKey: key }, function(data) {
 						response = JSON.parse(data);
 						if(response.success) {
 							$("#link").attr('href', response.link).html("Go to KYC");
