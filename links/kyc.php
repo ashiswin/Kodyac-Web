@@ -51,9 +51,10 @@
 			<div class="row">
 				<div class="col-md-6 offset-md-3 text-center">
 					<!--<img src="../uploads/company-<?php echo $company[CompanyConnector::$COLUMN_ID]; ?>" width="100%">-->
-					<img src="http://via.placeholder.com/350x150" width="100%">
+					<img src="../img/logo.png" width="50%">
 					<br>
 					<h1 style="font-family: 'Ubuntu Bold', Arial, sans-serif; margin-top: 2vh;">Welcome to <?php echo $company[CompanyConnector::$COLUMN_NAME]; ?>'s KYC Process</h1>
+					<h3 style="font-family: 'Martel', Times New Roman, serif; font-weight: bold">Powered by KodYaC</h3>
 					<br>
 					<a href="kycmain.php?id=<?php echo $_GET['id']; ?>" class="btn btn-primary" width="50%">Let's Begin!</a>
 				</div>
