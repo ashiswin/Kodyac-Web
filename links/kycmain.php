@@ -30,49 +30,7 @@
 		<title><?php echo $company[CompanyConnector::$COLUMN_NAME]; ?>'s KYC Procedure</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-		<style type="text/css">
-			html, body {
-				margin: 0;
-				padding: 0;
-			}
-			@font-face {
-				font-family: "Martel";
-				src: url("../font/martel-regular.otf") format("opentype");
-			}
-			@font-face {
-				font-family: "Ubuntu Bold";
-				src: url("../font/Ubuntu-B.ttf") format("truetype");
-			}
-			html, body {
-				margin: 0;
-				height: 100%;
-				overflow: hidden
-			}
-			.row.main-content {
-				height: 100%;
-			}
-
-			.scrollable {
-				overflow-y: auto !important;
-				overflow-x: auto;
-				height: 90vh;
-			}
-			.center {
-				margin: auto;
-			}
-			.spinning {
-				animation: spin 1s infinite linear;
-				-webkit-animation: spin2 1s infinite linear;
-			}
-			@keyframes spin {
-				from { transform: scale(1) rotate(0deg); }
-				to { transform: scale(1) rotate(360deg); }
-			}
-			@-webkit-keyframes spin2 {
-				from { -webkit-transform: rotate(0deg); }
-				to { -webkit-transform: rotate(360deg); }
-			}
-		</style>
+		<link rel="stylesheet" href="common.css">
 	</head>
 	<body>
 		<!-- HTML file containing the navbar to reduce repetition of code -->
