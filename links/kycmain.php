@@ -125,6 +125,8 @@
 					</div>
 					<div class="detail-pane" id="MyInfoPane">
 						<h1 style="margin-top: 2vh">Basic Information Verification</h1>
+						<br>
+						<div id="barcodeStream"></div>
 					</div>
 					<div class="detail-pane" id="NRICPane">
 						<h1 style="margin-top: 2vh">Photo Verification</h1>
@@ -138,6 +140,7 @@
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		<script src="dist/quagga.min.js"></script>
 		<script type="text/javascript">
 			var linkId = <?php echo $_GET['id']; ?>;
 			var totalMethods = <?php echo count($methods); ?>;
@@ -145,6 +148,24 @@
 			var link = JSON.parse("<?php echo(addslashes(json_encode($link))); ?>");
 			var completedMethods = link.completedMethods;
 			
+			Quagga.init({
+			    inputStream : {
+			      name : "Live",
+			      type : "LiveStream",
+			      target: document.querySelector('#barcodeStream')    // Or '#yourElement' (optional)
+			    },
+			    decoder : {
+			      readers : ["code_39_reader"]
+			    }
+			  }, function(err) {
+			      if (err) {
+				  console.log(err);
+				  return
+			      }
+			      console.log("Initialization finished. Ready to start");
+			      Quagga.start();
+			  });
+
 			// Change status of link to In Progress
 			$.post("../scripts/BeginKYC.php", { id: linkId }, function(data) {});
 			
