@@ -70,9 +70,10 @@
 						</div>
 						<div class="form-group">
 							<label for="chkVerificationMethods">Verification Methods:</label><br>
-							<input type="checkbox" id="chkSMS">&nbsp;&nbsp;SMS 2FA Verification<br>
-							<input type="checkbox" id="chkNRIC">&nbsp;&nbsp;NRIC Verification<br>
-							<input type="checkbox" id="chkBiometric">&nbsp;&nbsp;Biometric Verification<br>
+							<input type="checkbox" id="chkSMS">&nbsp;&nbsp;SMS 2FA Verification <span class="text-danger">(Low Fidelity)</span><br>
+							<input type="checkbox" id="chkMyInfo">&nbsp;&nbsp;Basic Information Verification <span class="text-danger">(Low Fidelity)</span><br>
+							<input type="checkbox" id="chkNRIC">&nbsp;&nbsp;Photo Verification <span class="text-danger">(Medium Fidelity)</span><br>
+							<input type="checkbox" id="chkVideo">&nbsp;&nbsp;Video Verification <span class="text-danger">(High Fidelity)</span><br>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -134,12 +135,20 @@
 						methods += "|nric";
 					}
 				}
-				if($("#chkBiometric").is(":checked")) {
+				if($("#chkVideo").is(":checked")) {
 					if(!methods) {
-						methods += "biometric";
+						methods += "video";
 					}
 					else {
-						methods += "|biometric";
+						methods += "|video";
+					}
+				}
+				if($("chkMyInfo").is(":checked")) {
+					if(!methods) {
+						methods += "myinfo";
+					}
+					else {
+						methods += "|myinfo";
 					}
 				}
 				if(!username || username.length == 0) {
