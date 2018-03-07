@@ -149,23 +149,27 @@
 			var completedMethods = link.completedMethods;
 			
 			Quagga.init({
-			    inputStream : {
-			      name : "Live",
-			      type : "LiveStream",
-			      target: document.querySelector('#barcodeStream')    // Or '#yourElement' (optional)
-			    },
-			    decoder : {
-			      readers : ["code_39_reader"]
-			    }
-			  }, function(err) {
-			      if (err) {
-				  console.log(err);
-				  return
-			      }
-			      console.log("Initialization finished. Ready to start");
-			      Quagga.start();
-			  });
+				inputStream : {
+					name : "Live",
+					type : "LiveStream",
+					target: document.querySelector('#barcodeStream')    // Or '#yourElement' (optional)
+				},
+				decoder : {
+					readers : ["code_39_reader"]
+				}
+			}, function(err) {
+				if (err) {
+					console.log(err);
+					return
+				}
+				console.log("Initialization finished. Ready to start");
+				Quagga.start();
+			});
+			Quagga.onDetected(function(result) {
+				var code = result.codeResult.code;
 
+				console.log(code);
+			});
 			// Change status of link to In Progress
 			$.post("../scripts/BeginKYC.php", { id: linkId }, function(data) {});
 			
