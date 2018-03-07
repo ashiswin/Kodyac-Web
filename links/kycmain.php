@@ -169,6 +169,7 @@
 				var code = result.codeResult.code;
 
 				console.log(code);
+				Quagga.stop();
 			});
 			// Change status of link to In Progress
 			$.post("../scripts/BeginKYC.php", { id: linkId }, function(data) {});
