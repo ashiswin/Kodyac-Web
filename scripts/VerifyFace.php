@@ -50,6 +50,23 @@
 	
 	$result2 = curl_exec($s);
 	
-	var_dump(json_decode($result1));
-	echo $result2;
+	$resultArr = explode("\n", $result1);
+	$faceId1 = "";
+	for($i = 0; $i < count($resultArr); $i++) {
+		if($resultArr[$i][0] == '[') {
+			$faceId1 = json_decode($resultArr[$i]);	
+			break;
+		}
+	}
+	
+	$resultArr = explode("\n", $result2);
+	$faceId2 = "";
+	for($i = 0; $i < count($resultArr); $i++) {
+		if($resultArr[$i][0] == '[') {
+			$faceId2 = json_decode($resultArr[$i]);	
+			break;
+		}
+	}
+	var_dump($faceId1);
+	var_dump($faceId2);
 ?>
