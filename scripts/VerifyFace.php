@@ -24,8 +24,8 @@
 	    'Content-Type' => 'application/json',
 
 	    // NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
-	    //'Ocp-Apim-Subscription-Key' => 'eeee342e022e4bcf99e30fe84d00efa5',
-	    'Ocp-Apim-Subscription-Key' => ' fa9a97b26e3547b09aa26eff259fa0bb',
+	    'Ocp-Apim-Subscription-Key' => 'eeee342e022e4bcf99e30fe84d00efa5',
+	    //'Ocp-Apim-Subscription-Key' => ' fa9a97b26e3547b09aa26eff259fa0bb',
 	);
 	
 	$s = curl_init(); 
