@@ -86,7 +86,7 @@
 	curl_setopt($s, CURLOPT_HTTPHEADER, $headers);
 	curl_setopt($s, CURLOPT_CUSTOMREQUEST, "POST");
 	curl_setopt($s, CURLOPT_RETURNTRANSFER, true); 
-	curl_setopt($s, CURLOPT_POSTFIELDS, '{"faceId1": "' . $faceId1[0]["faceId"] . '", "faceId2": "' . $faceId2[0]["faceId"] . '"}');
+	curl_setopt($s, CURLOPT_POSTFIELDS, '{"faceId1": "' . $faceId1[0]->faceId . '", "faceId2": "' . $faceId2[0]->faceId . '"}');
 	
 	$result = curl_exec($s);
 	
