@@ -50,6 +50,6 @@
 	
 	$result2 = curl_exec($s);
 	
-	echo $result1;
+	echo json_decode($result1);
 	echo $result2;
 ?>
