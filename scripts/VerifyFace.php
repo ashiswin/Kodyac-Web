@@ -1,7 +1,7 @@
 <?php
 	// Perform file upload
 	$target_dir = "../uploads/";
-	$target_file1 = $target_dir . basename($_FILES["face1"]["tmp_name"]);
+	$target_file1 = $target_dir . basename($_FILES["face1"]["tmp_name"]) . ".jpg";
 	$imageFileType = strtolower(pathinfo($target_file1,PATHINFO_EXTENSION));
 	if (move_uploaded_file($_FILES["face1"]["tmp_name"], $target_file1)) {
 		echo "The file ". basename( $_FILES["face1"]["name"]). " has been uploaded.";
@@ -9,7 +9,7 @@
 		echo "Sorry, there was an error uploading your file.";
 	}
 	
-	$target_file2 = $target_dir . basename($_FILES["face2"]["tmp_name"]);
+	$target_file2 = $target_dir . basename($_FILES["face2"]["tmp_name"]) . ".jpg";
 	$imageFileType = strtolower(pathinfo($target_file2,PATHINFO_EXTENSION));
 	if (move_uploaded_file($_FILES["face2"]["tmp_name"], $target_file2)) {
 		echo "The file ". basename( $_FILES["face2"]["name"]). " has been uploaded.";
