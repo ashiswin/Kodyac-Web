@@ -102,7 +102,7 @@
 			break;
 		}
 	}
-	
+	var_dump($resultArr);
 	$response["success"] = true;
 	$response["verification"] = $verification;
 	
