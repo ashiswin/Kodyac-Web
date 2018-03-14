@@ -3,18 +3,22 @@
 	$target_dir = "../uploads/";
 	$target_file1 = $target_dir . basename($_FILES["face1"]["tmp_name"]);
 	$imageFileType = strtolower(pathinfo($target_file1,PATHINFO_EXTENSION));
-	if (move_uploaded_file($_FILES["face1"]["tmp_name"], $target_file1)) {
-		echo "The file ". basename( $_FILES["face1"]["name"]). " has been uploaded.";
-	} else {
-		echo "Sorry, there was an error uploading your file.";
+	if (!move_uploaded_file($_FILES["face1"]["tmp_name"], $target_file1)) {
+		$response["success"] = false;
+		$response["message"] = "Sorry, there was an error uploading your file.";
+		
+		echo(json_encode($response));
+		return;
 	}
 	
 	$target_file2 = $target_dir . basename($_FILES["face2"]["tmp_name"]);
 	$imageFileType = strtolower(pathinfo($target_file2,PATHINFO_EXTENSION));
-	if (move_uploaded_file($_FILES["face2"]["tmp_name"], $target_file2)) {
-		echo "The file ". basename( $_FILES["face2"]["name"]). " has been uploaded.";
-	} else {
-		echo "Sorry, there was an error uploading your file.";
+	if (!move_uploaded_file($_FILES["face2"]["tmp_name"], $target_file2)) {
+		$response["success"] = false;
+		$response["message"] = "Sorry, there was an error uploading your file.";
+		
+		echo(json_encode($response));
+		return;
 	}
 	
 	$request = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect';
@@ -93,7 +97,7 @@
 	$resultArr = explode("\n", $result);
 	$verification = "";
 	for($i = 0; $i < count($resultArr); $i++) {
-		if($resultArr[$i][0] == '[') {
+		if($resultArr[$i][0] == '{!') {
 			$verification = json_decode($resultArr[$i]);	
 			break;
 		}
