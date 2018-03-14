@@ -90,5 +90,17 @@
 	
 	$result = curl_exec($s);
 	
-	echo($result);
+	$resultArr = explode("\n", $result);
+	$verification = "";
+	for($i = 0; $i < count($resultArr); $i++) {
+		if($resultArr[$i][0] == '[') {
+			$verification = json_decode($resultArr[$i]);	
+			break;
+		}
+	}
+	
+	$response["success"] = true;
+	$response["verification"] = $verification;
+	
+	echo(json_encode($response));
 ?>
