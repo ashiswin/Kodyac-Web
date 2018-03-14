@@ -30,49 +30,7 @@
 		<title><?php echo $company[CompanyConnector::$COLUMN_NAME]; ?>'s KYC Procedure</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-		<style type="text/css">
-			html, body {
-				margin: 0;
-				padding: 0;
-			}
-			@font-face {
-				font-family: "Martel";
-				src: url("../font/martel-regular.otf") format("opentype");
-			}
-			@font-face {
-				font-family: "Ubuntu Bold";
-				src: url("../font/Ubuntu-B.ttf") format("truetype");
-			}
-			html, body {
-				margin: 0;
-				height: 100%;
-				overflow: hidden
-			}
-			.row.main-content {
-				height: 100%;
-			}
-
-			.scrollable {
-				overflow-y: auto !important;
-				overflow-x: auto;
-				height: 90vh;
-			}
-			.center {
-				margin: auto;
-			}
-			.spinning {
-				animation: spin 1s infinite linear;
-				-webkit-animation: spin2 1s infinite linear;
-			}
-			@keyframes spin {
-				from { transform: scale(1) rotate(0deg); }
-				to { transform: scale(1) rotate(360deg); }
-			}
-			@-webkit-keyframes spin2 {
-				from { -webkit-transform: rotate(0deg); }
-				to { -webkit-transform: rotate(360deg); }
-			}
-		</style>
+		<link rel="stylesheet" href="common.css">
 	</head>
 	<body>
 		<!-- HTML file containing the navbar to reduce repetition of code -->
@@ -109,8 +67,18 @@
 									}
 									echo "</td></tr>";
 								}
+								if(in_array("myinfo", $methods)) {
+									echo "<tr id=\"mtdMyInfo\" class=\"method-items\"><td><h4>Basic Information Verification</h4><div style=\"font-size: 12px;\">Status: ";
+									if(in_array("myinfo", $completedMethods)) {
+										echo "<span id=\"mtdMyInfoStatus\" style=\"color: green\">Complete</span></div>";
+									}
+									else {
+										echo "<span id=\"mtdMyInfoStatus\" style=\"color: red\">Incomplete</span></div>";
+									}
+									echo "</td></tr>";
+								}
 								if(in_array("nric", $methods)) {
-									echo "<tr id=\"mtdNRIC\" class=\"method-items\"><td><h4>NRIC Verification</h4><div style=\"font-size: 12px;\">Status: ";
+									echo "<tr id=\"mtdNRIC\" class=\"method-items\"><td><h4>Photo Verification</h4><div style=\"font-size: 12px;\">Status: ";
 									if(in_array("nric", $completedMethods)) {
 										echo "<span id=\"mtdNRICStatus\" style=\"color: green\">Complete</span></div>";
 									}
@@ -119,13 +87,13 @@
 									}
 									echo "</td></tr>";
 								}
-								if(in_array("biometric", $methods)) {
-									echo "<tr id=\"mtdBiometric\" class=\"method-items\"><td><h4>Biometric Verification</h4><div style=\"font-size: 12px\">Status: ";
-									if(in_array("biometric", $completedMethods)) {
-										echo "<span id=\"mtdBiometricStatus\" style=\"color: green\">Complete</span></div>";
+								if(in_array("video", $methods)) {
+									echo "<tr id=\"mtdVideo\" class=\"method-items\"><td><h4>Video Verification</h4><div style=\"font-size: 12px\">Status: ";
+									if(in_array("video", $completedMethods)) {
+										echo "<span id=\"mtdVideoStatus\" style=\"color: green\">Complete</span></div>";
 									}
 									else {
-										echo "<span id=\"mtdBiometricStatus\" style=\"color: red\">Incomplete</span></div>";
+										echo "<span id=\"mtdVideoStatus\" style=\"color: red\">Incomplete</span></div>";
 									}
 									echo "</td></tr>";
 								}
@@ -155,11 +123,16 @@
 						</form>
 						
 					</div>
-					<div class="detail-pane" id="NRICPane">
-						<h1 style="margin-top: 2vh">NRIC Verification</h1>
+					<div class="detail-pane" id="MyInfoPane">
+						<h1 style="margin-top: 2vh">Basic Information Verification</h1>
+						<br>
+						<div id="barcodeStream"></div>
 					</div>
-					<div class="detail-pane" id="BiometricPane">
-						<h1 style="margin-top: 2vh">Biometric Verification</h1>
+					<div class="detail-pane" id="NRICPane">
+						<h1 style="margin-top: 2vh">Photo Verification</h1>
+					</div>
+					<div class="detail-pane" id="VideoPane">
+						<h1 style="margin-top: 2vh">Video Verification</h1>
 					</div>
 				</div>
 			</div>
@@ -167,6 +140,7 @@
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		<script src="dist/quagga.min.js"></script>
 		<script type="text/javascript">
 			var linkId = <?php echo $_GET['id']; ?>;
 			var totalMethods = <?php echo count($methods); ?>;
@@ -174,6 +148,29 @@
 			var link = JSON.parse("<?php echo(addslashes(json_encode($link))); ?>");
 			var completedMethods = link.completedMethods;
 			
+			Quagga.init({
+				inputStream : {
+					name : "Live",
+					type : "LiveStream",
+					target: document.querySelector('#barcodeStream')    // Or '#yourElement' (optional)
+				},
+				decoder : {
+					readers : ["code_39_reader"]
+				}
+			}, function(err) {
+				if (err) {
+					console.log(err);
+					return
+				}
+				console.log("Initialization finished. Ready to start");
+				Quagga.start();
+			});
+			Quagga.onDetected(function(result) {
+				var code = result.codeResult.code;
+
+				console.log(code);
+				Quagga.stop();
+			});
 			// Change status of link to In Progress
 			$.post("../scripts/BeginKYC.php", { id: linkId }, function(data) {});
 			
@@ -211,6 +208,13 @@
 				$("#SMSPane").show();
 				$(this).addClass("bg-info");
 			});
+			$("#mtdMyInfo").click(function() {
+				$(".detail-pane").hide();
+				$(".method-items").removeClass("bg-info");
+				
+				$("#MyInfoPane").show();
+				$(this).addClass("bg-info");
+			});
 			$("#mtdNRIC").click(function() {
 				$(".detail-pane").hide();
 				$(".method-items").removeClass("bg-info");
@@ -218,11 +222,11 @@
 				$("#NRICPane").show();
 				$(this).addClass("bg-info");
 			});
-			$("#mtdBiometric").click(function() {
+			$("#mtdVideo").click(function() {
 				$(".detail-pane").hide();
 				$(".method-items").removeClass("bg-info");
 				
-				$("#BiometricPane").show();
+				$("#VideoPane").show();
 				$(this).addClass("bg-info");
 			});
 			$("#mtdSMS").trigger('click');
