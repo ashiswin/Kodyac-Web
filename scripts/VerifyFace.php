@@ -35,7 +35,7 @@
 	curl_setopt($s, CURLOPT_HTTPHEADER, $headers);
 	curl_setopt($s, CURLOPT_CUSTOMREQUEST, "POST");
 	curl_setopt($s, CURLOPT_RETURNTRANSFER, true); 
-	curl_setopt($s, CURLOPT_POSTFIELDS, '{"url": "https://www.kodyac.tech/scripts/' . $target_file1 .'}');
+	curl_setopt($s, CURLOPT_POSTFIELDS, '{"url": "https://www.kodyac.tech/scripts/' . $target_file1 .'"}');
 	
 	$result1 = curl_exec($s);
 
@@ -46,7 +46,7 @@
 	curl_setopt($s, CURLOPT_HTTPHEADER, $headers);
 	curl_setopt($s, CURLOPT_CUSTOMREQUEST, "POST");
 	curl_setopt($s, CURLOPT_RETURNTRANSFER, true); 
-	curl_setopt($s, CURLOPT_POSTFIELDS, '{"url": "https://www.kodyac.tech/scripts/' . $target_file2 .'}');
+	curl_setopt($s, CURLOPT_POSTFIELDS, '{"url": "https://www.kodyac.tech/scripts/' . $target_file2 .'"}');
 	
 	$result2 = curl_exec($s);
 	
