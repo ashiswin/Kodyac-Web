@@ -218,9 +218,10 @@
 			if(completedMethods != null && completedMethods.includes("myinfo")) {
 				$("#txtScanName").html(link.name);
 				$("#txtScanSex").html(link.sex);
-				$("#txtScanRace").html(link.nationality);
+				$("#txtScanRace").html(link.race);
 				$("#txtScanAddress").html(link.address);
 				$("#txtScanDOB").html(link.dob);
+				$("#txtNRIC").html(link.nric);
 			}
 			$("#mtdSMS").click(function() {
 				$(".detail-pane").hide();
@@ -387,7 +388,7 @@
 				var address = $("#txtScanAddress").html();
 				var nric = $("#txtNRIC").val();
 				
-				$.post("../scripts/VerifyMyInfo.php", { name: name, sex: sex, nationality: race, dob: dob, address: address, nric: nric, linkId: linkId }, function(data) {
+				$.post("../scripts/VerifyMyInfo.php", { name: name, sex: sex, nationality: race, dob: dob, address: address, nric: nric, race: race, linkId: linkId }, function(data) {
 					response = JSON.parse(data);
 					if(response.success) {
 						$.post("../scripts/AddMethodCompletion.php", { method: "myinfo", linkId: linkId }, function(data2) {

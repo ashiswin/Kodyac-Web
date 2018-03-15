@@ -11,7 +11,8 @@
 		public static $COLUMN_CONTACT = "contact";
 		public static $COLUMN_NATIONALITY = "nationality";
 		public static $COLUMN_DOB = "dob";
-
+		public static $COLUMN_SEX = "sex";
+		public static $COLUMN_RACE = "race";
 
 		private $createStatement = NULL;
 		private $selectStatement = NULL;
@@ -25,12 +26,12 @@
 
 			$this->mysqli = $mysqli;
 
-			$this->createStatement = $mysqli->prepare("INSERT INTO " . ProfileConnector::$TABLE_NAME . "(`" . ProfileConnector::$COLUMN_LINKID . "`,`" . ProfileConnector::$COLUMN_NAME . "`,`" . ProfileConnector::$COLUMN_ADDRESS . "`,`" . ProfileConnector::$COLUMN_NRIC . "`,`" . ProfileConnector::$COLUMN_CONTACT . "`,`" . ProfileConnector::$COLUMN_NATIONALITY . "`,`" . ProfileConnector::$COLUMN_DOB . "`) VALUES(?,?,?,?,?,?,?)");
+			$this->createStatement = $mysqli->prepare("INSERT INTO " . ProfileConnector::$TABLE_NAME . "(`" . ProfileConnector::$COLUMN_LINKID . "`,`" . ProfileConnector::$COLUMN_NAME . "`,`" . ProfileConnector::$COLUMN_ADDRESS . "`,`" . ProfileConnector::$COLUMN_NRIC . "`,`" . ProfileConnector::$COLUMN_CONTACT . "`,`" . ProfileConnector::$COLUMN_NATIONALITY . "`,`" . ProfileConnector::$COLUMN_DOB . "`, `" . ProfileConnector::$COLUMN_SEX . "`, `" . ProfileConnector::$COLUMN_RACE . "`) VALUES(?,?,?,?,?,?,?,?,?)");
 			$this->selectStatement = $mysqli->prepare("SELECT * FROM " . ProfileConnector::$TABLE_NAME . " WHERE `" . ProfileConnector::$COLUMN_ID . "` = ?");
 			$this->selectByLinkStatement = $mysqli->prepare("SELECT * FROM " . ProfileConnector::$TABLE_NAME . " WHERE `" . ProfileConnector::$COLUMN_LINKID . "` = ?");
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . ProfileConnector::$TABLE_NAME);
 			$this->updateContactStatement = $mysqli->prepare("UPDATE " . ProfileConnector::$TABLE_NAME . " SET `" . ProfileConnector::$COLUMN_CONTACT . "` = ? WHERE `" . ProfileConnector::$COLUMN_LINKID . "` = ?");
-			$this->updateOtherInfoStatement = $mysqli->prepare("UPDATE " . ProfileConnector::$TABLE_NAME . " SET `" . ProfileConnector::$COLUMN_NAME . "`=?, `" . ProfileConnector::$COLUMN_ADDRESS . "`=?, `" . ProfileConnector::$COLUMN_NRIC . "`=?, `" . ProfileConnector::$COLUMN_NATIONALITY . "`=?, `" . ProfileConnector::$COLUMN_DOB . "`=? WHERE `" . ProfileConnector::$COLUMN_LINKID . "` = ?");
+			$this->updateOtherInfoStatement = $mysqli->prepare("UPDATE " . ProfileConnector::$TABLE_NAME . " SET `" . ProfileConnector::$COLUMN_NAME . "`=?, `" . ProfileConnector::$COLUMN_ADDRESS . "`=?, `" . ProfileConnector::$COLUMN_NRIC . "`=?, `" . ProfileConnector::$COLUMN_NATIONALITY . "`=?, `" . ProfileConnector::$COLUMN_DOB . "`=?, `" . ProfileConnector::$COLUMN_SEX . "`=?, `" . ProfileConnector::$COLUMN_RACE . "`=? WHERE `" . ProfileConnector::$COLUMN_LINKID . "` = ?");
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . ProfileConnector::$TABLE_NAME . " WHERE `" . ProfileConnector::$COLUMN_ID . "` = ?");
 		}
 

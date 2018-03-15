@@ -9,12 +9,14 @@
 	$contact = $_POST['contact'];
 	$nationality = $_POST['nationality'];
 	$dob = $_POST['dob'];
-
+	$sex = $_POST['sex'];
+	$race = $_POST['race'];
+	
 	$ProfileConnector = new ProfileConnector($conn);
 	
 	// TODO: Check if linkId exists
 	
-	if(!$ProfileConnector->create($linkId, $name, $address, $nric, $contact, $nationality, $dob)) {
+	if(!$ProfileConnector->create($linkId, $name, $address, $nric, $contact, $nationality, $dob, $sex, $race)) {
 		$response['success'] = false;
 		$response['message'] = "Failed to create profile!";
 	}
