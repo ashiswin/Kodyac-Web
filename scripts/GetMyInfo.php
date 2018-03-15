@@ -7,6 +7,13 @@
 	curl_setopt($s, CURLOPT_RETURNTRANSFER, true); 
 	
 	$result = json_decode(curl_exec($s));
-	var_dump($result);
-	echo $result->name->value;
+	
+	$response["success"] = true;
+	$response["details"]["name"] = $result->name->value;
+	$response["details"]["sex"] = $result->sex->value;
+	$response["details"]["race"] = $result->race->value;
+	$response["details"]["dob"] = $result->dob->value;
+	$response["details"]["address"] = $result->regadd->value;
+	
+	echo(json_encode($response));
 ?>
