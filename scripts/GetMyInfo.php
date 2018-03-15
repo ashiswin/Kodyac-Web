@@ -22,7 +22,7 @@
 	curl_setopt($s, CURLOPT_RETURNTRANSFER, true); 
 	
 	$result = json_decode(curl_exec($s));
-	var_dump($result);
+	
 	$response["success"] = true;
 	$response["details"]["name"] = $result->name->value;
 	$response["details"]["sex"] = $result->sex->value;
