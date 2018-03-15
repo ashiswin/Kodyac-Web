@@ -308,7 +308,7 @@
 					Quagga.start();
 					$("#barcodeStream").show();
 					$(".drawingBuffer").hide();
-					$(this).hide();
+					$("#btnScan").hide();
 					$("#btnStopScan").show();
 				});
 			});
