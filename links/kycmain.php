@@ -126,15 +126,32 @@
 					<div class="detail-pane" id="MyInfoPane">
 						<h1 style="margin-top: 2vh">Basic Information Verification</h1>
 						<br>
-						<div id="barcodeStream"></div>
-						<br>
+						<div id="barcodeStream" style="margin-bottom: 2vh"></div>
 						<form class="form form-inline">
 							<div class="form-group">
 								<input type="text" placeholder="NRIC" class="form-control disabled" id="txtNRIC" disabled="disabled" />
 								<button class="btn btn-primary" id="btnScan">Start Scan</button>
-								<button class="btn btn-secondary" id="btnStopScan">Sop Scan</button>
+								<button class="btn btn-secondary" id="btnStopScan">Stop Scan</button>
 							</div>
-						</form> 
+						</form>
+						<br>
+						<table class="table borderless">
+							<tr>
+								<td>Name:</td><td id="txtScanName"></td>
+							</tr>
+							<tr>
+								<td>Sex:</td><td id="txtScanSex"></td>
+							</tr>
+							<tr>
+								<td>Race:</td><td id="txtScanRace"></td>
+							</tr>
+							<tr>
+								<td>Date of Birth:</td><td id="txtScanDOB"></td>
+							</tr>
+							<tr>
+								<td>Address:</td><td id="txtScanAddress"></td>
+							</tr>
+						</table>
 					</div>
 					<div class="detail-pane" id="NRICPane">
 						<h1 style="margin-top: 2vh">Photo Verification</h1>
@@ -327,8 +344,19 @@
 				$("#txtNRIC").val(code);
 				$("#barcodeStream").hide();
 				Quagga.stop();
-				$(this).hide();
+				$("#btnStopScan").hide();
 				$("#btnScan").show();
+				
+				$.get("../scripts/GetMyInfo.php?nric=" + code, function(data) {
+					response = JSON.parse(data);
+					if(response.success) {
+						$("#txtScanName").html(response.details.name);
+						$("#txtScanSex").html(response.details.sex);
+						$("#txtScanRace").html(response.details.race);
+						$("#txtScanDOB").html(response.details.dob);
+						$("#txtScanAddress").html(response.details.address);
+					}
+				});
 			});
 		</script>
 	</body>
