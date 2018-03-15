@@ -311,6 +311,7 @@
 				var code = result.codeResult.code;
 
 				$("#txtNRIC").val(code);
+				$("#barcodeStream").hide();
 				Quagga.stop();
 			});
 		</script>
