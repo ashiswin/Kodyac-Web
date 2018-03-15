@@ -1,12 +1,9 @@
 <?php
-	include "lib/smsGateway.php";
 	include "utils/random_gen.php";
 	include "utils/database.php";
 	include "connectors/OTPConnector.php";
 	require 'lib/twilio-php-master/Twilio/autoload.php';
 	use Twilio\Rest\Client;
-	
-	//$smsGateway = new SmsGateway('sobhit.me@gmail.com', 'Shobhit1998');
 	
 	$sid = 'AC84348745a8fdc67fd813fa221db659f1';
 	$token = 'e4c926a935ae3b3dad221fa6a611afd9';
@@ -17,15 +14,7 @@
 	
 	$otp = random_str();
 	
-	//$deviceID = 79179;
 	$message = '[KodYaC] Your OTP is ' . $otp . '. Please enter it within 5 mins.';
-
-	/*$options = [
-		'send_at' => strtotime('now'),
-		'expires_at' => strtotime('+5 minutes') // Cancel the message in 5 minutes if the message is not yet sent
-	];
-
-	$result = $smsGateway->sendMessageToNumber($number, $message, $deviceID, $options);*/
 	
 	$client->messages->create(
 		// the number you'd like to send the message to
