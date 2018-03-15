@@ -132,6 +132,7 @@
 							<div class="form-group">
 								<input type="text" placeholder="NRIC" class="form-control disabled" id="txtNRIC" disabled="disabled" />
 								<button class="btn btn-primary" id="btnScan">Start Scan</button>
+								<button class="btn btn-secondary" id="btnStopScan">Sop Scan</button>
 							</div>
 						</form> 
 					</div>
@@ -155,6 +156,7 @@
 			var link = JSON.parse("<?php echo(addslashes(json_encode($link))); ?>");
 			var completedMethods = link.completedMethods;
 			
+			$("#btnStopScan").hide();
 			// Change status of link to In Progress
 			$.post("../scripts/BeginKYC.php", { id: linkId }, function(data) {});
 			
@@ -304,7 +306,16 @@
 					}
 					console.log("Initialization finished. Ready to start");
 					Quagga.start();
+					$(".drawingBuffer").hide();
+					$(this).hide();
+					$("#btnStopScan").show();
 				});
+			});
+			
+			$("#btnStopScan").click(function(e) {
+				Quagga.stop();
+				$(this).hide();
+				$("#btnScan").show();
 			});
 			
 			Quagga.onDetected(function(result) {
