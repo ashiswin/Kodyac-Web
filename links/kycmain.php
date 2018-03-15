@@ -208,6 +208,7 @@
 			function myinfoVerified() {
 				$("#btnScan").attr('disabled', 'disabled').addClass('disabled');
 				$("#btnStopScan").attr('disabled', 'disabled').addClass('disabled');
+				$("#btnScanConfirm").attr('disabled', 'disabled').addClass('disabled');
 			}
 			
 			notifyCompletion();
