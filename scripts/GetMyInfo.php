@@ -8,4 +8,5 @@
 	
 	$result = json_decode(curl_exec($s));
 	var_dump($result);
+	echo $result->name->value;
 ?>
