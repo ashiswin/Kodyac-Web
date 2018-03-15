@@ -306,6 +306,7 @@
 					}
 					console.log("Initialization finished. Ready to start");
 					Quagga.start();
+					$("#barcodeStream").show();
 					$(".drawingBuffer").hide();
 					$(this).hide();
 					$("#btnStopScan").show();
@@ -313,6 +314,8 @@
 			});
 			
 			$("#btnStopScan").click(function(e) {
+				e.preventDefault();
+				$("#barcodeStream").hide();
 				Quagga.stop();
 				$(this).hide();
 				$("#btnScan").show();
@@ -324,6 +327,8 @@
 				$("#txtNRIC").val(code);
 				$("#barcodeStream").hide();
 				Quagga.stop();
+				$(this).hide();
+				$("#btnScan").show();
 			});
 		</script>
 	</body>
