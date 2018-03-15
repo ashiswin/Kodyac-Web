@@ -173,7 +173,7 @@
 			var totalMethods = <?php echo count($methods); ?>;
 			var completionCount = <?php echo count($completedMethods); ?>;
 			var link = JSON.parse("<?php echo(addslashes(json_encode($link))); ?>");
-			var completedMethods = link.completedMethods;
+			var completedMethods = link.completedMethods.split("|");
 			
 			$("#btnStopScan").hide();
 			$("#btnScanConfirm").hide();
