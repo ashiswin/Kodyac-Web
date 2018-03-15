@@ -13,5 +13,6 @@
 	
 	$ProfileConnector->updateOtherInfo($linkid, $name, $address, $nric, $nationality, $dob);
 	
+	$response["success"] = true;
 	echo(json_encode($response));
 ?>
