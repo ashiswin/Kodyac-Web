@@ -28,7 +28,7 @@
 	$response["details"]["sex"] = $result->sex->value;
 	$response["details"]["race"] = prettyRace($result->race->value);
 	$response["details"]["dob"] = $result->dob->value;
-	$response["details"]["address"] = $result->regadd->value;
+	$response["details"]["address"] = $result->regadd->block . " " . $result->regadd->street . " #" . $result->regadd->floor . "-" . $result->regadd->unit . ", S" . $result->regadd->postal;
 	
 	echo(json_encode($response));
 ?>
