@@ -31,6 +31,6 @@
 	$response["details"]["race"] = prettyRace($result->race->value);
 	$response["details"]["dob"] = $result->dob->value;
 	$response["details"]["address"] = $result->regadd->block . " " . $result->regadd->street . " #" . $result->regadd->floor . "-" . $result->regadd->unit . ", S" . $result->regadd->postal;
-	var_dump($result);
+	
 	echo(json_encode($response));
 ?>
