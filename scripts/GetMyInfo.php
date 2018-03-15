@@ -16,6 +16,8 @@
 	
 	$nric = $_GET['nric'];
 	
+	// TODO: Check for valid NRIC
+	
 	$s = curl_init(); 
 
 	curl_setopt($s, CURLOPT_URL, "https://myinfo.api.gov.sg/dev/L0/v1/person/" . $nric . "/");

@@ -127,6 +127,13 @@
 						<h1 style="margin-top: 2vh">Basic Information Verification</h1>
 						<br>
 						<div id="barcodeStream"></div>
+						<br>
+						<form class="form form-inline">
+							<div class="form-group">
+								<input type="text" placeholder="NRIC" class="form-control disabled" id="txtNRIC" disabled="disabled" />
+								<button class="btn btn-primary" id="btnScan">Start Scan</button>
+							</div>
+						</form> 
 					</div>
 					<div class="detail-pane" id="NRICPane">
 						<h1 style="margin-top: 2vh">Photo Verification</h1>
@@ -148,29 +155,6 @@
 			var link = JSON.parse("<?php echo(addslashes(json_encode($link))); ?>");
 			var completedMethods = link.completedMethods;
 			
-			Quagga.init({
-				inputStream : {
-					name : "Live",
-					type : "LiveStream",
-					target: document.querySelector('#barcodeStream')    // Or '#yourElement' (optional)
-				},
-				decoder : {
-					readers : ["code_39_reader"]
-				}
-			}, function(err) {
-				if (err) {
-					console.log(err);
-					return
-				}
-				console.log("Initialization finished. Ready to start");
-				Quagga.start();
-			});
-			Quagga.onDetected(function(result) {
-				var code = result.codeResult.code;
-
-				console.log(code);
-				Quagga.stop();
-			});
 			// Change status of link to In Progress
 			$.post("../scripts/BeginKYC.php", { id: linkId }, function(data) {});
 			
@@ -299,6 +283,35 @@
 						}, 2000);
 					}
 				});
+			});
+			
+			$("#btnScan").click(function(e) {
+				e.preventDefault();
+				
+				Quagga.init({
+					inputStream : {
+						name : "Live",
+						type : "LiveStream",
+						target: document.querySelector('#barcodeStream')    // Or '#yourElement' (optional)
+					},
+					decoder : {
+						readers : ["code_39_reader"]
+					}
+				}, function(err) {
+					if (err) {
+						console.log(err);
+						return
+					}
+					console.log("Initialization finished. Ready to start");
+					Quagga.start();
+				});
+			});
+			
+			Quagga.onDetected(function(result) {
+				var code = result.codeResult.code;
+
+				$("#txtNRIC").val(code);
+				Quagga.stop();
 			});
 		</script>
 	</body>
