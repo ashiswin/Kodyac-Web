@@ -173,7 +173,7 @@
 			var totalMethods = <?php echo count($methods); ?>;
 			var completionCount = <?php echo count($completedMethods); ?>;
 			var link = JSON.parse("<?php echo(addslashes(json_encode($link))); ?>");
-			var completedMethods = link.completedMethods.split("|");
+			var completedMethods = link.completedMethods;
 			
 			$("#btnStopScan").hide();
 			$("#btnScanConfirm").hide();
@@ -303,10 +303,10 @@
 							$("#mtdSMSStatus").css('color', 'green').html("Complete");
 							completionCount++;
 							if(completedMethods == null) {
-								completedMethods = ["sms"];
+								completedMethods = "sms";
 							}
 							else {
-								completedMethods.push("sms");
+								completedMethods += "|sms";
 							}
 							notifyCompletion();
 						});
@@ -395,10 +395,10 @@
 							completionCount++;
 							console.log(typeof completedMethods);
 							if(completedMethods == null) {
-								completedMethods = ["myinfo"];
+								completedMethods = "myinfo";
 							}
 							else {
-								completedMethods.push("myinfo");
+								completedMethods += "|myinfo";
 							}
 							notifyCompletion();
 						});
