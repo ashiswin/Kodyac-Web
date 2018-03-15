@@ -152,6 +152,8 @@
 								<td>Address:</td><td id="txtScanAddress"></td>
 							</tr>
 						</table>
+						<br>
+						<button class="btn btn-success" id="btnScanConfirm">Confirm Scan</button>
 					</div>
 					<div class="detail-pane" id="NRICPane">
 						<h1 style="margin-top: 2vh">Photo Verification</h1>
@@ -174,6 +176,7 @@
 			var completedMethods = link.completedMethods;
 			
 			$("#btnStopScan").hide();
+			$("#btnScanConfirm").hide();
 			// Change status of link to In Progress
 			$.post("../scripts/BeginKYC.php", { id: linkId }, function(data) {});
 			
@@ -189,6 +192,9 @@
 				if(completedMethods != null && completedMethods.includes("sms")) {
 					smsVerified();
 				}
+				if(completedMethods != null && completedMethods.includes("myinfo")) {
+					myinfoVerified();
+				}
 			}
 			
 			function smsVerified() {
@@ -199,10 +205,22 @@
 				$("#slcCountryCode").hide();
 			}
 			
+			function myinfoVerified() {
+				$("#btnScan").attr('disabled', 'disabled').addClass('disabled');
+				$("#btnStopScan").attr('disabled', 'disabled').addClass('disabled');
+			}
+			
 			notifyCompletion();
 			
 			if(completedMethods != null && completedMethods.includes("sms")) {
 				$("#txtNumber").val(link.contact);
+			}
+			if(completedMethods != null && completedMethods.includes("myinfo")) {
+				$("#txtScanName").html(link.name);
+				$("#txtScanSex").html(link.sex);
+				$("#txtScanRace").html(link.nationality);
+				$("#txtScanAddress").html(link.address);
+				$("#txtScanDOB").html(link.dob);
 			}
 			$("#mtdSMS").click(function() {
 				$(".detail-pane").hide();
@@ -355,9 +373,36 @@
 						$("#txtScanRace").html(response.details.race);
 						$("#txtScanDOB").html(response.details.dob);
 						$("#txtScanAddress").html(response.details.address);
+						$("#btnScanConfirm").show();
 					}
 				});
 			});
+			
+			$("#btnScanConfirm").click(function(e) {
+				e.preventDefault();
+				var name = $("#txtScanName").html();
+				var sex = $("#txtScanSex").html();
+				var race = $("#txtScanRace").html();
+				var dob = $("#txtScanDOB").html();
+				var address = $("#txtScanAddress").html();
+				
+				$.post("../scripts/VerifyMyInfo.php", { name: name, sex: sex, nationality: race, dob: dob, address: address, linkId: linkId }, function(data) {
+					response = JSON.parse(data);
+					if(response.success) {
+						$.post("../scripts/AddMethodCompletion.php", { method: "myinfo", linkId: linkId }, function(data2) {
+							completionCount++;
+							if(completedMethods == null) {
+								completedMethods = ["myinfo"];
+							}
+							else {
+								completedMethods.push("myinfo");
+							}
+							notifyCompletion();
+						});
+					}
+				});
+			});
+				
 		</script>
 	</body>
 </html>

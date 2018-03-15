@@ -30,6 +30,7 @@
 			$this->selectByLinkStatement = $mysqli->prepare("SELECT * FROM " . ProfileConnector::$TABLE_NAME . " WHERE `" . ProfileConnector::$COLUMN_LINKID . "` = ?");
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . ProfileConnector::$TABLE_NAME);
 			$this->updateContactStatement = $mysqli->prepare("UPDATE " . ProfileConnector::$TABLE_NAME . " SET `" . ProfileConnector::$COLUMN_CONTACT . "` = ? WHERE `" . ProfileConnector::$COLUMN_LINKID . "` = ?");
+			$this->updateOtherInfoStatement = $mysqli->prepare("UPDATE " . ProfileConnector::$TABLE_NAME . " SET `" . ProfileConnector::$COLUMN_NAME . "`=?, `" . ProfileConnector::$COLUMN_ADDRESS . "`=?, `" . ProfileConnector::$COLUMN_NRIC . "`=?, `" . ProfileConnector::$COLUMN_NATIONALITY . "`=?, `" . ProfileConnector::$COLUMN_DOB . "`=? WHERE `" . ProfileConnector::$COLUMN_LINKID . "` = ?");
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . ProfileConnector::$TABLE_NAME . " WHERE `" . ProfileConnector::$COLUMN_ID . "` = ?");
 		}
 
@@ -73,6 +74,11 @@
 		public function updateContact($linkId, $number) {
 			$this->updateContactStatement->bind_param("si", $number, $linkId);
 			return $this->updateContactStatement->execute();
+		}
+		
+		public function updateOtherInfo($linkId, $name, $address, $nric, $nationality, $dob) {
+			$this->updateOtherInfoStatement->bind_param("sssssi", $name, $address, $nric, $nationality, $dob, $linkId);
+			return $this->updateOtherInfoStatement->execute();
 		}
 		
 		public function delete($id) {
