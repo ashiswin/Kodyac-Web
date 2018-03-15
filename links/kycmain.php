@@ -392,8 +392,8 @@
 					response = JSON.parse(data);
 					if(response.success) {
 						$.post("../scripts/AddMethodCompletion.php", { method: "myinfo", linkId: linkId }, function(data2) {
+							$("#mtdMyInfoStatus").css('color', 'green').html("Complete");
 							completionCount++;
-							console.log(typeof completedMethods);
 							if(completedMethods == null) {
 								completedMethods = "myinfo";
 							}

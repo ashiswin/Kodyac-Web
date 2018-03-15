@@ -77,8 +77,8 @@
 			return $this->updateContactStatement->execute();
 		}
 		
-		public function updateOtherInfo($linkId, $name, $address, $nric, $nationality, $dob) {
-			$this->updateOtherInfoStatement->bind_param("sssssi", $name, $address, $nric, $nationality, $dob, $linkId);
+		public function updateOtherInfo($linkId, $name, $address, $nric, $nationality, $dob, $sex, $race) {
+			$this->updateOtherInfoStatement->bind_param("sssssssi", $name, $address, $nric, $nationality, $dob, $sex, $race, $linkId);
 			return $this->updateOtherInfoStatement->execute();
 		}
 		
