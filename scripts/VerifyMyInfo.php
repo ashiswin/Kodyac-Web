@@ -5,7 +5,7 @@
 	$linkid = $_POST['linkId'];
 	$name = $_POST['name'];
 	$address = $_POST['address'];
-	$nationality = $_POST['race'];
+	$nationality = $_POST['nationality'];
 	$dob = $_POST['dob'];
 	$nric = $_POST['nric'];
 	

@@ -16,7 +16,7 @@
 		return;
 	}
 	
-	$methods = "";
+	$methods = $link[LinkConnector::$COLUMN_COMPLETEDMETHODS];
 	
 	if(strpos($methods, $method) === false) {
 		if($link[LinkConnector::$COLUMN_COMPLETEDMETHODS] == null || strlen($link[LinkConnector::$COLUMN_COMPLETEDMETHODS]) == 0) {
