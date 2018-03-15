@@ -385,8 +385,9 @@
 				var race = $("#txtScanRace").html();
 				var dob = $("#txtScanDOB").html();
 				var address = $("#txtScanAddress").html();
+				var nric = $("#txtNRIC").val();
 				
-				$.post("../scripts/VerifyMyInfo.php", { name: name, sex: sex, nationality: race, dob: dob, address: address, linkId: linkId }, function(data) {
+				$.post("../scripts/VerifyMyInfo.php", { name: name, sex: sex, nationality: race, dob: dob, address: address, nric: nric, linkId: linkId }, function(data) {
 					response = JSON.parse(data);
 					if(response.success) {
 						$.post("../scripts/AddMethodCompletion.php", { method: "myinfo", linkId: linkId }, function(data2) {
