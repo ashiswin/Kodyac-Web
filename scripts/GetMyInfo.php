@@ -1,4 +1,19 @@
 <?php
+	function prettyRace($r) {
+		if(strcmp($r, "CN") == 0) {
+			return "Chinese";
+		}
+		else if(strcmp($r, "EU") == 0) {
+			return "Eurasian";
+		}
+		else if(strcmp($r, "IN") == 0) {
+			return "Indian";
+		}
+		else if(strcmp($r, "ML") == 0) {
+			return "Malay";
+		}
+	}
+	
 	$nric = $_GET['nric'];
 	
 	$s = curl_init(); 
@@ -11,7 +26,7 @@
 	$response["success"] = true;
 	$response["details"]["name"] = $result->name->value;
 	$response["details"]["sex"] = $result->sex->value;
-	$response["details"]["race"] = $result->race->value;
+	$response["details"]["race"] = prettyRace($result->race->value);
 	$response["details"]["dob"] = $result->dob->value;
 	$response["details"]["address"] = $result->regadd->value;
 	
