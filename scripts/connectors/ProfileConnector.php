@@ -35,8 +35,8 @@
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . ProfileConnector::$TABLE_NAME . " WHERE `" . ProfileConnector::$COLUMN_ID . "` = ?");
 		}
 
-		public function create($linkId, $name, $address, $nric, $contact, $nationality, $dob) {
-			$this->createStatement->bind_param("issssss", $linkId, $name, $address, $nric, $contact, $nationality, $dob);
+		public function create($linkId, $name, $address, $nric, $contact, $nationality, $dob, $sex, $race) {
+			$this->createStatement->bind_param("issssssss", $linkId, $name, $address, $nric, $contact, $nationality, $dob, $sex, $race);
 			return $this->createStatement->execute();
 		}
 

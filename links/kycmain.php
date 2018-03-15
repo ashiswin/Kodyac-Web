@@ -393,6 +393,7 @@
 					if(response.success) {
 						$.post("../scripts/AddMethodCompletion.php", { method: "myinfo", linkId: linkId }, function(data2) {
 							completionCount++;
+							console.log(completedMethods);
 							if(completedMethods == null) {
 								completedMethods = ["myinfo"];
 							}
