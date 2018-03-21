@@ -35,7 +35,7 @@
 		<h1 style="text-align: center; font-size: 5em; font-family: 'Ubuntu Bold', Arial, sans-serif">ABC Company</h1>
 		<div class="form" style="margin-top: 2vh">
 			<form class="col-md-3 text-center" style="display: block;margin-left: auto;margin-right: auto;">
-				<input type="text" class="form-control" style="margin-right: 1vh" placeholder="API Key" id="txtKey">
+				<input type="text" class="form-control disabled" style="margin-right: 1vh" disabled="disabled" placeholder="API Key" id="txtKey" value="w9JLaX5mRD5ZhPecUuUXZcNKcZY2QXpE">
 				<button class="btn btn-primary" id="btnLogin" style="width: 100%; margin-top: 1vh">Generate Link</button>
 				<br>
 				<br>
