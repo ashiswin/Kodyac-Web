@@ -92,7 +92,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="modal fade" id="mdlViewProfile">
+		<div class="modal modal-lg fade" id="mdlViewProfile">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
