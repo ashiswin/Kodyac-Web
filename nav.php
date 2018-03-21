@@ -13,6 +13,7 @@
 			<li id="navDashboard" class="nav-item"><a href="manage.php" class="nav-link">Dashboard</a></li>
 			<li id="navProfiles" class="nav-item"><a href="profiles.php" class="nav-link">Profiles</a></li>
 			<li id="navAPIKeys" class="nav-item"><a href="apikeys.php" class="nav-link">API Keys</a></li>
+			<li id="navSettings" class="nav-item"><a href="settings.php" class="nav-link">Settings</a></li>
 			<li id="navLogout" class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>
 		</ul>
 	</div>
