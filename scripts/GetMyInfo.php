@@ -28,11 +28,13 @@
 		if ($handle) {
 			while (($line = fgets($handle)) !== false) {
 				$arr = explode(",", $line);
-				$nationalities[$arr[1]] = $arr[0];
+				if(strcmp($arr[1], $n) == 0) {
+					fclose($handle);
+					return $arr[0];
+				}
 			}
 
 			fclose($handle);
-			return $nationalities[$n];
 		} else {
 			// error opening the file.
 		}
