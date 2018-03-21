@@ -25,7 +25,7 @@
 		$APIKeyConnector->addRequest($apiKeyEntry[APIKeyConnector::$COLUMN_ID]);
 		$ProfileConnector->create($linkId, "Unknown", "Unknown", "Unknown", "Unknown", "Unknown", "Unknown", "Unknown", "Unknown");
 		$response['success'] = true;
-		$response['link'] = "http://www.kodyac.tech/links/kyc.php?id=" . $linkId;
+		$response['link'] = "https://www.kodyac.tech/links/kyc.php?id=" . $linkId;
 	}
 
 	echo(json_encode($response));
