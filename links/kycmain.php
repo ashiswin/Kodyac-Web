@@ -222,7 +222,7 @@
 				$("#txtScanRace").html(link.race);
 				$("#txtScanAddress").html(link.address);
 				$("#txtScanDOB").html(link.dob);
-				$("#txtNRIC").html(link.nric);
+				$("#txtNRIC").val(link.nric);
 			}
 			$("#mtdSMS").click(function() {
 				$(".detail-pane").hide();
