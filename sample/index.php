@@ -40,6 +40,8 @@
 				<br>
 				<br>
 				<a href="" id="link"></a>
+				<br>
+				<img id="imgQR" width="100%"/>
 			</form>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -63,6 +65,7 @@
 						response = JSON.parse(data);
 						if(response.success) {
 							$("#link").attr('href', response.link).html("Go to KYC");
+							$("#imgQR").attr('src', 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=' + response.link);
 							$("#btnLogin").removeClass('disabled').removeAttr('disabled').html("Generate Link");
 						}
 						else {
