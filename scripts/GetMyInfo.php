@@ -14,6 +14,30 @@
 		}
 	}
 	
+	function prettySex($s) {
+		if(strcmp($s, "F") == 0) {
+			return "Female";
+		}
+		else if(strcmp($s, "M") == 0) {
+			return "Male";
+		}
+	}
+	
+	function prettyNationality($n) {
+		$handle = fopen("utils/alpha-country-codes.txt", "r");
+		if ($handle) {
+			while (($line = fgets($handle)) !== false) {
+				$arr = explode(",", $line);
+				$nationalities[$arr[1]] = $arr[0];
+			}
+
+			fclose($handle);
+			return $nationalities[$n];
+		} else {
+			// error opening the file.
+		}
+	}
+	
 	$nric = $_GET['nric'];
 	
 	// TODO: Check for valid NRIC
@@ -27,7 +51,7 @@
 	
 	$response["success"] = true;
 	$response["details"]["name"] = $result->name->value;
-	$response["details"]["sex"] = $result->sex->value;
+	$response["details"]["sex"] = prettySex($result->sex->value);
 	$response["details"]["race"] = prettyRace($result->race->value);
 	$response["details"]["dob"] = $result->dob->value;
 	$response["details"]["nationality"] = $result->nationality->value;
