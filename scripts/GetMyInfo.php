@@ -28,9 +28,7 @@
 		if ($handle) {
 			while (($line = fgets($handle)) !== false) {
 				$arr = explode(",", $line);
-				var_dump($arr);
-				echo("<br>");
-				if(strcmp($arr[1], $n) == 0) {
+				if(strcmp(trim($arr[1]), $n) == 0) {
 					fclose($handle);
 					return $arr[0];
 				}
