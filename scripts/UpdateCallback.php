@@ -1,6 +1,6 @@
 <?php
-	require_once "scripts/utils/database.php";
-	require_once "scripts/connectors/CompanyConnector.php";
+	require_once "utils/database.php";
+	require_once "connectors/CompanyConnector.php";
 	
 	$companyId = $_POST['companyId'];
 	$callback = $_POST['callback'];
