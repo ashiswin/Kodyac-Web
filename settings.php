@@ -75,7 +75,7 @@
 			</div>
 			<div class="row">
 				<div class="offset-md-1 col-md-2">
-					<button class="btn btn-primary">Save</button>
+					<button class="btn btn-primary" id="btnSavePassword">Save</button>
 				</div>
 			</div>
 			<hr>
@@ -104,6 +104,25 @@
 		$("#navSettings").addClass('active');
 		
 		var companyId = <?php echo $_SESSION['companyId']; ?>;
+		$("#btnSavePassword").click(function(e) {
+			e.preventDefault();
+			
+			var password = $("#txtCurrentPassword").val();
+			var newPassword = $("#txtNewPassword").val();
+			var retypePassword = $("#txtRetypePassword").val();
+			
+			if(newPassword != retypePassword) {
+				// TODO: Throw error
+				return;
+			}
+			
+			$.post("scripts/UpdatePassword.php", {companyId: companyId, password: password, newPassword: newPassword}, function(data) {
+				response = JSON.parse(data);
+				if(response.success) {
+					$("#btnSavePassword").removeClass("btn-success").addClass("btn-success").html('Saved');
+				}
+			});
+		});
 		
 		$("#btnSaveCallback").click(function(e) {
 			e.preventDefault();
