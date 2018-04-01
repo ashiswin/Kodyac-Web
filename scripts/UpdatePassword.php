@@ -1,6 +1,7 @@
 <?php
 	require_once 'utils/database.php';
 	require_once 'connectors/CompanyConnector.php';
+	require_once 'utils/random_gen.php';
 
 	$companyId = $_POST['companyId'];
 	$password = trim($_POST['password']);
