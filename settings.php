@@ -51,7 +51,7 @@
 			<h2>Callback URL</h2>
 			<br>
 			<div class="row">
-				<div class="offset-md-2 col-md-9">
+				<div class="offset-md-1 col-md-9">
 					<input type="text" class="form-control">
 				</div>
 				<div class="col-md-1">
