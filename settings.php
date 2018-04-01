@@ -120,6 +120,9 @@
 				response = JSON.parse(data);
 				if(response.success) {
 					$("#btnSavePassword").removeClass("btn-success").addClass("btn-success").html('Saved');
+					$("#txtCurrentPassword").val("");
+					$("#txtNewPassword").val("");
+					$("#txtRetypePassword").val("");
 				}
 			});
 		});
