@@ -54,7 +54,7 @@
 						<label for="txtCurrentPassword">Current Password:&nbsp;&nbsp;</label>
 				</div>
 				<div class="col-md-3">
-						<input type="text" class="form-control" id="txtCurrentPassword" length="30">
+						<input type="password" class="form-control" id="txtCurrentPassword" length="30">
 				</div>
 			</div>
 			<div class="row">
@@ -62,7 +62,7 @@
 						<label for="txtNewPassword">New Password:&nbsp;&nbsp;</label>
 				</div>
 				<div class="col-md-3">
-						<input type="text" class="form-control" id="txtNewPassword" length="30">
+						<input type="password" class="form-control" id="txtNewPassword" length="30">
 				</div>
 			</div>
 			<div class="row">
@@ -70,7 +70,7 @@
 						<label for="txtRetypePassword">Retype Password:&nbsp;&nbsp;</label>
 				</div>
 				<div class="col-md-3">
-						<input type="text" class="form-control" id="txtRetypePassword" length="30">
+						<input type="password" class="form-control" id="txtRetypePassword" length="30">
 				</div>
 			</div>
 			<div class="row">
