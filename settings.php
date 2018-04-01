@@ -58,14 +58,18 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="offset-md-1 form form-inline">
+				<div class="offset-md-1 col-md-2">
 						<label for="txtNewPassword">New Password:&nbsp;&nbsp;</label>
+				</div>
+				<div class="col-md-3">
 						<input type="text" class="form-control" id="txtNewPassword" length="30">
 				</div>
 			</div>
 			<div class="row">
-				<div class="offset-md-1 form form-inline">
+				<div class="offset-md-1 col-md-2">
 						<label for="txtRetypePassword">Retype Password:&nbsp;&nbsp;</label>
+				</div>
+				<div class="col-md-3">
 						<input type="text" class="form-control" id="txtRetypePassword" length="30">
 				</div>
 			</div>
