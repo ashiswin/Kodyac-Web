@@ -86,10 +86,10 @@
 					<label for="txtCallback">Callback URL:</label>
 				</div>
 				<div class="col-md-7">
-					<input type="text" class="form-control" id="txtCallback">
+					<input type="text" class="form-control" id="txtCallback" value="<?php echo $company[CompanyConnector::$COLUMN_CALLBACK]; ?>">
 				</div>
 				<div class="col-md-1">
-					<button class="btn btn-primary">Save</button>
+					<button class="btn btn-primary" id="btnSaveCallback">Save</button>
 				</div>
 			</div>
 		</div>
@@ -104,5 +104,18 @@
 		$("#navSettings").addClass('active');
 		
 		var companyId = <?php echo $_SESSION['companyId']; ?>;
+		
+		$("#btnSaveCallback").click(function(e) {
+			e.preventDefault();
+			
+			var callback = $("#txtCallback").val();
+			
+			$.post("scripts/UpdateCallback.php", {companyId: companyId, callback: callback}, function(data) {
+				response = JSON.parse(data);
+				if(response.success) {
+					$("#btnSaveCallback").html('Saved');
+				}
+			});
+		});
 	</script>
 </html>
