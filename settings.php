@@ -49,13 +49,9 @@
 		</div>
 		<div class="container-fluid">
 			<h2>Change Password</h2>
-			<div class="row">
-				<div class="offset-md-1 col-md-2">
+			<div class="form form-inline">
 					<label for="txtCurrentPassword">Current Password:</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control" id="txtCurrentPassword">
-				</div>
+					<input type="text" class="form-control" id="txtCurrentPassword" length="15">
 			</div>
 			<hr>
 			<h2>Callback URL</h2>
