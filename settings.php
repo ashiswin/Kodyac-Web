@@ -82,7 +82,10 @@
 			<h2>Callback URL</h2>
 			<br>
 			<div class="row">
-				<div class="offset-md-1 col-md-9">
+				<div class="offset-md-1 col-md-2">
+					<label for="txtCallback">Callback URL:</label>
+				</div>
+				<div class="col-md-7">
 					<input type="text" class="form-control" id="txtCallback">
 				</div>
 				<div class="col-md-1">
