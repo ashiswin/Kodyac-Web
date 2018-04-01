@@ -5,7 +5,7 @@
 
 	$companyId = $_POST['companyId'];
 	$password = trim($_POST['password']);
-	$newPassord = trim($_POST['newPassword']);
+	$newPassword = trim($_POST['newPassword']);
 	
 	$CompanyConnector = new CompanyConnector($conn);
 	
@@ -24,7 +24,7 @@
 		}
 		else {
 			$response["success"] = false;
-			$response["message"] = "Password update failed";
+			$response["message"] = "Invalid original password";
 		}
 	}
 	
