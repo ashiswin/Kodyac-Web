@@ -113,7 +113,7 @@
 			$.post("scripts/UpdateCallback.php", {companyId: companyId, callback: callback}, function(data) {
 				response = JSON.parse(data);
 				if(response.success) {
-					$("#btnSaveCallback").html('Saved');
+					$("#btnSaveCallback").removeClass("btn-primary").addClass("btn-success").html('Saved');
 				}
 			});
 		});

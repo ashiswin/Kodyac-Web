@@ -31,6 +31,7 @@
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . CompanyConnector::$TABLE_NAME);
 			$this->selectByUsernameStatement = $mysqli->prepare("SELECT * FROM " . CompanyConnector::$TABLE_NAME . " WHERE `" . CompanyConnector::$COLUMN_USERNAME . "` = ?");
 			$this->updateCallbackStatement = $mysqli->prepare("UPDATE " . CompanyConnector::$TABLE_NAME . " SET `" . CompanyConnector::$COLUMN_CALLBACK . "` = ? WHERE `" . CompanyConnector::$COLUMN_ID . "` = ?");
+			$this->updatePasswordStatement = $mysqli->prepare("UPDATE " . CompanyConnector::$TABLE_NAME . " SET `" . CompanyConnector::$COLUMN_PASSWORDHASH . "` = ?, `" . CompanyConnector::$COLUMN_SALT . "` = ? WHERE `" . CompanyConnector::$COLUMN_ID . "` = ?");
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . CompanyConnector::$TABLE_NAME . " WHERE `" . CompanyConnector::$COLUMN_ID . "` = ?");
 		}
 
@@ -75,6 +76,11 @@
 		public function updateCallback($id, $callback) {
 			$this->updateCallbackStatement->bind_param("si", $callback, $id);
 			return $this->updateCallbackStatement->execute();
+		}
+		
+		public function updatePassword($id, $passwordHash, $salt) {
+			$this->updatePasswordStatement->bind_param("ssi", $passwordHash, $salt, $id);
+			return $this->updatePasswordStatement->execute();
 		}
 		
 		public function delete($id) {
