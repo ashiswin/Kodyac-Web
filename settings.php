@@ -74,7 +74,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="offset-md-1">
+				<div class="offset-md-1 col-md-2">
 					<button class="btn btn-primary">Save</button>
 				</div>
 			</div>
