@@ -58,6 +58,7 @@
 					<div class="col-md-2">
 						<button class="btn btn-primary">Save</button>
 					</div>
+				</div>
 				<hr>
 				<h2>Change Password</h2>
 			</div>
