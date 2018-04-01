@@ -48,18 +48,26 @@
 			<h1 style="font-family: 'Martel', Times New Roman, serif; font-weight: bold; text-align: center; padding: 5vh; color: #FFFFFF; font-size: 3em">Account Settings</h1>
 		</div>
 		<div class="container-fluid">
+			<h2>Change Password</h2>
+			<div class="row">
+				<div class="offset-md-1 col-md-2">
+					<label for="txtCurrentPassword">Current Password:</label>
+				</div>
+				<div class="col-md-6">
+					<input type="text" class="form-control" id="txtCurrentPassword">
+				</div>
+			</div>
+			<hr>
 			<h2>Callback URL</h2>
 			<br>
 			<div class="row">
 				<div class="offset-md-1 col-md-9">
-					<input type="text" class="form-control">
+					<input type="text" class="form-control" id="txtCallback">
 				</div>
 				<div class="col-md-1">
 					<button class="btn btn-primary">Save</button>
 				</div>
 			</div>
-			<hr>
-			<h2>Change Password</h2>
 		</div>
 	</body>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
