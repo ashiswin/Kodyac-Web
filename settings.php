@@ -50,10 +50,10 @@
 		<div class="container-fluid">
 			<h2>Change Password</h2>
 			<div class="row">
-				<div class="offset-md-1 col-md-1">
+				<div class="offset-md-1 col-md-2">
 						<label for="txtCurrentPassword">Current Password:&nbsp;&nbsp;</label>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-3">
 						<input type="text" class="form-control" id="txtCurrentPassword" length="30">
 				</div>
 			</div>
