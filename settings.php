@@ -48,20 +48,18 @@
 			<h1 style="font-family: 'Martel', Times New Roman, serif; font-weight: bold; text-align: center; padding: 5vh; color: #FFFFFF; font-size: 3em">Account Settings</h1>
 		</div>
 		<div class="container-fluid">
+			<h2>Callback URL</h2>
+			<br>
 			<div class="row">
-				<h2>Callback URL</h2>
-				<br>
-				<div class="col-md-12">
-					<div class="col-md-10">
-						<input type="text" class="form-control">
-					</div>
-					<div class="col-md-2">
-						<button class="btn btn-primary">Save</button>
-					</div>
+				<div class="col-md-10">
+					<input type="text" class="form-control">
 				</div>
-				<hr>
-				<h2>Change Password</h2>
+				<div class="col-md-2">
+					<button class="btn btn-primary">Save</button>
+				</div>
 			</div>
+			<hr>
+			<h2>Change Password</h2>
 		</div>
 	</body>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
