@@ -51,10 +51,10 @@
 			<h2>Callback URL</h2>
 			<br>
 			<div class="row">
-				<div class="col-md-10">
+				<div class="offset-md-2 col-md-9">
 					<input type="text" class="form-control">
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-1">
 					<button class="btn btn-primary">Save</button>
 				</div>
 			</div>
