@@ -19,7 +19,7 @@
 		if(strcmp($passwordHash, $result[CompanyConnector::$COLUMN_PASSWORDHASH]) == 0) {
 			$salt = random_str(10);
 			$newPasswordHash = hash('sha512', ($newPassword . $salt));
-			$CompanyConnector->updatePassword($companyId, $newPassword, $salt);
+			$CompanyConnector->updatePassword($companyId, $newPasswordHash, $salt);
 			$response["success"] = true;
 		}
 		else {
