@@ -55,6 +55,23 @@
 						<input type="text" class="form-control" id="txtCurrentPassword" length="30">
 				</div>
 			</div>
+			<div class="row">
+				<div class="offset-md-1 form form-inline">
+						<label for="txtNewPassword">New Password:&nbsp;&nbsp;</label>
+						<input type="text" class="form-control" id="txtNewPassword" length="30">
+				</div>
+			</div>
+			<div class="row">
+				<div class="offset-md-1 form form-inline">
+						<label for="txtRetypePassword">Retype Password:&nbsp;&nbsp;</label>
+						<input type="text" class="form-control" id="txtRetypePassword" length="30">
+				</div>
+			</div>
+			<div class="row">
+				<div class="offset-md-1">
+					<button class="btn btn-primary">Save</button>
+				</div>
+			</div>
 			<hr>
 			<h2>Callback URL</h2>
 			<br>
