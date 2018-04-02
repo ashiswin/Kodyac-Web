@@ -1,5 +1,5 @@
 <?php
-	require_once 'utils/random_gen.php'
+	require_once 'utils/random_gen.php';
 	// Perform file upload
 	$target_dir = "../uploads/";
 	function base64_to_jpeg($base64_string, $output_file) {
