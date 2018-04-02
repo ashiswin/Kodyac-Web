@@ -1,25 +1,27 @@
 <?php
+	require_once 'utils/random_gen.php'
 	// Perform file upload
 	$target_dir = "../uploads/";
-	$target_file1 = $target_dir . basename($_FILES["face1"]["tmp_name"]);
-	$imageFileType = strtolower(pathinfo($target_file1,PATHINFO_EXTENSION));
-	if (!move_uploaded_file($_FILES["face1"]["tmp_name"], $target_file1)) {
-		$response["success"] = false;
-		$response["message"] = "Sorry, there was an error uploading your file.";
-		
-		echo(json_encode($response));
-		return;
+	function base64_to_jpeg($base64_string, $output_file) {
+		// open the output file for writing
+		$ifp = fopen( $output_file, 'wb' ); 
+
+		// split the string on commas
+		// $data[ 0 ] == "data:image/png;base64"
+		// $data[ 1 ] == <actual base64 string>
+		$data = explode( ',', $base64_string );
+
+		// we could add validation here with ensuring count( $data ) > 1
+		fwrite( $ifp, base64_decode( $data[ 1 ] ) );
+
+		// clean up the file resource
+		fclose( $ifp ); 
+
+		return $output_file; 
 	}
+	$target_file1 = base64_to_jpeg($_POST['face1'], $target_dir . random_str(10));
+	$target_file2 = base64_to_jpeg($_POST['face2'], $target_dir . random_str(10));
 	
-	$target_file2 = $target_dir . basename($_FILES["face2"]["tmp_name"]);
-	$imageFileType = strtolower(pathinfo($target_file2,PATHINFO_EXTENSION));
-	if (!move_uploaded_file($_FILES["face2"]["tmp_name"], $target_file2)) {
-		$response["success"] = false;
-		$response["message"] = "Sorry, there was an error uploading your file.";
-		
-		echo(json_encode($response));
-		return;
-	}
 	
 	$request = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect';
 
@@ -39,7 +41,7 @@
 	curl_setopt($s, CURLOPT_HTTPHEADER, $headers);
 	curl_setopt($s, CURLOPT_CUSTOMREQUEST, "POST");
 	curl_setopt($s, CURLOPT_RETURNTRANSFER, true); 
-	curl_setopt($s, CURLOPT_POSTFIELDS, '{"url": "https://www.kodyac.tech/scripts/' . $target_file1 .'"}');
+	curl_setopt($s, CURLOPT_POSTFIELDS, '{"url": "https://www.kodyac.tech/uploads/' . $target_file1 .'"}');
 	
 	$result1 = curl_exec($s);
 
@@ -50,7 +52,7 @@
 	curl_setopt($s, CURLOPT_HTTPHEADER, $headers);
 	curl_setopt($s, CURLOPT_CUSTOMREQUEST, "POST");
 	curl_setopt($s, CURLOPT_RETURNTRANSFER, true); 
-	curl_setopt($s, CURLOPT_POSTFIELDS, '{"url": "https://www.kodyac.tech/scripts/' . $target_file2 .'"}');
+	curl_setopt($s, CURLOPT_POSTFIELDS, '{"url": "https://www.kodyac.tech/uploads/' . $target_file2 .'"}');
 	
 	$result2 = curl_exec($s);
 	
