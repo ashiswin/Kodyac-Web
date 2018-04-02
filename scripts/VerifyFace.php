@@ -12,7 +12,12 @@
 		$data = explode( ',', $base64_string );
 
 		// we could add validation here with ensuring count( $data ) > 1
-		fwrite( $ifp, base64_decode( $data[ 1 ] ) );
+		if(count($data) == 2) {
+			fwrite( $ifp, base64_decode( $data[ 1 ] ) );
+		}
+		else {
+			fwrite($ifp, base64_decode($base64_string));
+		}
 
 		// clean up the file resource
 		fclose( $ifp ); 
