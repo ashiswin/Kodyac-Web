@@ -238,13 +238,13 @@
 					$("#mdlProfileContact").html(subprofiles[i].contact);
 					$("#mdlProfileAddress").html(subprofiles[i].address);
 					$.ajax({
-						url:'uploads/' + subprofiles[i].id + '.jpg',
+						url:'uploads/' + subprofiles[i].linkId + '.jpg',
 						type:'GET',
 						error: function(){
 							$("#mdlProfilePicture").attr('src', 'http://via.placeholder.com/150x200')
 						},
 						success: function(){
-							$("#mdlProfilePicture").attr('src', 'uploads/' + subprofiles[i].id + '.jpg')
+							$("#mdlProfilePicture").attr('src', 'uploads/' + subprofiles[i].linkId + '.jpg')
 						}
 					});
 					$("#mdlViewProfile").modal();
@@ -262,13 +262,13 @@
 				$("#mdlProfileContact").html(profiles[i].contact);
 				$("#mdlProfileAddress").html(profiles[i].address);
 				$.ajax({
-					url:'uploads/' + profiles[i].id + '.jpg',
+					url:'uploads/link_' + profiles[i].linkId + '.jpg',
 					type:'GET',
 					error: function(){
 						$("#mdlProfilePicture").attr('src', 'http://via.placeholder.com/150x200')
 					},
 					success: function(){
-						$("#mdlProfilePicture").attr('src', 'uploads/' + profiles[i].id + '.jpg')
+						$("#mdlProfilePicture").attr('src', 'uploads/' + profiles[i].linkId + '.jpg')
 					}
 				});
 				
