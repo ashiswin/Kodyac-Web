@@ -8,6 +8,7 @@
 		public static $COLUMN_STATUS = "status";
 		public static $COLUMN_APIKEY = "apiKey";
 		public static $COLUMN_COMPLETEDMETHODS = "completedMethods";
+		public static $COLUMN_COMPLETEDON = "completedOn";
 
 		private $createStatement = NULL;
 		private $selectStatement = NULL;
@@ -27,6 +28,7 @@
 			$this->selectByStatusStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " INNER JOIN profiles ON links.id=profiles.linkId WHERE `" . LinkConnector::$COLUMN_STATUS . "` = ?");
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM " . LinkConnector::$TABLE_NAME . " INNER JOIN profiles ON links.id=profiles.linkId");
 			$this->setStatusStatement = $mysqli->prepare("UPDATE " . LinkConnector::$TABLE_NAME . " SET `" . LinkConnector::$COLUMN_STATUS . "` = ? WHERE `" . LinkConnector::$COLUMN_ID . "` = ?");
+			$this->setStatusStatement = $mysqli->prepare("UPDATE " . LinkConnector::$TABLE_NAME . " SET `" . LinkConnector::$COLUMN_COMPLETEDON . "` = ? WHERE `" . LinkConnector::$COLUMN_ID . "` = ?");
 			$this->setCompletedMethodsStatement = $mysqli->prepare("UPDATE " . LinkConnector::$TABLE_NAME . " SET `" . LinkConnector::$COLUMN_COMPLETEDMETHODS . "` = ? WHERE `" . LinkConnector::$COLUMN_ID . "` = ?");
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . LinkConnector::$TABLE_NAME . " WHERE `" . LinkConnector::$COLUMN_ID . "` = ?");
 		}
@@ -76,6 +78,11 @@
 		public function setStatus($id, $status) {
 			$this->setStatusStatement->bind_param("si", $status, $id);
 			return $this->setStatusStatement->execute();
+		}
+		
+		public function setCompleted($id, $date) {
+			$this->setCompletedStatement->bind_param("si", $date, $id);
+			return $this->setCompletedStatement->execute();
 		}
 		
 		public function setCompletedMethods($id, $methods) {
