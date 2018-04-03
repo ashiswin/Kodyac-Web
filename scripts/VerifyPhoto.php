@@ -25,6 +25,15 @@
 		return $output_file; 
 	}
 	
+	function prettySex($s) {
+		if(strcmp($s, "F") == 0) {
+			return "FEMALE";
+		}
+		else if(strcmp($s, "M") == 0) {
+			return "MALE";
+		}
+	}
+	
 	$linkid = $_POST['linkId'];
 	$name = $_POST['name'];
 	$address = $_POST['address'];
@@ -37,7 +46,7 @@
 	
 	$ProfileConnector = new ProfileConnector($conn);
 	
-	$ProfileConnector->updateOtherInfo($linkid, $name, $address, $nric, $nationality, $dob, $sex, $race);
+	$ProfileConnector->updateOtherInfo($linkid, $name, $address, $nric, $nationality, $dob, prettySex($sex), $race);
 	base64_to_jpeg($image, "../uploads/link_" . $linkid);
 	
 	$response["success"] = true;

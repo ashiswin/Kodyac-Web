@@ -1,25 +1,25 @@
 <?php
 	function prettyRace($r) {
 		if(strcmp($r, "CN") == 0) {
-			return "Chinese";
+			return "CHINESE";
 		}
 		else if(strcmp($r, "EU") == 0) {
-			return "Eurasian";
+			return "EURASIAN";
 		}
 		else if(strcmp($r, "IN") == 0) {
-			return "Indian";
+			return "INDIAN";
 		}
 		else if(strcmp($r, "ML") == 0) {
-			return "Malay";
+			return "MALAY";
 		}
 	}
 	
 	function prettySex($s) {
 		if(strcmp($s, "F") == 0) {
-			return "Female";
+			return "FEMALE";
 		}
 		else if(strcmp($s, "M") == 0) {
-			return "Male";
+			return "MALE";
 		}
 	}
 	
@@ -30,7 +30,7 @@
 				$arr = explode(",", $line);
 				if(strcmp(trim($arr[1]), $n) == 0) {
 					fclose($handle);
-					return $arr[0];
+					return strtoupper($arr[0]);
 				}
 			}
 
