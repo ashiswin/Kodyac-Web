@@ -262,13 +262,13 @@
 				$("#mdlProfileContact").html(profiles[i].contact);
 				$("#mdlProfileAddress").html(profiles[i].address);
 				$.ajax({
-					url:'uploads/link_' + profiles[i].linkId + '.jpg',
+					url:'uploads/link_' + profiles[i].linkId,
 					type:'GET',
 					error: function(){
 						$("#mdlProfilePicture").attr('src', 'http://via.placeholder.com/150x200')
 					},
 					success: function(){
-						$("#mdlProfilePicture").attr('src', 'uploads/' + profiles[i].linkId + '.jpg')
+						$("#mdlProfilePicture").attr('src', 'uploads/' + profiles[i].linkId)
 					}
 				});
 				
