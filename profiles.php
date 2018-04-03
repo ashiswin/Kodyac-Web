@@ -122,6 +122,10 @@
 								Address:&nbsp;<span id="mdlProfileAddress"></span>
 								<br>
 								Nationality:&nbsp;<span id="mdlProfileNationality"></span>
+								<br>
+								Sex:&nbsp;<span id="mdlProfileSex"></span>
+								<br>
+								Race:&nbsp;<span id="mdlProfileRace"></span>
 							</div>
 							<div class="col-md-4">
 								<img id="mdlProfilePicture" width="100%" />
@@ -237,6 +241,8 @@
 					$("#mdlProfileNRIC").html(subprofiles[i].nric);
 					$("#mdlProfileContact").html(subprofiles[i].contact);
 					$("#mdlProfileAddress").html(subprofiles[i].address);
+					$("#mdlProfileSex").html(subprofiles[i].sex);
+					$("#mdlProfileRace").html(subprofiles[i].race);
 					$.ajax({
 						url:'uploads/link_' + subprofiles[i].linkId,
 						type:'GET',
@@ -261,6 +267,8 @@
 				$("#mdlProfileNRIC").html(profiles[i].nric);
 				$("#mdlProfileContact").html(profiles[i].contact);
 				$("#mdlProfileAddress").html(profiles[i].address);
+				$("#mdlProfileSex").html(profiles[i].sex);
+				$("#mdlProfileRace").html(profiles[i].race);
 				$.ajax({
 					url:'uploads/link_' + profiles[i].linkId,
 					type:'GET',
