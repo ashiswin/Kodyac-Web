@@ -6,7 +6,7 @@
 	
 	$LinkConnector = new LinkConnector($conn);
 	$LinkConnector->setStatus($linkId, "completed");
-	$LinkConnector->setCompleted($linkId, date('Y-m-d H:i:s')
+	$LinkConnector->setCompleted($linkId, date('Y-m-d H:i:s'));
 	$response["success"] = true;
 	
 	echo(json_encode($response));
