@@ -236,7 +236,7 @@
 				
 					var i = $(this).attr('href');
 					$("#mdlProfileName").html(subprofiles[i].name);
-					$("#mdlProfileDOB").html(moment(subprofiles[i].dob, "D-M-YYYY").format('MMMM Do YYYY'));
+					$("#mdlProfileDOB").html(moment(subprofiles[i].dob, "YYYY-MM-DD").format('MMMM Do YYYY'));
 					$("#mdlProfileNationality").html(subprofiles[i].nationality);
 					$("#mdlProfileNRIC").html(subprofiles[i].nric);
 					$("#mdlProfileContact").html(subprofiles[i].contact);
@@ -262,7 +262,7 @@
 				
 				var i = $(this).attr('href');
 				$("#mdlProfileName").html(profiles[i].name);
-				$("#mdlProfileDOB").html(moment(profiles[i].dob, "D-M-YYYY").format('MMMM Do YYYY'));
+				$("#mdlProfileDOB").html(moment(profiles[i].dob, "YYYY-MM-DD").format('MMMM Do YYYY'));
 				$("#mdlProfileNationality").html(profiles[i].nationality);
 				$("#mdlProfileNRIC").html(profiles[i].nric);
 				$("#mdlProfileContact").html(profiles[i].contact);
