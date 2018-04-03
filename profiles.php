@@ -238,13 +238,13 @@
 					$("#mdlProfileContact").html(subprofiles[i].contact);
 					$("#mdlProfileAddress").html(subprofiles[i].address);
 					$.ajax({
-						url:'uploads/' + subprofiles[i].linkId,
+						url:'uploads/link_' + subprofiles[i].linkId,
 						type:'GET',
 						error: function(){
 							$("#mdlProfilePicture").attr('src', 'http://via.placeholder.com/150x200')
 						},
 						success: function(){
-							$("#mdlProfilePicture").attr('src', 'uploads/' + subprofiles[i].linkId)
+							$("#mdlProfilePicture").attr('src', 'uploads/link_' + subprofiles[i].linkId)
 						}
 					});
 					$("#mdlViewProfile").modal();
@@ -268,7 +268,7 @@
 						$("#mdlProfilePicture").attr('src', 'http://via.placeholder.com/150x200')
 					},
 					success: function(){
-						$("#mdlProfilePicture").attr('src', 'uploads/' + profiles[i].linkId)
+						$("#mdlProfilePicture").attr('src', 'uploads/link_' + profiles[i].linkId)
 					}
 				});
 				
