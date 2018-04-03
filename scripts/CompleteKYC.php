@@ -2,7 +2,7 @@
 	include "utils/database.php";
 	include "connectors/LinkConnector.php";
 	
-	$linkId = $_POST['linkId'];
+	$linkId = $_POST['id'];
 	
 	$LinkConnector = new LinkConnector($conn);
 	$LinkConnector->setStatus($linkId, "completed");
