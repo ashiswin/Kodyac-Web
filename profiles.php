@@ -233,7 +233,7 @@
 					if(status == "completed") subprofiles = completed;
 					if(status == "cancelled") subprofiles = cancelled;
 					e.preventDefault();
-				
+					
 					var i = $(this).attr('href');
 					$("#mdlProfileName").html(subprofiles[i].name);
 					$("#mdlProfileDOB").html(moment(subprofiles[i].dob, "YYYY-MM-DD").format('MMMM Do YYYY'));

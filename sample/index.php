@@ -33,10 +33,18 @@
 	</head>
 	<body>
 		<h1 style="text-align: center; font-size: 5em; font-family: 'Ubuntu Bold', Arial, sans-serif">ABC Company</h1>
+		<div style="text-align: center">Registration</div>
 		<div class="form" style="margin-top: 2vh">
 			<form class="col-md-3 text-center" style="display: block;margin-left: auto;margin-right: auto;">
-				<input type="text" class="form-control disabled" style="margin-right: 1vh" disabled="disabled" placeholder="API Key" id="txtKey" value="w9JLaX5mRD5ZhPecUuUXZcNKcZY2QXpE">
-				<button class="btn btn-primary" id="btnLogin" style="width: 100%; margin-top: 1vh">Generate Link</button>
+				<div class="row">
+					<div class="col-md-2">
+						Username:
+					</div>
+					<div class="col-md-10">
+						<input type="text" class="form-control">
+					</div>
+				</div>
+				<button class="btn btn-primary" id="btnLogin" style="width: 100%; margin-top: 1vh">Begin KYC</button>
 				<br>
 				<br>
 				<a href="" id="link"></a>
@@ -52,7 +60,7 @@
 			$("#btnLogin").click(function(e) {
 				e.preventDefault();
 				
-				var key = $("#txtKey").val().trim();
+				var key = "w9JLaX5mRD5ZhPecUuUXZcNKcZY2QXpE";
 				
 				if(!key || key.length == 0) {
 					$("#txtKey")[0].setCustomValidity("Please enter your API key");
