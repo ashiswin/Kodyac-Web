@@ -59,6 +59,7 @@
 					<input type="password" class="form-control">
 				</div>
 			</div>
+			<br>
 			<div class="form">
 				<form class="col-md-3 text-center" style="display: block;margin-left: auto;margin-right: auto;">
 					<button class="btn btn-primary" id="btnLogin" style="width: 100%; margin-top: 1vh">Begin KYC</button>
@@ -94,7 +95,32 @@
 						if(response.success) {
 							$("#link").attr('href', response.link).html("Go to KYC");
 							$("#imgQR").attr('src', 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=' + response.link);
-							$("#btnLogin").removeClass('disabled').removeAttr('disabled').html("Generate Link");
+							$("#btnLogin").html("<i class=\'fas fa-sync-alt spinning\'></i> Waiting for KYC completion...");
+							
+							// Connect to Websocket for live statistics
+							if(!("WebSocket" in window)) {
+								alert('<p>WebSockets is not present in this browser. Dynamic statistics updates will not be enabled.</p>');
+							}
+							else {
+								//The user has WebSockets
+								connect();
+							}
+			
+							// Function to perform the actual connection
+							function connect(){
+								// Open WebSocket connection to server
+						    		socket = new WebSocket("ws://devostrum.no-ip.info:8080");
+				
+								socket.onopen = function(){
+									socket.send("listen:" + response.link); // Listen for updates on current event
+								}
+								socket.onmessage = function(msg){
+									// When data is received from the server, reload the current event
+									console.log(msg.data);
+									$("#btnLogin").removeClass('btn-primary').addClass('btn-success').html("KYC Completed");
+									$("#btnSubmit").removeClass('disabled').removeAttr('disabled').html("Submit");
+								}
+							}
 						}
 						else {
 							$("#txtKey")[0].setCustomValidity(response.message);
