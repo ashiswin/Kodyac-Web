@@ -11,11 +11,11 @@
 			}
 			@font-face {
 				font-family: "Martel";
-				src: url("font/martel-regular.otf") format("opentype");
+				src: url("../font/martel-regular.otf") format("opentype");
 			}
 			@font-face {
 				font-family: "Ubuntu Bold";
-				src: url("font/Ubuntu-B.ttf") format("truetype");
+				src: url("../font/Ubuntu-B.ttf") format("truetype");
 			}
 			.spinning {
 				animation: spin 1s infinite linear;
@@ -33,17 +33,17 @@
 	</head>
 	<body>
 		<h1 style="text-align: center; font-size: 5em; font-family: 'Ubuntu Bold', Arial, sans-serif">ABC Company</h1>
-		<div style="text-align: center">Registration</div>
-		<div class="form" style="margin-top: 2vh">
+		<div style="text-align: center; font-size: 3em; font-family: 'Martel', Times New Roman, serif">Registration</div>
+		<div class="row" style="margin-top: 2vh">
+			<div class="col-md-2">
+				Username:
+			</div>
+			<div class="col-md-10">
+				<input type="text" class="form-control">
+			</div>
+		</div>
+		<div class="form">
 			<form class="col-md-3 text-center" style="display: block;margin-left: auto;margin-right: auto;">
-				<div class="row">
-					<div class="col-md-2">
-						Username:
-					</div>
-					<div class="col-md-10">
-						<input type="text" class="form-control">
-					</div>
-				</div>
 				<button class="btn btn-primary" id="btnLogin" style="width: 100%; margin-top: 1vh">Begin KYC</button>
 				<br>
 				<br>
