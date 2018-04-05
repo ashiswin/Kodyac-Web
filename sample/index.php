@@ -43,6 +43,22 @@
 					<input type="text" class="form-control">
 				</div>
 			</div>
+			<div class="row" style="margin-top: 2vh">
+				<div class="col-md-2">
+					Password:
+				</div>
+				<div class="col-md-10">
+					<input type="password" class="form-control">
+				</div>
+			</div>
+			<div class="row" style="margin-top: 2vh">
+				<div class="col-md-2">
+					Retype Password:
+				</div>
+				<div class="col-md-10">
+					<input type="password" class="form-control">
+				</div>
+			</div>
 			<div class="form">
 				<form class="col-md-3 text-center" style="display: block;margin-left: auto;margin-right: auto;">
 					<button class="btn btn-primary" id="btnLogin" style="width: 100%; margin-top: 1vh">Begin KYC</button>
@@ -51,6 +67,8 @@
 					<a href="" id="link"></a>
 					<br>
 					<img id="imgQR" width="100%"/>
+					<br>
+					<button class="btn btn-primary disabled" id="btnSubmit" disabled="disabled">Submit</button>
 				</form>
 			</div>
 		</div>
