@@ -32,25 +32,27 @@
 		</style>
 	</head>
 	<body>
-		<h1 style="text-align: center; font-size: 5em; font-family: 'Ubuntu Bold', Arial, sans-serif">ABC Company</h1>
-		<div style="text-align: center; font-size: 3em; font-family: 'Martel', Times New Roman, serif">Registration</div>
-		<div class="row" style="margin-top: 2vh">
-			<div class="col-md-2">
-				Username:
+		<div class="container">
+			<h1 style="text-align: center; font-size: 5em; font-family: 'Ubuntu Bold', Arial, sans-serif">ABC Company</h1>
+			<div style="text-align: center; font-size: 3em; font-family: 'Martel', Times New Roman, serif">Registration</div>
+			<div class="row" style="margin-top: 2vh">
+				<div class="col-md-2">
+					Username:
+				</div>
+				<div class="col-md-10">
+					<input type="text" class="form-control">
+				</div>
 			</div>
-			<div class="col-md-10">
-				<input type="text" class="form-control">
+			<div class="form">
+				<form class="col-md-3 text-center" style="display: block;margin-left: auto;margin-right: auto;">
+					<button class="btn btn-primary" id="btnLogin" style="width: 100%; margin-top: 1vh">Begin KYC</button>
+					<br>
+					<br>
+					<a href="" id="link"></a>
+					<br>
+					<img id="imgQR" width="100%"/>
+				</form>
 			</div>
-		</div>
-		<div class="form">
-			<form class="col-md-3 text-center" style="display: block;margin-left: auto;margin-right: auto;">
-				<button class="btn btn-primary" id="btnLogin" style="width: 100%; margin-top: 1vh">Begin KYC</button>
-				<br>
-				<br>
-				<a href="" id="link"></a>
-				<br>
-				<img id="imgQR" width="100%"/>
-			</form>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
