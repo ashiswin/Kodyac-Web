@@ -71,6 +71,7 @@
 						<br>
 						Identified as: <span id="txtName"></span>
 						<br>
+						<br>
 					</div>
 					<button class="btn btn-primary disabled" id="btnSubmit" disabled="disabled">Submit</button>
 				</form>
@@ -81,7 +82,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		
 		<script type="text/javascript">
-			$("#kycResult").hide();
+			//$("#kycResult").hide();
 			$("#btnLogin").click(function(e) {
 				e.preventDefault();
 				
@@ -127,7 +128,7 @@
 									$("#link").hide();
 									socket.send("unregister|" + response.link);
 									var linkId = response.link.substring(response.link.indexOf("?"), response.link.length);
-									$.get("../sripts/GetLink.php?id=" + linkId, function(data) {
+									$.get("../sripts/GetLink.php" + linkId, function(data) {
 										response2 = JSON.parse(data);
 										if(response2.success) {
 											$("#txtName").html(response2.link.name);
