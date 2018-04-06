@@ -128,7 +128,7 @@
 									$("#link").hide();
 									socket.send("unregister|" + response.link);
 									var linkId = response.link.substring(response.link.indexOf("?"), response.link.length);
-									$.get("../sripts/GetLink.php" + linkId, function(data) {
+									$.get("../scripts/GetLink.php" + linkId, function(data) {
 										response2 = JSON.parse(data);
 										if(response2.success) {
 											$("#txtName").html(response2.link.name);
