@@ -119,6 +119,8 @@
 									console.log(msg.data);
 									$("#btnLogin").removeClass('btn-primary').addClass('btn-success').html("KYC Completed");
 									$("#btnSubmit").removeClass('disabled').removeAttr('disabled').html("Submit");
+									$("#imgQR").hide();
+									$("#link").hide();
 									socket.send("unregister|" + response.link);
 								}
 							}
