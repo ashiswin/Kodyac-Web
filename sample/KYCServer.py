@@ -2,7 +2,7 @@
 from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 
 eventListeners = dict();
-class StatsServer(WebSocket):
+class KYCServer(WebSocket):
     def handleMessage(self):
 	command = self.data.split(":")
 	if command[0] == "listen":
@@ -31,6 +31,6 @@ class StatsServer(WebSocket):
     def handleClose(self):
         print("Client " + self.address[0] + " disconnected")
 
-print("Launching StatsServer on port 8080")
-server = SimpleWebSocketServer('', 8080, StatsServer)
+print("Launching KYCServer on port 8080")
+server = SimpleWebSocketServer('', 8080, KYCServer)
 server.serveforever()
