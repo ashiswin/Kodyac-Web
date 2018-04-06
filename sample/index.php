@@ -36,26 +36,26 @@
 			<h1 style="text-align: center; font-size: 5em; font-family: 'Ubuntu Bold', Arial, sans-serif">ABC Company</h1>
 			<div style="text-align: center; font-size: 3em; font-family: 'Martel', Times New Roman, serif">Registration</div>
 			<div class="row" style="margin-top: 2vh">
-				<div class="col-md-2">
+				<div class="offset-md-2 col-md-2">
 					Username:
 				</div>
-				<div class="col-md-10">
+				<div class="col-md-6">
 					<input type="text" class="form-control">
 				</div>
 			</div>
 			<div class="row" style="margin-top: 2vh">
-				<div class="col-md-2">
+				<div class="offset-md-2 col-md-2">
 					Password:
 				</div>
-				<div class="col-md-10">
+				<div class="col-md-6">
 					<input type="password" class="form-control">
 				</div>
 			</div>
 			<div class="row" style="margin-top: 2vh">
-				<div class="col-md-2">
+				<div class="offset-md-2 col-md-2">
 					Retype Password:
 				</div>
-				<div class="col-md-10">
+				<div class="col-md-6">
 					<input type="password" class="form-control">
 				</div>
 			</div>
