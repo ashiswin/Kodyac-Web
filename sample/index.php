@@ -64,11 +64,14 @@
 				<form class="col-md-3 text-center" style="display: block;margin-left: auto;margin-right: auto;">
 					<button class="btn btn-primary" id="btnLogin" style="width: 100%; margin-top: 1vh">Begin KYC</button>
 					<br>
-					<br>
 					<a href="" id="link"></a>
 					<br>
 					<img id="imgQR" width="100%"/>
-					<br>
+					<div id="kycResult">
+						<br>
+						Identified as: <span id="txtName"></span>
+						<br>
+					</div>
 					<button class="btn btn-primary disabled" id="btnSubmit" disabled="disabled">Submit</button>
 				</form>
 			</div>
@@ -122,6 +125,13 @@
 									$("#imgQR").hide();
 									$("#link").hide();
 									socket.send("unregister|" + response.link);
+									var linkId = response.link.substring(response.link.indexOf("?"), response.link.length);
+									$.get("../sripts/GetLink.php?id=" + linkId, function(data) {
+										response2 = JSON.parse(data);
+										if(response2.success) {
+											$("#txtName").html(response2.link.name);
+										}
+									});
 								}
 							}
 						}
