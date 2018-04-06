@@ -4,7 +4,7 @@ from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 eventListeners = dict();
 class KYCServer(WebSocket):
     def handleMessage(self):
-	command = self.data.split(":")
+	command = self.data.split("|")
 	if command[0] == "listen":
 		eventid = command[1]
 		if eventid not in eventListeners.keys():

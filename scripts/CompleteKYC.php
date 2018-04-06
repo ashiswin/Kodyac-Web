@@ -21,7 +21,7 @@
 		'port' => 8080,
 		'path' => ''
 	));
-	$result = $ws->send("update:https://www.kodyac.tech/links/kyc.php?id=" . $linkId);
+	$result = $ws->send("update|https://www.kodyac.tech/links/kyc.php?id=" . $linkId);
 	$ws->close();
 	
 	$response["success"] = true;

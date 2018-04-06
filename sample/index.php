@@ -112,13 +112,14 @@
 						    		socket = new WebSocket("ws://devostrum.no-ip.info:8080");
 				
 								socket.onopen = function(){
-									socket.send("listen:" + response.link); // Listen for updates on current event
+									socket.send("listen|" + response.link); // Listen for updates on current event
 								}
 								socket.onmessage = function(msg){
 									// When data is received from the server, reload the current event
 									console.log(msg.data);
 									$("#btnLogin").removeClass('btn-primary').addClass('btn-success').html("KYC Completed");
 									$("#btnSubmit").removeClass('disabled').removeAttr('disabled').html("Submit");
+									socket.send("unregister|" + response.link);
 								}
 							}
 						}
