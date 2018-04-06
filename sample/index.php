@@ -35,7 +35,7 @@
 		<div class="container">
 			<h1 style="text-align: center; font-size: 5em; font-family: 'Ubuntu Bold', Arial, sans-serif">ABC Company</h1>
 			<div style="text-align: center; font-size: 3em; font-family: 'Martel', Times New Roman, serif">Registration</div>
-			<div class="row" style="margin-top: 2vh">
+			<div class="row" style="margin-top: 4vh">
 				<div class="offset-md-2 col-md-2">
 					Username:
 				</div>
