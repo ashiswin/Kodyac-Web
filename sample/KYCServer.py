@@ -6,17 +6,17 @@ class KYCServer(WebSocket):
     def handleMessage(self):
 	command = self.data.split(":")
 	if command[0] == "listen":
-		eventid = int(command[1])
+		eventid = command[1]
 		if eventid not in eventListeners.keys():
 			eventListeners[eventid] = list()
 		eventListeners[eventid].append(self)
 		print("\t" + str(self.address[0]) + " registered for event " + str(eventid))
 	if command[0] == "unlisten":
-		eventid = int(command[1])
+		eventid = command[1]
 		eventListeners[eventid].remove(self)
 		print("\t" + str(self.address[0]) + " unregistered for event " + str(eventid))
 	if command[0] == "update":
-		eventid = int(command[1])
+		eventid = command[1]
 		print("\tReceived update for event " + str(eventid));
 		if eventid not in eventListeners.keys():
 			return
